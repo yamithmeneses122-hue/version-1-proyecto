@@ -1,0 +1,391 @@
+/* ==========================================================================
+   PALETA DE COLORES OFICIALES (Modificables al inicio, parce)
+   ========================================================================== */
+:root {
+    --fondo-negro: #000000;
+    --fondo-card: #010409;
+    --azul-neon: #00CCFF;
+    --verde-esmeralda: #2ECC71;
+    --blanco-puro: #FFFFFF;
+    --gris-hielo: #F4F7F9;
+    --borde: #1d212a;
+}
+
+/* ==========================================================================
+   RESET GLOBAL DE CAJA (Sincronizado)
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--fondo-negro);
+    font-family: 'Lato', sans-serif;
+    color: var(--blanco-puro);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   1. ESTRUCTURA GLOBAL DEL DASHBOARD (Distribución de Pantalla)
+   ========================================================================== */
+.pagina-completa {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* --- ESTILOS DEL MENÚ LATERAL FIJO --- */
+
+/* ==========================================================================
+   2. ESTILOS DEL MENÚ LATERAL FIJO (Sidebar - Sincronizado y Sin Errores)
+   ========================================================================== */
+.menu-lado {
+    width: 260px;
+    background-color: #050811;
+    border-right: 1px solid var(--borde);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.menu-lado .logo {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--azul-neon);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.menu-lado .rol {
+    font-size: 0.8rem;
+    color: var(--verde-esmeralda);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.menu-lado nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-lado nav ul li a {
+    display: block;
+    color: var(--gris-hielo);
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+/* 🔵 HOVER: Solo afecta a los botones que NO están activos */
+.menu-lado nav ul li a:hover {
+    background-color: rgba(0, 204, 255, 0.05);
+    color: var(--azul-neon);
+    border-color: rgba(0, 204, 255, 0.2);
+    transform: translateX(5px); /* Se desplaza suave hacia la derecha */
+}
+
+/* 🟢 ACTIVE: Estilo firme y estático para la pestaña actual */
+.menu-lado nav ul li a.active {
+    background-color: rgba(46, 204, 113, 0.1);
+    color: var(--verde-esmeralda);
+    border-color: rgba(46, 204, 113, 0.3);
+    transform: none; /* Bloquea el movimiento para que no salte ni se hunda */
+    pointer-events: none; /* Evita interacciones raras si ya estás en la página */
+}
+
+
+/* ==========================================================================
+   2. PANEL CENTRAL (Espacio de Trabajo)
+   ========================================================================== */
+.contenido-centro {
+    flex: 1;
+    margin-left: 260px;
+    padding: 40px;
+    width: calc(100% - 260px);
+}
+
+.eje-centrado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: radial-gradient(circle at 50% 25%, #0d1624 0%, var(--fondo-negro) 75%);
+}
+
+.bloque-encabezado {
+    text-align: center;
+    max-width: 1000px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.titulo-pagina {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem;
+    color: var(--blanco-puro);
+    margin-bottom: 8px;
+}
+
+.subtitulo-pagina {
+    font-size: 1rem;
+    color: var(--gris-hielo);
+    opacity: 0.7;
+}
+
+/* ==========================================================================
+   3. GRILLA DE MÉTRICAS SUPERIORES
+   ========================================================================== */
+.grilla-metricas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 30px;
+}
+
+.tarjeta-metrica {
+    background-color: var(--fondo-card);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 15px 20px;
+}
+
+.bordo-azul { border-color: var(--azul-neon); }
+.bordo-verde { border-color: var(--verde-esmeralda); }
+
+.tarjeta-metrica h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gris-hielo);
+    opacity: 0.6;
+    margin-bottom: 5px;
+}
+
+.valor-metrica {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--blanco-puro);
+}
+
+.valor-metrica span {
+    font-size: 0.9rem;
+    opacity: 0.5;
+    margin-left: 3px;
+}
+
+.valor-metrica.activo {
+    color: var(--verde-esmeralda);
+    text-shadow: 0 0 10px rgba(46, 204, 113, 0.2);
+}
+
+/* ==========================================================================
+   4. CONSOLA DEL TRADUCTOR (Layout de Dos Columnas Elástico)
+   ========================================================================== */
+.consola-traductor {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--fondo-card);
+    border: 1px solid var(--azul-neon);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 1000px;
+    min-height: 480px;
+    overflow: hidden;
+}
+
+/* --- COLUMNA IZQUIERDA: CÁMARA LIVE --- */
+.visor-camara {
+    flex: 1.2; /* Toma un poco más de espacio */
+    background-color: #000000;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--borde);
+}
+
+.visor-camara video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.badge-en-vivo {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: rgba(231, 76, 60, 0.85);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+/* --- COLUMNA DERECHA: PANEL DE RESULTADOS --- */
+.panel-resultados {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #02060d;
+}
+
+/* Caja de Texto Detectado */
+.caja-texto-detectado h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    color: var(--azul-neon);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.texto-resultado {
+    font-size: 1.25rem;
+    color: var(--blanco-puro);
+    line-height: 1.5;
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 3px solid var(--azul-neon);
+}
+
+/* Botón de reproducción de Voz */
+.controles-traduccion {
+    margin: 20px 0;
+}
+
+.btn-voz-neon {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--verde-esmeralda);
+    color: var(--verde-esmeralda);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-voz-neon:hover {
+    background-color: var(--verde-esmeralda);
+    color: #000000;
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.3);
+}
+
+/* Logs de Sistema */
+.mensajes-sistema h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    color: var(--gris-hielo);
+    opacity: 0.5;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.lista-logs {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.8rem;
+}
+
+.lista-logs li {
+    padding: 4px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.02);
+}
+
+.log-ok { color: #85e3b3; }
+.log-info { color: #85ccff; }
+
+/* --- ☀️ SOPORTE MODO CLARO --- */
+body.tema-claro {
+    --fondo-negro: #FFFFFF;
+    --fondo-card: #F4F7F9;
+    --blanco-puro: #000000;
+    --gris-hielo: #1d212a;
+    --borde: #d1d5db;
+    --azul-neon: #0077B3;
+    --verde-esmeralda: #27ae60;
+}
+
+body.tema-claro .eje-centrado {
+    background: radial-gradient(circle at 50% 25%, #e6f0fa 0%, #FFFFFF 75%);
+}
+
+body.tema-claro .menu-lado { background-color: #ebf1f5; }
+body.tema-claro .panel-resultados { background-color: #FFFFFF; }
+body.tema-claro .tarjeta-metrica { background-color: #FFFFFF; }
+
+/* ==========================================================================
+   5. RESPONSIVE ADAPTATIVO
+   ========================================================================== */
+@media (max-width: 900px) {
+    .menu-lado { width: 70px; padding: 20px 10px; }
+    .menu-lado .logo, .menu-lado .rol { display: none; }
+    .contenido-centro { margin-left: 70px; width: calc(100% - 70px); padding: 20px; }
+    .grilla-metricas { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 750px) {
+    .consola-traductor { flex-direction: column; }
+    .visor-camara { height: 300px; border-right: none; border-bottom: 1px solid var(--borde); }
+    .grilla-metricas { grid-template-columns: 1fr; }
+}
+/* ==========================================================================
+   AJUSTE DE ALINEACIÓN PARA EL BOTÓN CERRAR SESIÓN (AL FONDO FONDO)
+   ========================================================================== */
+.menu-lado {
+    display: flex;
+    flex-direction: column;
+}
+
+/* El truco del ingeniero: empuja el footer al piso del contenedor flex */
+.menu-lado footer {
+    margin-top: auto; 
+    padding-top: 20px;
+}
+
+/* Estilo personalizado y destructivo para la salida */
+.menu-lado footer nav ul li a#btn-logout {
+    color: #e74c3c; /* Rojo alerta */
+    border: 1px solid transparent;
+}
+
+.menu-lado footer nav ul li a#btn-logout:hover {
+    background-color: rgba(231, 76, 60, 0.08);
+    color: #ff6b6b;
+    border-color: rgba(231, 76, 60, 0.3);
+    transform: translateX(5px);
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.15);
+}
