@@ -1,6 +1,4 @@
-/* ==========================================================================
-   PALETA DE COLORES OFICIALES (Modificables al inicio, parce)
-   ========================================================================== */
+/*patelta de colores*/
 :root {
     --fondo-negro: #000000;
     --fondo-card: #010409;
@@ -10,10 +8,7 @@
     --gris-hielo: #F4F7F9;
     --borde: #1d212a;
 }
-
-/* ==========================================================================
-   RESET GLOBAL DE CAJA (Sincronizado)
-   ========================================================================== */
+/*reset*/
 * {
     box-sizing: border-box;
     margin: 0;
@@ -27,21 +22,12 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
 }
-
-/* ==========================================================================
-   1. ESTRUCTURA GLOBAL DEL DASHBOARD (Distribución de Pantalla)
-   ========================================================================== */
 .pagina-completa {
     display: flex;
     min-height: 100vh;
     width: 100%;
 }
-
-/* --- ESTILOS DEL MENÚ LATERAL FIJO --- */
-
-/* ==========================================================================
-   2. ESTILOS DEL MENÚ LATERAL FIJO (Sidebar - Sincronizado y Sin Errores)
-   ========================================================================== */
+/*estilo menu lateral*/
 .menu-lado {
     width: 260px;
     background-color: #050811;
@@ -106,14 +92,10 @@ body {
     background-color: rgba(46, 204, 113, 0.1);
     color: var(--verde-esmeralda);
     border-color: rgba(46, 204, 113, 0.3);
-    transform: none; /* Bloquea el movimiento para que no salte ni se hunda */
-    pointer-events: none; /* Evita interacciones raras si ya estás en la página */
+    transform: none; 
+    pointer-events: none; 
 }
-
-
-/* ==========================================================================
-   2. PANEL CENTRAL (Espacio de Trabajo)
-   ========================================================================== */
+/*espacio central*/
 .contenido-centro {
     flex: 1;
     margin-left: 260px;
@@ -148,10 +130,7 @@ body {
     color: var(--gris-hielo);
     opacity: 0.7;
 }
-
-/* ==========================================================================
-   3. GRILLA DE MÉTRICAS SUPERIORES
-   ========================================================================== */
+/*grilla*/
 .grilla-metricas {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -198,10 +177,7 @@ body {
     color: var(--verde-esmeralda);
     text-shadow: 0 0 10px rgba(46, 204, 113, 0.2);
 }
-
-/* ==========================================================================
-   4. CONSOLA DEL TRADUCTOR (Layout de Dos Columnas Elástico)
-   ========================================================================== */
+/*consola de traduccion*/
 .consola-traductor {
     display: flex;
     flex-direction: row;
@@ -214,7 +190,7 @@ body {
     overflow: hidden;
 }
 
-/* --- COLUMNA IZQUIERDA: CÁMARA LIVE --- */
+/*columna izquierda: visor de cámara*/
 .visor-camara {
     flex: 1.2; /* Toma un poco más de espacio */
     background-color: #000000;
@@ -244,7 +220,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* --- COLUMNA DERECHA: PANEL DE RESULTADOS --- */
+/*columna derecha: resultados y controles*/
 .panel-resultados {
     flex: 1;
     padding: 30px;
@@ -362,9 +338,7 @@ body.tema-claro .tarjeta-metrica { background-color: #FFFFFF; }
     .visor-camara { height: 300px; border-right: none; border-bottom: 1px solid var(--borde); }
     .grilla-metricas { grid-template-columns: 1fr; }
 }
-/* ==========================================================================
-   AJUSTE DE ALINEACIÓN PARA EL BOTÓN CERRAR SESIÓN (AL FONDO FONDO)
-   ========================================================================== */
+/* cerrar sesión */
 .menu-lado {
     display: flex;
     flex-direction: column;

@@ -1,6 +1,4 @@
-/* ==========================================================================
-   PALETA DE COLORES OFICIALES (Modificables al inicio como te gusta, parce)
-   ========================================================================== */
+/*paleta de colores*/
 :root {
     --fondo-negro: #000000;
     --fondo-card: #010409;
@@ -16,9 +14,7 @@
     --grad-tareas: linear-gradient(135deg, rgba(0, 204, 255, 0.15) 0%, rgba(46, 204, 113, 0.15) 100%);
 }
 
-/* ==========================================================================
-   RESET GLOBAL DE CAJA (Sincronizado)
-   ========================================================================== */
+/* reset*/
 * {
     box-sizing: border-box;
     margin: 0;
@@ -32,22 +28,12 @@ body {
     line-height: 1.6; /* Altura de línea unificada */
     overflow-x: hidden;
 }
-
-/* ==========================================================================
-   1. ESTRUCTURA GLOBAL DEL DASHBOARD (Distribución de Pantalla)
-   ========================================================================== */
 .pagina-completa {
     display: flex;
     min-height: 100vh;
     width: 100%;
 }
-
-/* ==========================================================================
-   2. ESTILOS DEL MENÚ LATERAL FIJO (Sidebar - Espejo Exacto)
-   ========================================================================== */
-/* ==========================================================================
-   2. ESTILOS DEL MENÚ LATERAL FIJO (Sidebar - Sincronizado y Sin Errores)
-   ========================================================================== */
+/* estilo menu lateral*/
 .menu-lado {
     width: 260px;
     background-color: #050811;
@@ -116,9 +102,7 @@ body {
     pointer-events: none; /* Evita interacciones raras si ya estás en la página */
 }
 
-/* ==========================================================================
-   3. PANEL CENTRAL (Espacio del Diccionario)
-   ========================================================================== */
+/*panel central diccionario*/
 .contenido-centro {
     flex: 1;
     margin-left: 260px;
@@ -156,9 +140,7 @@ body {
     opacity: 0.9;
 }
 
-/* ==========================================================================
-   4. BLOQUES DE CATEGORÍAS Y GRILLAS DEL DICCIONARIO
-   ========================================================================== */
+/*bloque de vistas del diccionario*/
 .diccionario-vistas {
     display: flex;
     flex-direction: column;
@@ -286,9 +268,7 @@ body.tema-claro .tarjeta-sena { background-color: #FFFFFF; }
     .grilla-senas { grid-template-columns: 1fr; }
     .titulo-pagina { font-size: 1.7rem; }
 }
-/* ==========================================================================
-   AJUSTE DE ALINEACIÓN PARA EL BOTÓN CERRAR SESIÓN (AL FONDO FONDO)
-   ========================================================================== */
+/* estilo para el menú lateral */
 .menu-lado {
     display: flex;
     flex-direction: column;
