@@ -66,13 +66,15 @@
             <section class="consola-traductor bordo-azul">
                 <figure class="visor-camara">
                     <video src="../../media/live-stream-sim.mp4" autoplay loop muted poster="../../img/feed-gafas.jpg"></video>
-                    <span class="badge-en-vivo">🔴 EN VIVO - OV5640</span>
+                    <span class="badge-en-vivo">🔴 EN VIVO </span>
                 </figure>
 
                 <section class="panel-resultados">
                     <article class="caja-texto-detectado">
                         <h2>📝 Mensaje Detectado</h2>
-                        <p class="texto-resultado">"¡Buenos días! Necesito asistencia médica de emergencia por favor."</p>
+                        <p class="texto-resultado">"¡Buenos días!"</p>
+                        <p class="texto-resultado">"en la clase de hoy veremos c++"</p>
+                        <p class="texto-resultado">"alguin conoce que es c++?"</p>
                     </article>
 
                     <footer class="controles-traduccion">
@@ -83,20 +85,18 @@
                         <h3>🖥️ Mensajes del Sistema</h3>
                         <ol class="lista-logs">
                             <li class="log-ok">🟢 Gafas Sinatex conectadas con éxito vía USB.</li>
-                            <li class="log-ok">🟢 Iluminación de 6W calibrada y activa.</li>
                             <li class="log-info">🔵 Modelo de lenguaje cargado en Modo Equilibrado (92% FPS).</li>
                         </ol>
                     </section>
                 </section>
             </section>
-
         </main>
 
     </section>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const temaGuardado = localStorage.getItem('tema-sinatex-glasses') || 'oscuro';
+            const temaGuardado = localStorage.getItem('tema-sinatex-glasses') || 'oscuroE2E8F0';
             if (temaGuardado === 'claro') {
                 document.body.classList.add('tema-claro');
             }

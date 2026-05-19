@@ -1,5 +1,17 @@
 /*paleta de colores*/
 :root {
+    --fondo-negro: #030712;
+    --fondo-card: #0b1528;
+    --borde: #1e293b;
+    --azul-neon: #00CCFF;
+    --verde-esmeralda: #38bdf8;
+    --blanco-puro: #FFFFFF;
+    --gris-hielo: #E2F1F7;          
+    --grad-saludos: linear-gradient(135deg, rgba(0, 204, 255, 0.2) 0%, rgba(13, 22, 36, 0.9) 100%);
+    --grad-academico: linear-gradient(135deg, rgba(0, 85, 128, 0.3) 0%, rgba(13, 22, 36, 0.9) 100%);
+    --grad-tareas: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(3, 7, 18, 0.9) 100%);
+
+    /*
     --fondo-negro: #000000;
     --fondo-card: #010409;
     --azul-neon: #00CCFF;
@@ -7,14 +19,10 @@
     --blanco-puro: #FFFFFF;
     --gris-hielo: #F4F7F9;
     --borde: #1d212a;
-
-    /* Degradados para los reproductores de señas adaptados a modo oscuro */
-    --grad-saludos: linear-gradient(135deg, rgba(0, 204, 255, 0.2) 0%, rgba(13, 22, 36, 0.9) 100%);
-    --grad-academico: linear-gradient(135deg, rgba(46, 204, 113, 0.2) 0%, rgba(13, 22, 36, 0.9) 100%);
-    --grad-tareas: linear-gradient(135deg, rgba(0, 204, 255, 0.15) 0%, rgba(46, 204, 113, 0.15) 100%);
+    */
 }
 
-/* reset*/
+/*reset :) */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -25,15 +33,17 @@ body {
     background-color: var(--fondo-negro);
     font-family: 'Lato', sans-serif;
     color: var(--blanco-puro);
-    line-height: 1.6; /* Altura de línea unificada */
+    line-height: 1.6;
     overflow-x: hidden;
 }
+
 .pagina-completa {
     display: flex;
     min-height: 100vh;
     width: 100%;
 }
-/* estilo menu lateral*/
+
+/*menu lateral*/
 .menu-lado {
     width: 260px;
     background-color: #050811;
@@ -85,24 +95,24 @@ body {
     border: 1px solid transparent;
 }
 
-/* 🔵 HOVER: Solo afecta a los botones que NO están activos */
+/*🔵 HOVER */
 .menu-lado nav ul li a:hover {
     background-color: rgba(0, 204, 255, 0.05);
     color: var(--azul-neon);
     border-color: rgba(0, 204, 255, 0.2);
-    transform: translateX(5px); /* Se desplaza suave hacia la derecha */
+    transform: translateX(5px);
 }
 
-/* 🟢 ACTIVE: Estilo firme y estático para la pestaña actual */
+/*🟢 ACTIVE */
 .menu-lado nav ul li a.active {
-    background-color: rgba(46, 204, 113, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     color: var(--verde-esmeralda);
-    border-color: rgba(46, 204, 113, 0.3);
-    transform: none; /* Bloquea el movimiento para que no salte ni se hunda */
-    pointer-events: none; /* Evita interacciones raras si ya estás en la página */
+    border-color: rgba(241, 241, 241, 0.3);
+    transform: none; 
+    pointer-events: none; 
 }
 
-/*panel central diccionario*/
+/* panel central */
 .contenido-centro {
     flex: 1;
     margin-left: 260px;
@@ -140,7 +150,7 @@ body {
     opacity: 0.9;
 }
 
-/*bloque de vistas del diccionario*/
+/*bloques de categorías*/
 .diccionario-vistas {
     display: flex;
     flex-direction: column;
@@ -227,6 +237,7 @@ body {
     color: var(--blanco-puro);
 }
 
+/* Etiquetas de Categoría */
 .tag-sena {
     font-size: 0.75rem;
     font-weight: bold;
@@ -237,27 +248,51 @@ body {
 }
 
 .tag-sena.saludo { background: rgba(0, 204, 255, 0.1); color: var(--azul-neon); }
-.tag-sena.academico { background: rgba(46, 204, 113, 0.1); color: var(--verde-esmeralda); }
-.tag-sena.tareas { background: rgba(255, 255, 0, 0.1); color: #FFFF00; }
+.tag-sena.academico { background: rgba(56, 189, 248, 0.1); color: var(--verde-esmeralda); }
+.tag-sena.tareas { background: rgba(0, 204, 255, 0.15); color: #00CCFF; }
 
-/* --- ☀️ SOPORTE MODO CLARO --- */
+/*modo claro*/
 body.tema-claro {
-    --fondo-negro: #FFFFFF;
-    --fondo-card: #F4F7F9;
-    --blanco-puro: #000000;
-    --gris-hielo: #1d212a;
-    --borde: #d1d5db;
-    --azul-neon: #0077B3;
-    --verde-esmeralda: #27ae60;
+    --fondo-negro: #D9E2EC;
+    --fondo-card: #BCCCDC;
+    --borde: #ffffff;
+    --blanco-puro: #102A43;
+    --gris-hielo: #334E68;
+    --azul-neon: #0056B3;
+    --verde-esmeralda: #0088FF;   
+    --grad-saludos: linear-gradient(135deg, rgba(79, 154, 235, 0.205) 0%, #006eff77 100%);
+    --grad-academico: linear-gradient(135deg, rgba(0, 136, 255, 0.08) 0%, #006eff77 100%);
+    --grad-tareas: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, #006eff77 100%);
 }
 
 body.tema-claro .eje-centrado {
-    background: radial-gradient(circle at 50% 25%, #e6f0fa 0%, #FFFFFF 75%);
+    background: radial-gradient(circle at 50% 25%, #E2E8F0 0%, #D9E2EC 75%);
 }
 
-body.tema-claro .menu-lado { background-color: #ebf1f5; }
-body.tema-claro .tarjeta-sena { background-color: #FFFFFF; }
+body.tema-claro .menu-lado { 
+    background-color: #BCCCDC; 
+}
 
+body.tema-claro .tarjeta-sena { 
+    background: #F0F4F8; 
+    border-color: #0080ff;
+}
+
+body.tema-claro .bloque-categoria h2 {
+    color: #102A43;
+}
+
+/*modo blanquito*/
+body.tema-claro .tag-sena.saludo { background: rgba(0, 86, 179, 0.15); color: #0088FF; }
+body.tema-claro .tag-sena.academico { background: rgba(0, 136, 255, 0.15); color: #0088FF; }
+body.tema-claro .tag-sena.tareas { background: rgba(0, 85, 128, 0.15); color: #0088FF; }
+
+body.tema-claro .espacio-foto span {
+    color: #0056B3;
+    border-color: rgba(0, 86, 179, 0.4);
+}
+
+/*llogo lo responsive bebe*/
 @media (max-width: 900px) {
     .menu-lado { width: 70px; padding: 20px 10px; }
     .menu-lado .logo, .menu-lado .rol { display: none; }
@@ -268,19 +303,13 @@ body.tema-claro .tarjeta-sena { background-color: #FFFFFF; }
     .grilla-senas { grid-template-columns: 1fr; }
     .titulo-pagina { font-size: 1.7rem; }
 }
-/* estilo para el menú lateral */
-.menu-lado {
-    display: flex;
-    flex-direction: column;
-}
 
-/* El truco del ingeniero: empuja el footer al piso del contenedor flex */
+/*cerrar secion*/
 .menu-lado footer {
     margin-top: auto; 
     padding-top: 20px;
 }
 
-/* Estilo personalizado y destructivo para la salida */
 .menu-lado footer nav ul li a#btn-logout {
     color: #e74c3c; /* Rojo alerta */
     border: 1px solid transparent;
