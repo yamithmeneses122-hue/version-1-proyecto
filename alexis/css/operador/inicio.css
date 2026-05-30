@@ -1,0 +1,433 @@
+/*paleta de colores*/
+:root {
+    --fondo-negro: #030712;
+    --fondo-card: #0b1528;
+    --borde: #1e293b;       
+    --azul-neon: #00CCFF;
+    --verde-esmeralda: #38bdf8;
+    --blanco-puro: #FFFFFF;
+    --gris-hielo: #E2F1F7;          
+
+    --grad-panel-1: linear-gradient(135deg, rgba(0, 204, 255, 0.15) 0%, rgba(3, 7, 18, 0.8) 100%);
+    --grad-panel-2: linear-gradient(135deg, rgba(0, 136, 255, 0.15) 0%, rgba(3, 7, 18, 0.8) 100%);
+    --grad-panel-3: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(3, 7, 18, 0.8) 100%);
+    --grad-panel-4: linear-gradient(135deg, rgba(0, 85, 128, 0.2) 0%, rgba(3, 7, 18, 0.8) 100%);
+
+    /* 
+    --fondo-negro: #000000;
+    --fondo-card: #010409;
+    --azul-neon: #00CCFF;
+    --verde-esmeralda: #2ECC71;
+    --blanco-puro: #FFFFFF;
+    --gris-hielo: #F4F7F9;
+    --borde: #1d212a;
+    */
+}
+
+/*resetiamos esta monda*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--fondo-negro);
+    font-family: 'Lato', sans-serif;
+    color: var(--blanco-puro);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.pagina-completa {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* estilo del menú lateral */
+.menu-lado {
+    width: 260px;
+    background-color: #050811;
+    border-right: 1px solid var(--borde);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.menu-lado .logo {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--azul-neon);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.menu-lado .rol {
+    font-size: 0.8rem;
+    color: var(--verde-esmeralda);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.menu-lado nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-lado nav ul li a {
+    display: block;
+    color: var(--gris-hielo);
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.menu-lado nav ul li a:hover {
+    background-color: rgba(0, 204, 255, 0.05);
+    color: var(--azul-neon);
+    border-color: rgba(0, 204, 255, 0.2);
+    transform: translateX(5px);
+}
+
+.menu-lado nav ul li a.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--verde-esmeralda);
+    border-color: rgba(241, 241, 241, 0.3);
+    transform: none; 
+    pointer-events: none; 
+}
+
+/*contenido-centro*/
+.contenido-centro {
+    flex: 1;
+    margin-left: 260px;
+    padding: 40px;
+    width: calc(100% - 260px);
+}
+
+.eje-centrado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: radial-gradient(circle at 50% 25%, #0d1624 0%, var(--fondo-negro) 75%);
+    min-height: 100vh;
+    transition: background 0.3s ease;
+}
+
+.bloque-encabezado {
+    text-align: center;
+    max-width: 1000px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.titulo-pagina {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem;
+    color: var(--blanco-puro);
+    margin-bottom: 8px;
+}
+
+.subtitulo-pagina {
+    font-size: 1rem;
+    color: var(--gris-hielo);
+    opacity: 0.7;
+}
+
+/*grilla*/
+.grilla-metricas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 30px;
+}
+
+.tarjeta-metrica {
+    background-color: var(--fondo-card);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 15px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 🎨 Rompemos la monotonía aplicando sutiles variaciones de luz neón a cada pestaña */
+.tarjeta-metrica:nth-child(1) { background: var(--grad-panel-1); border-color: rgba(0, 204, 255, 0.4); }
+.tarjeta-metrica:nth-child(2) { background: var(--grad-panel-2); border-color: rgba(0, 136, 255, 0.4); }
+.tarjeta-metrica:nth-child(3) { background: var(--grad-panel-3); border-color: rgba(56, 189, 248, 0.4); }
+.tarjeta-metrica:nth-child(4) { background: var(--grad-panel-4); border-color: rgba(0, 85, 128, 0.5); }
+
+/* Efecto hover interactivo para despertar los paneles */
+.tarjeta-metrica:hover {
+    transform: translateY(-5px);
+}
+.tarjeta-metrica:nth-child(1):hover { box-shadow: 0 6px 15px rgba(0, 204, 255, 0.2); border-color: #00CCFF; }
+.tarjeta-metrica:nth-child(2):hover { box-shadow: 0 6px 15px rgba(0, 136, 255, 0.2); border-color: #0088FF; }
+.tarjeta-metrica:nth-child(3):hover { box-shadow: 0 6px 15px rgba(56, 189, 248, 0.2); border-color: #38bdf8; }
+.tarjeta-metrica:nth-child(4):hover { box-shadow: 0 6px 15px rgba(0, 85, 128, 0.3); border-color: #005580; }
+
+/* Manteniendo los ganchos de tus clases originales */
+.bordo-azul { border-color: var(--azul-neon); }
+.bordo-verde { border-color: var(--verde-esmeralda); }
+
+.tarjeta-metrica h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gris-hielo);
+    opacity: 0.7;
+    margin-bottom: 5px;
+}
+
+.valor-metrica {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--blanco-puro);
+}
+
+.valor-metrica span {
+    font-size: 0.9rem;
+    opacity: 0.5;
+    margin-left: 3px;
+}
+
+.valor-metrica.activo {
+    color: var(--verde-esmeralda);
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+/* Consola de Traducción */
+.consola-traductor {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--fondo-card);
+    border: 1px solid var(--azul-neon);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 1000px;
+    min-height: 480px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Visor de Cámara*/
+.visor-camara {
+    flex: 1.2;
+    background-color: #0454df;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--borde);
+}
+
+.visor-camara video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.badge-en-vivo {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: rgba(231, 76, 60, 0.9); 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.4);
+}
+
+/* Panel de Resultados Operativos */
+.panel-resultados {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #050b14; 
+}
+
+.caja-texto-detectado h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    color: var(--azul-neon);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.texto-resultado {
+    font-size: 1.25rem;
+    color: var(--blanco-puro);
+    line-height: 1.5;
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.01);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 3px solid var(--azul-neon);
+    box-shadow: inset 0 0 10px rgba(0, 204, 255, 0.02);
+}
+
+.controles-traduccion {
+    margin: 20px 0;
+}
+
+.btn-voz-neon {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--verde-esmeralda);
+    color: var(--verde-esmeralda);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-voz-neon:hover {
+    background-color: #0088cc; /* Azul neón oscuro monocromático al pasar el mouse */
+    color: #000000;
+    border-color: #0088cc;
+    box-shadow: 0 0 15px rgba(0, 204, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Consola de Logs Inferior */
+.mensajes-sistema h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    color: var(--gris-hielo);
+    opacity: 0.5;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.lista-logs {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.8rem;
+}
+
+.lista-logs li {
+    padding: 4px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.02);
+}
+
+.log-ok { color: #93e4ff; } 
+.log-info { color: #85ccff; }
+
+/*modo con derechos*/
+body.tema-claro {
+    --fondo-negro: #D9E2EC;       
+    --fondo-card: #F0F4F8;        
+    --borde: #BCCCDC;             
+    --blanco-puro: #102A43;       
+    --gris-hielo: #334E68;        
+    
+    --azul-neon: #0056B3;         
+    --verde-esmeralda: #0088FF;   
+
+    /* Variaciones de la grilla en claro para mantener la interactividad UX */
+    --grad-panel-1: linear-gradient(135deg, rgba(0, 87, 179, 0.5) 0%, #E2E8F0 100%);
+    --grad-panel-2: linear-gradient(135deg, rgba(0, 87, 179, 0.5) 0%, #E2E8F0 100%);
+    --grad-panel-3: linear-gradient(135deg, rgba(0, 87, 179, 0.5) 0%, #E2E8F0 100%);
+    --grad-panel-4: linear-gradient(135deg, rgba(0, 87, 179, 0.5) 0%, #E2E8F0 100%);
+}
+
+body.tema-claro .eje-centrado {
+    background: radial-gradient(circle at 50% 25%, #E2E8F0 0%, #D9E2EC 75%);
+}
+
+body.tema-claro .menu-lado { 
+    background-color: #BCCCDC; 
+}
+
+body.tema-claro .panel-resultados { 
+    background-color: #F0F4F8; 
+}
+
+body.tema-claro .tarjeta-metrica { 
+    border-color: #BCCCDC;
+}
+
+body.tema-claro .texto-resultado {
+    background: #FFFFFF;
+    border-left-color: #0056B3;
+    color: #102A43;
+}
+
+body.tema-claro .btn-voz-neon:hover {
+    color: #FFFFFF;
+}
+
+body.tema-claro .log-ok { color: #0056B3; }
+body.tema-claro .log-info { color: #0088FF; }
+
+/*responsive*/
+@media (max-width: 900px) {
+    .menu-lado { width: 70px; padding: 20px 10px; }
+    .menu-lado .logo, .menu-lado .rol { display: none; }
+    .contenido-centro { margin-left: 70px; width: calc(100% - 70px); padding: 20px; }
+    .grilla-metricas { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 750px) {
+    .consola-traductor { flex-direction: column; }
+    .visor-camara { height: 300px; border-right: none; border-bottom: 1px solid var(--borde); }
+    .grilla-metricas { grid-template-columns: 1fr; }
+}
+
+/*cerrar sesión*/
+.menu-lado {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-lado footer {
+    margin-top: auto; 
+    padding-top: 20px;
+}
+
+.menu-lado footer nav ul li a#btn-logout {
+    color: #e74c3c; 
+    border: 1px solid transparent;
+}
+
+.menu-lado footer nav ul li a#btn-logout:hover {
+    background-color: rgba(231, 76, 60, 0.08);
+    color: #ff6b6b;
+    border-color: rgba(231, 76, 60, 0.3);
+    transform: translateX(5px);
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.15);
+}
