@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración | SIGNA-TECH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../../css/operador/base.css">
+    <link rel="stylesheet" href="../../css/operador/configuraccion.css">
+</head>
+<body>
+
+    <section class="pagina-completa">
+        
+        <aside class="menu-lado">
+            <button class="btn-hamburguesa" id="comp-hamburguesa" aria-label="abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <h2 class="logo">SIGNA-TECH</h2>
+            <p class="rol">PANEL OPERADOR</p>
+            
+            <nav class="navegacion-scroll">
+                <ul>
+                    <li><a href="inicio.html" id="link-inicio"><i class="fa-solid fa-chart-pie"></i> inicio</a></li>
+                    <li><a href="texto_voz.html" id="link-texto-voz"><i class="fa-solid fa-volume-high"></i> Texto a Voz</a></li>
+                    <li><a href="voz_a_texto.html" id="link-voz-a-texto"><i class="fa-solid fa-microphone"></i> Voz a Texto</a></li>
+                    <li><a href="camara_senas_a_texto.html" id="link-camara"><i class="fa-solid fa-camera"></i> Detección Cámara</a></li>
+                    <li><a href="diccionario.html" id="link-diccionario"><i class="fa-solid fa-book"></i> Diccionario LSC</a></li>
+                    <li><a href="configuraccion.html" id="link-config" class="active"><i class="fa-solid fa-gear"></i> Configuración</a></li>
+                </ul>
+            </nav>
+            
+            <footer class="caja-logout-fija">
+                <a href="../login/home.html" id="btn-logout" title="Cerrar Sesión" onclick="return confirm('¿Desea cerrar la sesión operativa?')">
+                    🚪 Cerrar Sesión
+                </a>
+            </footer>
+        </aside>
+
+        <main class="contenido-centro">
+            
+            <header class="bloque-encabezado">
+                <h1 class="titulo-pagina">Panel de Configuración</h1>
+                <p class="subtitulo-pagina">Personaliza los parámetros del sistema, gestiona tus dispositivos y ajusta las preferencias operativas.</p>
+            </header>
+
+            <section class="flujo-vertical-config">
+                
+                <article class="tarjeta-modulo bordo-azul">
+                    <header class="cabecera-tarjeta-interna">
+                        <span class="icono-modulo-wrapper">👤</span>
+                        <section class="info-modulo">
+                            <h3>Perfil de Usuario</h3>
+                            <p>Actualiza tu información personal de operador del sistema.</p>
+                        </section>
+                    </header>
+
+                    <form class="formulario-interno-config">
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Nombre Completo</legend>
+                            <input type="text" value="Edwin Alexis Silva Sandoval" required>
+                        </fieldset>
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Correo Electrónico</legend>
+                            <input type="email" value="edwin.silva@sena.edu.co" required>
+                        </fieldset>
+                        <section class="subgrupo-formulario-fila">
+                            <fieldset class="grupo-formulario-interno">
+                                <legend>Teléfono</legend>
+                                <input type="tel" value="6028200000">
+                            </fieldset>
+                            <fieldset class="grupo-formulario-interno">
+                                <legend>Celular</legend>
+                                <input type="tel" value="3123456789" required>
+                            </fieldset>
+                        </section>
+                        <button type="submit" class="btn-operativo-modulo btn-confirmar">Actualizar Datos</button>
+                    </form>
+                </article>
+
+                <article class="tarjeta-modulo bordo-verde">
+                    <header class="cabecera-tarjeta-interna">
+                        <span class="icono-modulo-wrapper">🔒</span>
+                        <section class="info-modulo">
+                            <h3>Seguridad</h3>
+                            <p>Modifica tus credenciales de acceso para proteger tu cuenta.</p>
+                        </section>
+                    </header>
+
+                    <form class="formulario-interno-config">
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Contraseña Actual</legend>
+                            <input type="password" placeholder="••••••••" required>
+                        </fieldset>
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Nueva Contraseña</legend>
+                            <input type="password" placeholder="Mínimo 8 caracteres" required>
+                        </fieldset>
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Confirmar Contraseña</legend>
+                            <input type="password" placeholder="Repita la nueva contraseña" required>
+                        </fieldset>
+                        <button type="submit" class="btn-operativo-modulo btn-confirmar">Cambiar Contraseña</button>
+                    </form>
+                </article>
+
+                <article class="tarjeta-modulo bordo-azul">
+                    <header class="cabecera-tarjeta-interna">
+                        <span class="icono-modulo-wrapper">📷</span>
+                        <section class="info-modulo">
+                            <h3>Dispositivos Periféricos</h3>
+                            <p>Vincula y selecciona las fuentes de hardware activas.</p>
+                        </section>
+                    </header>
+
+                    <form class="formulario-interno-config">
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Cámara de Entrada</legend>
+                            <select>
+                                <option value="integrada">Cámara Web Integrada</option>
+                                <option value="usb" selected>Sensor de Gafas Inteligentes (USB)</option>
+                                <option value="externa">Cámara Secundaria Auxiliar</option>
+                            </select>
+                        </fieldset>
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Micrófono de Entrada</legend>
+                            <select>
+                                <option value="normal">Micrófono por Defecto (Analógico)</option>
+                                <option value="usb" selected>Micrófono de Diadema (USB Audio)</option>
+                            </select>
+                        </fieldset>
+                        <button type="submit" class="btn-operativo-modulo btn-confirmar" style="margin-top: 10px;">Guardar Periféricos</button>
+                    </form>
+                </article>
+
+                <article class="tarjeta-modulo bordo-verde">
+                    <header class="cabecera-tarjeta-interna">
+                        <span class="icono-modulo-wrapper">🔊</span>
+                        <section class="info-modulo">
+                            <h3>Voz y Lectura</h3>
+                            <p>Configura los parámetros de la síntesis y el texto traducido.</p>
+                        </section>
+                    </header>
+
+                    <form class="formulario-interno-config">
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Tipo de Voz Narrativa</legend>
+                            <select>
+                                <option value="mujer" selected>Voz Femenina (Sintetizador Estándar)</option>
+                                <option value="hombre">Voz Masculina (Sintetizador Estándar)</option>
+                            </select>
+                        </fieldset>
+                        <section class="subgrupo-formulario-fila">
+                            <fieldset class="grupo-formulario-interno">
+                                <legend>Velocidad Narración</legend>
+                                <select>
+                                    <option value="0.75">Lenta (0.75x)</option>
+                                    <option value="1.0" selected>Normal (1.0x)</option>
+                                    <option value="1.25">Rápida (1.25x)</option>
+                                </select>
+                            </fieldset>
+                            <fieldset class="grupo-formulario-interno">
+                                <legend>Tamaño Texto Translation</legend>
+                                <select>
+                                    <option value="14">Pequeño (14px)</option>
+                                    <option value="16" selected>Medio (16px)</option>
+                                    <option value="20">Grande (20px)</option>
+                                </select>
+                            </fieldset>
+                        </section>
+                        <button type="submit" class="btn-operativo-modulo btn-confirmar">Aplicar Preferencias</button>
+                    </form>
+                </article>
+
+                <article class="tarjeta-modulo bordo-azul">
+                    <header class="cabecera-tarjeta-interna">
+                        <span class="icono-modulo-wrapper">⚙️</span>
+                        <section class="info-modulo">
+                            <h3>Optimización de IA</h3>
+                            <p>Elige el rendimiento del modelo de Lengua de Señas Colombiana.</p>
+                        </section>
+                    </header>
+
+                    <nav class="contenedor-modos-ia-horizontal">
+                        <span class="tarjeta-opcion-ia activa" data-modo="rapido" data-desc="⚡ Modo Rápido: Optimizado para hardware de bajos recursos. Respuesta instantánea con una tasa de muestreo reducida.">Rápido</span>
+                        <span class="tarjeta-opcion-ia" data-modo="equilibrado" data-desc="⚖️ Modo Equilibrado: Balance perfecto entre precisión léxica y consumo de FPS (Recomendado).">Equilibrado</span>
+                        <span class="tarjeta-opcion-ia" data-modo="precision" data-desc="🎯 Alta Precisión: Carga el modelo completo de redes neuronales profundas. Requiere mayor capacidad de procesamiento.">Precisión</span>
+                    </nav>
+
+                    <section class="burbuja-descripcion-ia" id="txt-descripcion-ia">
+                        ⚡ Modo Rápido: Optimizado para hardware de bajos recursos. Respuesta instantánea con una tasa de muestreo reducida.
+                    </section>
+                </article>
+
+                <article class="tarjeta-modulo bordo-verde">
+                    <header class="cabecera-tarjeta-interna">
+                        <span class="icono-modulo-wrapper">🌓</span>
+                        <section class="info-modulo">
+                            <h3>Tema del Sistema</h3>
+                            <p>Cambia la apariencia estética de los paneles entre los modos integrados.</p>
+                        </section>
+                    </header>
+
+                    <form id="form-selector-tema" class="formulario-interno-config">
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Tema de Pantalla</legend>
+                            <select id="selector-tema-global">
+                                <option value="oscuro">Modo Oscuro (Predeterminado Cyberpunk)</option>
+                                <option value="claro">Modo Claro (Contraste Alto)</option>
+                            </select>
+                        </fieldset>
+                        <button type="submit" class="btn-operativo-modulo btn-confirmar" style="margin-top: 10px;">Guardar Apariencia</button>
+                    </form>
+                </article>
+
+            </section>
+        </main>
+
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const botonHamburguesa = document.getElementById("comp-hamburguesa");
+            const menuLateral = document.querySelector(".menu-lado");
+
+            if (botonHamburguesa && menuLateral) {
+                botonHamburguesa.addEventListener("click", function (e) {
+                    e.stopPropagation(); 
+                    menuLateral.classList.toggle("menu-abierto"); 
+                    botonHamburguesa.classList.toggle("X-activa"); 
+                });
+
+                document.addEventListener("click", function (evento) {
+                    if (!menuLateral.contains(evento.target) && !botonHamburguesa.contains(evento.target)) {
+                        menuLateral.classList.remove("menu-abierto");
+                        botonHamburguesa.classList.remove("X-activa");
+                    }
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>
