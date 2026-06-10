@@ -1,0 +1,93 @@
+/* ==========================================================================
+   TEXTO_VOZ.CSS — Solo estilos exclusivos del módulo Texto a Voz
+   Requiere: base.css cargado antes en el HTML
+   ========================================================================== */
+
+
+/* Círculo animado con icono de audio */
+.contenedor-avatar-audio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 35px;
+    width: 100%;
+}
+
+.circulo-onda-animada {
+    width: 120px;
+    height: 120px;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 2px solid var(--borde);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+    color: var(--azul-neon);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+}
+
+.estado-reproduccion {
+    margin-top: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #8b949e;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+/* Animación neón cuando está "hablando" */
+.circulo-onda-animada.onda-hablando {
+    border-color: var(--verde-esmeralda);
+    color: var(--verde-esmeralda);
+    box-shadow: 0 0 30px rgba(0, 247, 255, 0.3);
+    animation: bounceScale 1.2s infinite ease-in-out;
+}
+
+@keyframes bounceScale {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.06); }
+}
+
+/* Área de texto para escribir lo que se va a leer */
+.contenedor-input-audio { width: 100%; margin-top: 15px; }
+
+.contenedor-input-audio label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    color: var(--gris-hielo);
+}
+
+.contenedor-input-audio textarea {
+    width: 100%;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 20px;
+    color: var(--blanco-puro);
+    font-family: 'Lato', sans-serif;
+    font-size: 1.15rem;
+    resize: none;
+    outline: none;
+    box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.6);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contenedor-input-audio textarea:focus {
+    border-color: var(--azul-neon);
+    box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 204, 255, 0.15);
+}
+
+/* Modo claro */
+body.tema-claro .circulo-onda-animada  { background-color: #fff; border-color: #BCCCDC; }
+body.tema-claro .circulo-onda-animada.onda-hablando { border-color: #10b981; color: #10b981; box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+body.tema-claro .estado-reproduccion  { color: #486581; }
+body.tema-claro .contenedor-input-audio label { color: #102A43; }
+body.tema-claro .contenedor-input-audio textarea { background: #fff; color: #102A43; border-color: #BCCCDC; box-shadow: none; }
