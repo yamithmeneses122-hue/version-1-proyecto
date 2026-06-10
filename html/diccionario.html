@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diccionario LSC | SIGNA-TECH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/carpeta-css/diccionario.css">
+</head>
+<body>
+
+    <section class="pagina-completa">
+
+        <aside class="menu-lado">
+            <h2 class="logo">SIGNA-TECH</h2>
+            <p class="rol">PANEL OPERADOR</p>
+            <nav>
+                <ul>
+                    <li><a href="/html/inicio.html"> Inicio</a></li>
+                    <li><a href="/html/diccionario.html" class="active"> Diccionario LSC</a></li>
+                    <li><a href="/html/configuraccion.html"> Configuración</a></li>
+                </ul>
+            </nav>
+            <footer>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="/index.html" id="btn-logout" onclick="return confirm('volver al login?')">
+                                🚪 Cerrar Sesión
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </footer>
+        </aside>
+
+        <main class="contenido-centro eje-centrado">
+
+            <header class="bloque-encabezado">
+                <h1 class="titulo-pagina">Diccionario LSC</h1>
+                <p class="subtitulo-pagina">Módulo de aprendizaje académico - Proyecto SIGNA-TECH</p>
+            </header>
+
+            <section class="diccionario-vistas">
+
+                <section class="bloque-categoria bordo-azul">
+                    <h2>👋 Saludos y Cortesía</h2>
+                    <section class="grilla-senas">
+                        <article class="tarjeta-sena">
+                            <figure class="espacio-foto" style="background: var(--grad-saludos);">
+                                <span>Vista de Seña</span>
+                            </figure>
+                            <figcaption class="texto-sena">
+                                <strong>Hola</strong>
+                                <span class="tag-sena saludo">General</span>
+                            </figcaption>
+                        </article>
+
+                        <article class="tarjeta-sena">
+                            <figure class="espacio-foto" style="background: var(--grad-saludos);">
+                                <span>Vista de Seña</span>
+                            </figure>
+                            <figcaption class="texto-sena">
+                                <strong>¿Cómo estás?</strong>
+                                <span class="tag-sena saludo">Social</span>
+                            </figcaption>
+                        </article>
+                    </section>
+                </section>
+
+                <section class="bloque-categoria bordo-verde">
+                    <h2>🎓 Entorno Académico</h2>
+                    <section class="grilla-senas">
+                        <article class="tarjeta-sena">
+                            <figure class="espacio-foto" style="background: var(--grad-academico);">
+                                <span>Vista de Seña</span>
+                            </figure>
+                            <figcaption class="texto-sena">
+                                <strong>Profesor</strong>
+                                <span class="tag-sena academico">Rol Escolar</span>
+                            </figcaption>
+                        </article>
+
+                        <article class="tarjeta-sena">
+                            <figure class="espacio-foto" style="background: var(--grad-academico);">
+                                <span>Vista de Seña</span>
+                            </figure>
+                            <figcaption class="texto-sena">
+                                <strong>Programación</strong>
+                                <span class="tag-sena academico">Materia</span>
+                            </figcaption>
+                        </article>
+
+                        <article class="tarjeta-sena">
+                            <figure class="espacio-foto" style="background: var(--grad-academico);">
+                                <span>Vista de Seña</span>
+                            </figure>
+                            <figcaption class="texto-sena">
+                                <strong>Matemáticas</strong>
+                                <span class="tag-sena academico">Materia</span>
+                            </figcaption>
+                        </article>
+                    </section>
+                </section>
+
+                <section class="bloque-categoria bordo-azul">
+                    <h2>📝 Tareas y Evaluación</h2>
+                    <section class="grilla-senas">
+                        <article class="tarjeta-sena">
+                            <figure class="espacio-foto" style="background: var(--grad-tareas);">
+                                <span>Vista de Seña</span>
+                            </figure>
+                            <figcaption class="texto-sena">
+                                <strong>Examen</strong>
+                                <span class="tag-sena tareas">Evaluación</span>
+                            </figcaption>
+                        </article>
+
+                        <article class="tarjeta-sena">
+                            <figure class="espacio-foto" style="background: var(--grad-tareas);">
+                                <span>Vista de Seña</span>
+                            </figure>
+                            <figcaption class="texto-sena">
+                                <strong>Entregar Taller</strong>
+                                <span class="tag-sena tareas">Tarea</span>
+                            </figcaption>
+                        </article>
+                    </section>
+                </section>
+
+            </section>
+
+        </main>
+
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const temaGuardado = localStorage.getItem('tema-sinatex-glasses') || 'oscuro';
+            if (temaGuardado === 'claro') {
+                document.body.classList.add('tema-claro');
+            }
+        });
+    </script>
+</body>
+</html>

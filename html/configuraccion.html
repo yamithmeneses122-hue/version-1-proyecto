@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNA-TECH | Configuración</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/carpeta-css/configuraccion.css">
+</head>
+<body>
+
+    <section class="pagina-completa">
+
+        <aside class="menu-lado">
+            <h2 class="logo">SIGNA-TECH</h2>
+            <p class="rol">PANEL OPERADOR</p>
+            <nav>
+                <ul>
+                    <li><a href="inicio.html"> Inicio</a></li>
+                    <li><a href="diccionario.html"> Diccionario LSC</a></li>
+                    <li><a href="configuraccion.html" class="active"> Configuración</a></li>
+                </ul>
+            </nav>
+            <footer>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="/index.html" id="btn-logout" onclick="return confirm('volver al login?')">
+                                🚪 Cerrar Sesión
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </footer>
+        </aside>
+
+        <main class="contenido-centro eje-centrado">
+
+            <header class="bloque-encabezado">
+                <h1 class="titulo-pagina">Configuración del Sistema</h1>
+                <p class="subtitulo-pagina">Ajusta los parámetros de hardware, perfil y accesibilidad de la app</p>
+            </header>
+
+            <section class="flujo-vertical">
+
+                <form class="caja-config-fila bordo-azul" onsubmit="return false;">
+                    <h3> Perfil de Usuario</h3>
+                    <p class="descripcion-seccion">Datos básicos del operador en el sistema.</p>
+                    
+                    <label for="nombre-usuario">Nombre Completo</label>
+                    <input type="text" id="nombre-usuario" value="" placeholder="Ej. Edwin Silva">
+
+                    <label for="correo-usuario">Correo Electrónico</label>
+                    <input type="email" id="correo-usuario" value="" placeholder="nombre@correo.com">
+
+                    <label for="telefono-usuario">Teléfono / Celular</label>
+                    <input type="tel" id="telefono-usuario" value="" placeholder="3xx xxx xxxx">
+
+                    <button type="submit" class="boton-guardar-verde">Actualizar Perfil</button>
+                </form>
+
+                <form class="caja-config-fila bordo-verde" onsubmit="return false;">
+                    <h3> Seguridad</h3>
+                    <p class="descripcion-seccion">Actualiza tu clave de acceso al panel.</p>
+
+                    <label for="clave-actual">Contraseña Actual</label>
+                    <input type="password" id="clave-actual" placeholder="••••••••••••">
+
+                    <label for="clave-nueva">Nueva Contraseña</label>
+                    <input type="password" id="clave-nueva" placeholder="Mínimo 8 caracteres">
+
+                    <label for="clave-confirmar">Confirmar Contraseña</label>
+                    <input type="password" id="clave-confirmar" placeholder="Repite la nueva contraseña">
+
+                    <button type="submit" class="boton-guardar-verde">Actualizar Contraseña</button>
+                </form>
+
+                <form class="caja-config-fila bordo-azul" onsubmit="return false;">
+                    <h3> Dispositivos</h3>
+                    <p class="descripcion-seccion">Fuentes de captura para el procesamiento de lengua de señas.</p>
+
+                    <label for="selector-camara">Fuente cámara</label>
+                    <select id="selector-camara">
+                        <option value="integrada">Cámara Integrada (Dispositivo Local)</option>
+                        <option value="gafas">Cámara Externa USB (Sinatex Smart Glasses - OV5640)</option>
+                    </select>
+
+                    <label for="selector-microfono">Micrófono</label>
+                    <select id="selector-microfono">
+                        <option value="interno">Micrófono Integrado del Sistema</option>
+                        <option value="gafas-mic">Micrófono Externo (Sinatex Glasses)</option>
+                    </select>
+
+                    <button type="submit" class="boton-guardar-verde">Guardar Dispositivos</button>
+                </form>
+
+                <form class="caja-config-fila bordo-verde" onsubmit="return false;">
+                    <h3> Voz y Lectura</h3>
+                    <p class="descripcion-seccion">Configura las opciones de velocidad y síntesis de voz.</p>
+
+                    <label for="salida-voz">Salida de Voz</label>
+                    <select id="salida-voz">
+                        <option value="neutral">Voz Neutral</option>
+                        <option value="femenina">Voz Femenina</option>
+                        <option value="masculina">Voz Masculina</option>
+                    </select>
+
+                    <fieldset class="grupo-velocidad">
+                        <legend>Velocidad de Narración</legend>
+                        <select id="velocidad-narracion">
+                            <option value="0.5">x0.5 Lento</option>
+                            <option value="1.0" selected>x1.0 Normal</option>
+                            <option value="1.5">x1.5 Rápido</option>
+                            <option value="2.0">x2.0 Veloz</option>
+                        </select>
+                    </fieldset>
+
+                    <fieldset class="grupo-velocidad">
+                        <legend>Velocidad de Texto (Lectura)</legend>
+                        <select id="velocidad-lectura">
+                            <option value="0.5">x0.5 Paso Lento</option>
+                            <option value="1.0" selected>x1.0 Paso Normal</option>
+                            <option value="1.5">x1.5 Paso Rápido</option>
+                            <option value="2.0">x2.0 Paso Veloz</option>
+                        </select>
+                    </fieldset>
+
+                    <label for="tamano-traduccion">Tamaño del Texto de Traducción</label>
+                    <select id="tamano-traduccion">
+                        <option value="pequeno">Pequeño</option>
+                        <option value="mediano" selected>Mediano / Normal</option>
+                        <option value="grande">Grande</option>
+                    </select>
+
+                    <button type="submit" class="boton-guardar-verde">Guardar Ajustes</button>
+                </form>
+
+                <form class="caja-config-fila bordo-azul" onsubmit="return false;">
+                    <h3> Optimización del Traductor</h3>
+                    <p class="descripcion-seccion">Pasa el mouse sobre cada modo para ver sus detalles técnicos.</p>
+
+                    <section class="contenedor-modos-horizontal">
+                        <button type="button" class="tarjeta-modo-ia" data-modo="rapido" data-info="La exactitud puede reducirse a un 70%-75% debido a la compresión de imagen, pero el procesamiento de fotogramas es inmediato.">
+                            <span class="icono-ia">⚡</span>
+                            <span class="titulo-ia">Modo Rápido</span>
+                        </button>
+                        <button type="button" class="tarjeta-modo-ia opcion-activa" data-modo="equilibrado" data-info="Exige recursos estándar del sistema. Mantiene la exactitud de reconocimiento de la lengua de señas entre un 80% y 90%.">
+                            <span class="icono-ia">⚖️</span>
+                            <span class="titulo-ia">Modo Equilibrado</span>
+                        </button>
+                        <button type="button" class="tarjeta-modo-ia" data-modo="precision" data-info="El procesamiento puede volverse lento y demorar de 3 a 5 segundos, pero se estima una precisión superior al 95%.">
+                            <span class="icono-ia">🎯</span>
+                            <span class="titulo-ia"> Modo alta Precisión</span>
+                        </button>
+                    </section>
+
+                    <p class="burbuja-info-dinamica" id="burbuja-texto-ia">
+                        Exige recursos estándar del sistema. Mantiene la exactitud de reconocimiento de la lengua de señas entre un 80% y 90% garantizando una fluidez óptima.
+                    </p>
+
+                    <input type="hidden" id="valor-modo-ia" value="equilibrado">
+                    <button type="submit" class="boton-guardar-verde">Aplicar Modo</button>
+                </form>
+
+                <form class="caja-config-fila bordo-verde" onsubmit="return false;">
+                    <h3> Interfaz Visual</h3>
+                    <p class="descripcion-seccion">Configura los contrastes globales de la interfaz gráfica.</p>
+
+                    <label for="selector-tema">Tema Predeterminado</label>
+                    <select id="selector-tema">
+                        <option value="oscuro">Modo Oscuro</option>
+                        <option value="claro">Modo Claro</option>
+                    </select>
+
+                    <button type="submit" class="boton-guardar-verde">Aplicar Tema</button>
+                </form>
+
+            </section>
+
+        </main>
+
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tarjetasModo = document.querySelectorAll('.tarjeta-modo-ia');
+            const burbujaTexto = document.getElementById('burbuja-texto-ia');
+            const inputOculto = document.getElementById('valor-modo-ia');
+
+            tarjetasModo.forEach(tarjeta => {
+                tarjeta.addEventListener('mouseenter', () => {
+                    burbujaTexto.textContent = tarjeta.getAttribute('data-info');
+                    burbujaTexto.style.borderColor = 'var(--azul-neon)';
+                });
+                tarjeta.addEventListener('mouseleave', () => {
+                    const activa = document.querySelector('.tarjeta-modo-ia.opcion-activa');
+                    if (activa) {
+                        burbujaTexto.textContent = activa.getAttribute('data-info');
+                        burbujaTexto.style.borderColor = 'var(--verde-esmeralda)';
+                    }
+                });
+                tarjeta.addEventListener('click', () => {
+                    tarjetasModo.forEach(t => t.classList.remove('opcion-activa'));
+                    tarjeta.classList.add('opcion-activa');
+                    inputOculto.value = tarjeta.getAttribute('data-modo');
+                    burbujaTexto.textContent = tarjeta.getAttribute('data-info');
+                    burbujaTexto.style.borderColor = 'var(--verde-esmeralda)';
+                });
+            });
+
+            const selectorTema = document.getElementById('selector-tema');
+            const formularioTema = selectorTema.closest('form');
+
+            function aplicarTemaGlobal(tema) {
+                document.body.classList.remove('tema-claro');
+                if (tema === 'claro') {
+                    document.body.classList.add('tema-claro');
+                }
+            }
+
+            const temaGuardado = localStorage.getItem('tema-sinatex-glasses') || 'oscuro';
+            selectorTema.value = temaGuardado; 
+            aplicarTemaGlobal(temaGuardado);   
+
+            formularioTema.addEventListener('submit', (evento) => {
+                evento.preventDefault();
+                const temaSeleccionado = selectorTema.value;
+                aplicarTemaGlobal(temaSeleccionado);
+                localStorage.setItem('tema-sinatex-glasses', temaSeleccionado);
+            });
+        });
+    </script>
+</body>
+</html>
