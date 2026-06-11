@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signa Tech VD</title>
+    <link rel="icon" href="/img/logo.jpeg" type="images/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/carpeta-css/2-validar.css">
+</head>
+<body>
+
+    <input type="checkbox" id="menu">
+
+    <label for="menu" class="boton-menu">&#9776;</label>
+
+    <section class="pagina-completa">
+
+        <aside class="menu-lado">
+
+            <header class="encabezado-menu">
+                <h2>Signa Tech</h2>
+                <p>Panel Interprete</p>
+            </header>
+
+            <nav>
+                <ul>
+                    <li><a href="/html/Interprete.html">Inicio</a></li>
+                    <li><a href="/html/2-validar.html" class="link-activo">Validar diccionario</a></li>
+                    <li><a href="/html/3-registrar.html">Registrar nuevas señas</a></li>
+                    <li><a href="/html/4-corregir.html">Corregir señas</a></li>
+                    <li><a href="/html/5-historial.html">Historial de cambios</a></li>
+                    <li><a href="/html/6-estadisticas.html">Estadisticas</a></li>
+                    <li><a href="/html/7-perfil.html">Perfil</a></li>
+                    <li><a href="#">Cerrar sesion</a></li>
+                </ul>
+            </nav>
+
+            <footer class="pie-menu">
+                <img src="https://i.pravatar.cc/100" alt="">
+                <article>
+                    <p class="nombre-admin">Carlos Cortez</p>
+                    <p class="cargo-admin">Interprete</p>
+                    <span>En Linea</span>
+                </article>
+            </footer>
+
+        </aside>
+
+        <main class="contenido-centro">
+            <header class="cabecera-contenido">
+                <h1 class="titulo-pagina">Validar diccionario</h1>
+                <p class="subtitulo-pagina">Confirma que la seña y su significado sean correctos</p>
+            </header>
+            <nav class="filtros">
+                <select>
+                    <option>Todas las categorías</option>
+                </select>
+                <select>
+                    <option>Todos los estados</option>
+                </select>
+            </nav>
+            <!-- CONTENIDO -->
+            <section class="contenido">
+            <!-- PANEL IZQUIERDO -->
+                <aside class="panel">
+                    <form class="buscador">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Buscar por palabra...">
+                    </form>
+                    <h3>Señas pendientes (18)</h3>
+                    <article class="item activo">
+                        <img src="https://picsum.photos/400/400?random=1">
+                        <section>
+                            <h4>Educación</h4>
+                            <p>Pendiente</p>
+                        </section>
+                            <small>Pendiente</small>
+                    </article>
+                    <article class="item">
+                        <img src="https://picsum.photos/400/400?random=2">
+                            <section>
+                                <h4>Biblioteca</h4>
+                                <p>Pendiente</p>
+                            </section>
+                            <small>Pendiente</small>
+                    </article>
+                    <article class="item">
+                        <img src="https://picsum.photos/400/400?random=3">
+                        <section>
+                            <h4>Laboratorio</h4>
+                            <p>Pendiente</p>
+                        </section>
+                        <small>Pendiente</small>
+                    </article>
+                    <article class="item activo">
+                        <img src="https://picsum.photos/400/400">
+                        <section>
+                            <h4>Educación</h4>
+                            <p>Pendiente</p>
+                        </section>
+                            <small>Pendiente</small>
+                    </article>
+                    <article class="item">
+                        <img src="https://picsum.photos/400/400?random=4">
+                            <section>
+                                <h4>Biblioteca</h4>
+                                <p>Pendiente</p>
+                            </section>
+                            <small>Pendiente</small>
+                    </article>
+                    <article class="item">
+                        <img src="https://picsum.photos/400/400?random=5">
+                        <section>
+                            <h4>Laboratorio</h4>
+                            <p>Pendiente</p>
+                        </section>
+                        <small>Pendiente</small>
+                    </article>
+                    <article class="item">
+                        <img src="https://i.pravatar.cc/40">
+                        <section>
+                            <h4>Laboratorio</h4>
+                            <p>Pendiente</p>
+                        </section>
+                        <small>Pendiente</small>
+                    </article>
+                </aside> <br> 
+                <article class="tarjeta">
+
+                    <h2>Vista previa de la seña</h2>
+
+                    <figure class="video">
+
+                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1000&auto=format&fit=crop">
+
+                    </figure>
+
+                    <section class="informacion">
+
+                        <p>
+                            <strong>Palabra:</strong>
+                            Educación
+                        </p>
+
+                        <p>
+                            <strong>Categoría:</strong>
+                            Educativa
+                        </p>
+
+                        <p>
+                            <strong>Significado:</strong>
+                            Acción y efecto de educar o instruir.
+                        </p>
+
+                        <p>
+                            <strong>Descripción:</strong>
+                            Se utiliza en contextos formales de aprendizaje y enseñanza.
+                        </p>
+
+                    </section>
+
+                    <footer class="botones">
+
+                        <button class="rechazar active">
+                            Rechazar
+                        </button>
+
+                        <button class="validar active">
+                            Validar
+                        </button>
+
+                    </footer>
+
+                </article>
+
+            </section>
+        </main>
+
+    </section>
+
+</body>
+</html>

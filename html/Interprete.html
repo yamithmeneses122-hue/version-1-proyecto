@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signa Tech Interprete</title>
+    <link rel="icon" href="/img/logo.jpeg" type="images/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/carpeta-css/Interprete.css">
+</head>
+<body>
+
+    <input type="checkbox" id="menu">
+
+    <label for="menu" class="boton-menu">&#9776;</label>
+
+    <section class="pagina-completa">
+
+        <aside class="menu-lado">
+
+            <header class="encabezado-menu">
+                <h2>Signa Tech</h2>
+                <p>Panel Interprete</p>
+            </header>
+
+            <nav>
+                <ul>
+                    <li><a href="/html/Interprete.html" class="link-activo">Inicio</a></li>
+                    <li><a href="/html/2-validar.html">Validar diccionario</a></li>
+                    <li><a href="/html/3-registrar.html">Registrar nuevas señas</a></li>
+                    <li><a href="/html/4-corregir.html">Corregir señas</a></li>
+                    <li><a href="/html/5-historial.html">Historial de cambios</a></li>
+                    <li><a href="/html/6-estadisticas.html">Estadisticas</a></li>
+                    <li><a href="/html/7-perfil.html">Perfil</a></li>
+                    <li><a href="#">Cerrar sesion</a></li>
+                </ul>
+            </nav>
+
+            <footer class="pie-menu">
+                <img src="https://i.pravatar.cc/100" alt="">
+                <article>
+                    <p class="nombre-admin">Carlos Cortez</p>
+                    <p class="cargo-admin">Interprete</p>
+                    <span>En Linea</span>
+                </article>
+            </footer>
+
+        </aside>
+
+        <main class="contenido-centro">
+
+            <header class="cabecera-contenido">
+                <h1 class="titulo-pagina">Bienvenido al panel</h1>
+                <p class="subtitulo-pagina">Gestiona, Valida y mejora el diccionario de señas.</p>
+            </header>
+
+            <section class="fila-cajitas">
+
+                <article class="cajita-numero">
+                    <h3>Señas Validadas</h3>
+                    <span>142</span>
+                    <h6>total de señas confirmadas</h6>
+                </article>
+
+                <article class="cajita-numero green">
+                    <h3>Nuevas Señas</h3>
+                    <span>32</span>
+                    <h6>Registradas en el sistema</h6>
+                </article>
+
+                <article class="cajita-numero">
+                    <h3>Señas Corregidas</h3>
+                    <span>85</span>
+                    <h6>Modificaciones realizadas</h6>
+                </article>
+
+                <article class="cajita-numero rojo">
+                    <h3>Señas Pendientes</h3>
+                    <span>14</span>
+                    <h6>Esperando validación</h6>
+                </article>
+
+            </section>
+<!-- GRÁFICA DE BARRAS -->
+            <section class="estadisticas">
+                <section class="cartas">
+
+                    <article class="cartas-header">
+
+                        <h2>Señas registradas por mes</h2>
+
+                        <select class="seleccion-años">
+                            <option>Este año</option>
+                            <option>2025</option>
+                            <option>2024</option>
+                        </select>
+
+                    </article>
+
+                    <article class="grafica-barras">
+
+                        <ul class="barras">
+
+                            <li>
+                                <span class="barra enero"></span>
+                                <p>Ene</p>
+                            </li>
+
+                            <li>
+                                <span class="barra febrero"></span>
+                                <p>Feb</p>
+                            </li>
+
+                            <li>
+                                <span class="barra marzo"></span>
+                                <p>Mar</p>
+                            </li>
+
+                            <li>
+                                <span class="barra abril"></span>
+                                <p>Abr</p>
+                            </li>
+
+                            <li>
+                                <span class="barra mayo"></span>
+                                <p>May</p>
+                            </li>
+
+                            <li>
+                                <span class="barra junio"></span>
+                                <p>Jun</p>
+                            </li>
+
+                        </ul>
+
+                    </article>
+
+                </section> <br>
+
+                <!-- GRÁFICA CIRCULAR -->
+                <section class="cartas">
+
+                    <article class="cartas-header">
+
+                        <h2>Tipos de señas</h2>
+
+                    </article>
+
+                    <article class="grafica-circular">
+
+                        <figure class="circulo"></figure>
+
+                        <ul class="leyenda">
+
+                            <li>
+                                <span class="color azul"></span>
+                                <p>Educativas</p>
+                                <strong>55%</strong>
+                            </li>
+
+                            <li>
+                                <span class="color verde"></span>
+                                <p>Cotidianas</p>
+                                <strong>30%</strong>
+                            </li>
+
+                            <li>
+                                <span class="color naranja"></span>
+                                <p>Técnicas</p>
+                                <strong>15%</strong>
+                            </li>
+
+                        </ul>
+
+                    </article>
+
+                </section>
+            </section>    
+
+            <section class="caja-usuarios">
+
+                <h3>Últimas señas registradas / Modificadas</h3>
+
+                <section class="tabla-responsiva">
+
+                    <ul class="cabecera-lista">
+                        <li>Código</li>
+                        <li>Nombre de la seña</li>
+                        <li>Categoria</li>
+                        <li>Acción</li>
+                        <li>Fecha</li>
+                        <li>Estado</li>
+                    </ul>
+
+                    <ul class="lista-usuarios">
+                        <li>SEN-045</li>
+                        <li>Integral</li>
+                        <li>Educativa</li>
+                        <li class="estado-activo">Registro</li>
+                        <li>12/05/2026</li>
+                        <li class="estado-inactivo">Pendiente</li>
+                    </ul>
+
+                    <ul class="lista-usuarios">
+                        <li>SEN-044</li>
+                        <li>Reunión</li>
+                        <li>Cotidiana</li>
+                        <li class="estado-inactivo">Corrección</li>
+                        <li>12/05/2026</li>
+                        <li class="estado-activo">Aprobada</li>
+                    </ul>
+
+                    <ul class="lista-usuarios">
+                        <li>SEN-043</li>
+                        <li>Fotosíntesis</li>
+                        <li>Educativa</li>
+                        <li class="estado-activo">Registro</li>
+                        <li>11/05/2026</li>
+                        <li class="estado-inactivo">Pendiente</li>
+                    </ul>
+
+                    <ul class="lista-usuarios">
+                        <li>SEN-042</li>
+                        <li>Computadra</li>
+                        <li>Técnica</li>
+                        <li class="estado-inactivo">Correción</li>
+                        <li>11/05/2026</li>
+                        <li class="estado-activo">Aprobada</li>
+                    </ul>
+
+                    <ul class="lista-usuarios">
+                        <li>SEN-041</li>
+                        <li>Gracias</li>
+                        <li>Cotidiana</li>
+                        <li class="estado-activo">Registro</li>
+                        <li>10/05/2026</li>
+                        <li class="estado-activo">Aprobada</li>
+                    </ul>
+
+                </section>
+
+            </section>
+
+
+        </main>
+
+    </section>
+
+</body>
+</html>

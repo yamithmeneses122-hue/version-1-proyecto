@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signa Tech CS</title>
+    <link rel="icon" href="/img/logo.jpeg" type="images/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/carpeta-css/4-corregir.css">
+</head>
+<body>
+
+    <input type="checkbox" id="menu">
+
+    <label for="menu" class="boton-menu">&#9776;</label>
+
+    <section class="pagina-completa">
+
+        <aside class="menu-lado">
+
+            <header class="encabezado-menu">
+                <h2>Signa Tech</h2>
+                <p>Panel Interprete</p>
+            </header>
+
+            <nav>
+                <ul>
+                    <li><a href="/html/Interprete.html">Inicio</a></li>
+                    <li><a href="/html/2-validar.html">Validar diccionario</a></li>
+                    <li><a href="/html/3-registrar.html">Registrar nuevas señas</a></li>
+                    <li><a href="/html/4-corregir.html" class="link-activo">Corregir señas</a></li>
+                    <li><a href="/html/5-historial.html">Historial de cambios</a></li>
+                    <li><a href="/html/6-estadisticas.html">Estadisticas</a></li>
+                    <li><a href="/html/7-perfil.html">Perfil</a></li>
+                    <li><a href="#">Cerrar sesion</a></li>
+                </ul>
+            </nav>
+
+            <footer class="pie-menu">
+                <img src="https://i.pravatar.cc/100" alt="">
+                <article>
+                    <p class="nombre-admin">Carlos Cortez</p>
+                    <p class="cargo-admin">Interprete</p>
+                    <span>En Linea</span>
+                </article>
+            </footer>
+
+        </aside>
+
+        <main class="contenido-centro">
+            <header class="cabecera-contenido">
+                <h1 class="titulo-pagina">Corregir Señas</h1>
+                <p class="subtitulo-pagina">Modifica o actualiza señas existentes.</p>
+            </header>
+            <main class="contenedor">
+                <section class="filtros">
+                    <input type="text" placeholder="Buscar por palabra...">
+                    <select>
+                        <option>Todas las categorías</option>
+                    </select>
+                    <select>
+                        <option>Todos los estados</option>
+                    </select>
+                </section>
+                <section class="tabla-señas">
+                    <h2>Lista de señas</h2>
+                    <table>
+                        <thead>
+                             <tr>
+                                <th>Código</th>
+                                <th>Nombre de la seña</th>
+                                <th>Categoría</th>
+                                <th>Estado</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SEN-001</td>
+                                <td>Educación</td>
+                                <td>Educativa</td>
+                                <td class="activo">Activa</td>
+                                <td><button>Editar</button></td>
+                            </tr>
+                            <tr>
+                                <td>SEN-002</td>
+                                <td>Biblioteca</td>
+                                <td>Cotidiana</td>
+                                <td class="activo">Activa</td>
+                                <td><button>Editar</button></td>
+                            </tr>
+                            <tr>
+                                <td>SEN-003</td>
+                                <td>Laboratorio</td>
+                                <td>Educativa</td>
+                                <td class="activo">Activa</td>
+                                <td><button>Editar</button></td>
+                            </tr>
+                            <tr>
+                                <td>SEN-004</td>
+                                <td>Descanso</td>
+                                <td>Cotidiana</td>
+                                <td class="activo">Activa</td>
+                                <td><button>Editar</button></td>
+                            </tr>
+                            <tr>
+                                <td>SEN-005</td>
+                                <td>Matemáticas</td>
+                                <td>Educativa</td>
+                                <td class="activo">Activa</td>
+                                <td><button>Editar</button></td>
+                            </tr>
+                            <tr>
+                                <td>SEN-006</td>
+                                <td>Álgebra</td>
+                                <td>Educativa</td>
+                                <td class="activo">Activa</td>
+                                <td><button>Editar</button></td>
+                            </tr>
+                            <tr>
+                                <td>SEN-007</td>
+                                <td>Ciencia</td>
+                                <td>Educativa</td>
+                                <td class="activo">Activa</td>
+                                <td><button>Editar</button></td>
+                            </tr>
+                            <tr>
+                                <td>SEN-008</td>
+                                <td>Computadora</td>
+                                <td>Técnica</td>
+                                <td class="activo">Activa</td>
+                                <td><button>Editar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <nav class="paginacion">
+                        <button class="pagina-activa">1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>→</button>
+                    </nav>
+                </section>
+            </main>
+        </main>
+    </section>
+</body>
+</html>

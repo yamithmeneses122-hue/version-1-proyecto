@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signa Tech RS</title>
+    <link rel="icon" href="/img/logo.jpeg" type="images/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/carpeta-css/3-registrar.css">
+</head>
+<body>
+
+    <input type="checkbox" id="menu">
+
+    <label for="menu" class="boton-menu">&#9776;</label>
+
+    <section class="pagina-completa">
+
+        <aside class="menu-lado">
+
+            <header class="encabezado-menu">
+                <h2>Signa Tech</h2>
+                <p>Panel Interprete</p>
+            </header>
+
+            <nav>
+                <ul>
+                    <li><a href="/html/Interprete.html">Inicio</a></li>
+                    <li><a href="/html/2-validar.html">Validar diccionario</a></li>
+                    <li><a href="/html/3-registrar.html" class="link-activo">Registrar nuevas señas</a></li>
+                    <li><a href="/html/4-corregir.html">Corregir señas</a></li>
+                    <li><a href="/html/5-historial.html">Historial de cambios</a></li>
+                    <li><a href="/html/6-estadisticas.html">Estadisticas</a></li>
+                    <li><a href="/html/7-perfil.html">Perfil</a></li>
+                    <li><a href="#">Cerrar sesion</a></li>
+                </ul>
+            </nav>
+
+            <footer class="pie-menu">
+                <img src="https://i.pravatar.cc/100" alt="">
+                <article>
+                    <p class="nombre-admin">Carlos Cortez</p>
+                    <p class="cargo-admin">Interprete</p>
+                    <span>En Linea</span>
+                </article>
+            </footer>
+
+        </aside>
+
+        <main class="contenido-centro">
+            <header class="cabecera-contenido">
+                <h1 class="titulo-pagina">Registrar nuevas señas</h1>
+                <p class="subtitulo-pagina">Agrega nuevas señas al diccionario del sistema</p>
+            </header>
+            <main class="contenido">
+                <section class="formulario">
+                    <h2>Formulario de registro</h2>
+                    <!-- FILA -->
+                    <section class="fila">
+                        <article class="campo">
+                            <label>
+                                Nombre de la seña <strong>*</strong>
+                            </label>
+                            <input type="text" placeholder="Ej. Biblioteca">
+                        </article>
+                        <article class="campo">
+                            <label>
+                                Categoría <strong>*</strong>
+                            </label>
+                            <select>
+                                <option>Selecciona una categoría</option>
+                            </select>
+                        </article>
+                    </section>
+                    <!-- DESCRIPCIÓN -->
+                    <article class="campo grande">
+                        <label>
+                            Descripción <strong>*</strong>
+                        </label>
+                        <textarea placeholder="Describe el contexto o uso de la seña..."></textarea>
+                    </article>
+                    <!-- ARCHIVOS -->
+                    <section class="fila">
+                        <article class="archivo">
+                            <label>
+                                Imagen de la seña <strong>*</strong>
+                            </label>
+                            <label class="subir">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <p>Arrastra una imagen aquí</p>
+                                <span>o selecciona un archivo</span>
+                                <small>Formatos JPG, PNG (Máx. 5MB)</small>
+                                <input type="file">
+                            </label>
+                        </article>
+                        <article class="archivo">
+                            <label>
+                                Video de la seña <strong>*</strong>
+                            </label>
+                            <label class="subir">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <p>Arrastra un video aquí</p>
+                                <span>o selecciona un archivo</span>
+                                <small>Formato MP4 (Máx. 20MB)</small>
+                                <input type="file">
+                            </label>
+                        </article>
+                    </section>
+                    <!-- SIGNIFICADO -->
+                    <article class="campo grande">
+                        <label>
+                            Significado <strong>*</strong>
+                        </label>
+                        <textarea placeholder="Escribe el significado de la seña..."></textarea>
+                    </article>
+                    <!-- BOTONES -->
+                    <footer class="botones">
+                        <button class="limpiar">
+                            Limpiar
+                        </button>
+                        <section>
+                            <button class="cancelar">
+                                Cancelar
+                            </button>
+                            <button class="guardar">
+                                Guardar
+                            </button>
+                        </section>
+                    </footer>
+                </section>
+            </main>
+        </main>
+
+    </section>
+
+</body>
+</html>
