@@ -1,0 +1,59 @@
+/* Visualizador de barras de onda (animación de escucha) */
+.contenedor-visualizador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 60px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.barra-onda {
+    width: 8px;
+    height: 20px;
+    background: var(--azul-neon);
+    border-radius: 4px;
+    transition: height 0.3s ease;
+}
+
+.animar-onda { animation: saltar 0.6s infinite alternate; }
+
+.barra-onda:nth-child(2) { animation-delay: 0.1s; }
+.barra-onda:nth-child(3) { animation-delay: 0.2s; }
+.barra-onda:nth-child(4) { animation-delay: 0.3s; }
+.barra-onda:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes saltar {
+    from { height: 20px; }
+    to   { height: 50px; }
+}
+
+/* Consola de transcripción con estilo terminal */
+.consola-transcripcion-texto {
+    width: 100%;
+    padding: 20px;
+    background: #0d1117;
+    border: 1px solid var(--borde);
+    border-left: 4px solid var(--verde-esmeralda);
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    min-height: 100px;
+    border-radius: 8px;
+    overflow-y: auto;
+}
+
+/* Controles secundarios en fila */
+.bloque-controles-internos {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Modo claro */
+body.tema-claro .consola-transcripcion-texto { background-color: #ffffff; border-color: #BCCCDC; color: #102A43; }
+
+@media (max-width: 900px) {
+    .bloque-controles-internos { flex-direction: column; }
+}

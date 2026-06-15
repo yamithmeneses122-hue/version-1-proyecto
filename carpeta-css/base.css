@@ -1,0 +1,526 @@
+/* ==========================================================================
+   1. VARIABLES DE COLOR Y DISEÑO
+   Para cambiar el tema completo, solo edita aquí.
+   ========================================================================== */
+:root {
+    --fondo-negro:       #000000;
+    --fondo-card:        #010409;
+    --azul-neon:         #00ffff;  
+    --verde-esmeralda:   #00f7ff;  
+    --blanco-puro:       #FFFFFF;
+    --gris-hielo:        #F4F7F9;
+    --borde:             #1d212a;
+}
+
+
+/* ==========================================================================
+   2. RESET TÉCNICO
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--fondo-negro);
+    font-family: 'Lato', sans-serif;
+    color: var(--blanco-puro);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+
+/* ==========================================================================
+   3. LAYOUT PRINCIPAL (Flex de 2 columnas: sidebar + contenido)
+   ========================================================================== */
+.pagina-completa {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+
+/* ==========================================================================
+   4. BARRA LATERAL (sidebar fijo con scrollbar neón)
+   ========================================================================== */
+.menu-lado {
+    width: 300px;
+    background-color: #050811;
+    border-right: 1px solid var(--borde);
+    padding: 30px 15px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    z-index: 1000;
+    transition: background-color 0.3s ease, left 0.4s ease;
+}
+
+.menu-lado .logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--azul-neon);
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.menu-lado .rol {
+    font-size: 0.8rem;
+    color: var(--verde-esmeralda);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 35px;
+    text-align: center;
+    opacity: 0.8;
+}
+
+/* Contenedor de navegación con scroll interno */
+.navegacion-scroll {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-bottom: 20px;
+}
+
+/* Scrollbar personalizada — Chrome, Edge, Safari */
+.navegacion-scroll::-webkit-scrollbar {
+    width: 6px;
+    display: block !important;
+}
+
+.navegacion-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.01);
+    border-radius: 10px;
+}
+
+.navegacion-scroll::-webkit-scrollbar-thumb {
+    background: rgba(0, 204, 255, 0.2);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 204, 255, 0.1);
+    transition: background 0.3s ease;
+}
+
+.navegacion-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--azul-neon);
+    box-shadow: 0 0 10px var(--azul-neon);
+}
+
+/* Scrollbar — Firefox */
+@supports (scrollbar-width: thin) {
+    .navegacion-scroll {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0, 204, 255, 0.3) rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Links de navegación */
+.navegacion-scroll ul { list-style: none; }
+.navegacion-scroll ul li { margin-bottom: 10px; }
+
+.navegacion-scroll ul li a {
+    color: var(--gris-hielo);
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.navegacion-scroll ul li a i {
+    font-size: 1.15rem;
+    width: 25px;
+    text-align: center;
+}
+
+.navegacion-scroll ul li a:hover,
+.navegacion-scroll ul li a.active {
+    background-color: rgba(0, 204, 255, 0.04);
+    color: var(--azul-neon);
+    border-color: rgba(0, 204, 255, 0.15);
+    padding-left: 25px;
+}
+
+/* Botón de cerrar sesión — fijo al fondo del sidebar */
+.caja-logout-fija {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid var(--borde);
+    background-color: #050811;
+    display: flex;
+    justify-content: center;
+}
+
+.caja-logout-fija a#btn-logout {
+    color: #3ce7c2;
+    background-color: rgba(60, 231, 231, 0.03);
+    border: 1px solid rgba(60, 231, 203, 0.15);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.caja-logout-fija a#btn-logout:hover {
+    background-color: #3cc5e7;
+    color: #ffffff;
+    border-color: #44e9ef;
+    box-shadow: 0 0 15px rgba(60, 197, 231, 0.5);
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================================================
+   5. ÁREA DE CONTENIDO CENTRAL
+   ========================================================================== */
+.contenido-centro {
+    margin-left: 300px;
+    width: calc(100% - 300px);
+    padding: 50px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.bloque-encabezado {
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.titulo-pagina {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--blanco-puro);
+    margin-bottom: 10px;
+}
+
+.subtitulo-pagina {
+    font-size: 1.1rem;
+    color: #8b949e;
+}
+
+
+/* ==========================================================================
+   6. COMPONENTES COMPARTIDOS — Tarjetas, botones, bordes neón
+   Usados en inicio, diccionario, avatar y config.
+   ========================================================================== */
+
+/* Tarjeta base */
+.tarjeta-modulo {
+    background-color: var(--fondo-card);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Cabecera interna de tarjeta (icono + texto) */
+.cabecera-tarjeta-interna {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Icono cuadrado redondeado */
+.icono-modulo-wrapper {
+    font-size: 2.2rem;
+    background: rgba(255, 255, 255, 0.02);
+    width: 65px;
+    height: 65px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+/* Bloque de texto dentro de tarjeta */
+.info-modulo h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    color: var(--blanco-puro);
+    margin-bottom: 6px;
+}
+
+.info-modulo p {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    color: #8b949e;
+    line-height: 1.4;
+}
+
+/* Hover de tarjeta */
+.tarjeta-modulo:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.01);
+}
+
+.tarjeta-modulo:hover .icono-modulo-wrapper {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Bordes neón de acento (se aplican a .tarjeta-modulo) */
+.bordo-azul  { border-top: 4px solid var(--azul-neon); }
+.bordo-verde { border-top: 4px solid var(--verde-esmeralda); }
+
+.bordo-azul:hover  { border-color: var(--azul-neon);       box-shadow: 0 0 20px rgba(0, 204, 255, 0.25); }
+.bordo-verde:hover { border-color: var(--verde-esmeralda);  box-shadow: 0 0 20px rgba(0, 247, 255, 0.25); }
+
+/* Contenedores de flujo vertical (páginas de módulos) */
+.flujo-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Caja de sección interna (módulos operativos) */
+.caja-config-fila {
+    background-color: var(--fondo-card);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 35px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.caja-config-fila h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    color: var(--blanco-puro);
+}
+
+.descripcion-seccion {
+    font-size: 0.95rem;
+    color: #8b949e;
+    margin-bottom: 25px;
+}
+
+/* Botones de acción neón (estilo outline) */
+.bloque-botones-operativos {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-accion-neon {
+    padding: 14px 25px;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-accion-neon:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    border-color: var(--borde) !important;
+    color: #48566a !important;
+}
+
+.btn-azul { color: var(--azul-neon); border: 1px solid var(--azul-neon); }
+.btn-azul:hover:not(:disabled) { background: var(--azul-neon); color: #000; box-shadow: 0 0 15px rgba(0, 204, 255, 0.4); }
+
+.btn-rojo { color: #e74c3c; border: 1px solid #e74c3c; }
+.btn-rojo:hover:not(:disabled) { background: #e74c3c; color: #fff; box-shadow: 0 0 15px rgba(231, 76, 60, 0.4); }
+
+/* Botón de formulario (tipo submit) */
+.btn-operativo-modulo {
+    width: 100%;
+    padding: 13px;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+    border: none;
+}
+
+.btn-confirmar {
+    background: rgba(0, 204, 255, 0.05);
+    border: 1px solid var(--azul-neon);
+    color: var(--azul-neon);
+}
+
+.btn-confirmar:hover {
+    background: var(--azul-neon);
+    color: #000000;
+    box-shadow: 0 4px 15px rgba(0, 204, 255, 0.3);
+}
+
+.btn-confirmar:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    border-color: var(--borde) !important;
+    color: #48566a !important;
+}
+
+
+/* ==========================================================================
+   7. MODO CLARO (se activa con body.tema-claro vía localStorage)
+   ========================================================================== */
+body.tema-claro { background-color: #D9E2EC; color: #102A43; }
+
+body.tema-claro .menu-lado,
+body.tema-claro .caja-logout-fija {
+    background-color: #BCCCDC;
+    border-right-color: #9FB3C8;
+}
+
+body.tema-claro .menu-lado .logo { color: #0056b3; }
+body.tema-claro .menu-lado .rol  { color: #102A43; }
+
+body.tema-claro .menu-lado nav ul li a { color: #102A43; }
+body.tema-claro .menu-lado nav ul li a:hover,
+body.tema-claro .menu-lado nav ul li a.active {
+    background-color: rgba(0, 86, 179, 0.08);
+    color: #0056b3;
+    border-color: rgba(0, 86, 179, 0.2);
+}
+
+body.tema-claro .tarjeta-modulo {
+    background-color: #F0F4F8;
+    border-color: #BCCCDC;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+body.tema-claro .caja-config-fila {
+    background-color: #F0F4F8;
+    border-color: #BCCCDC;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+body.tema-claro .info-modulo h3  { color: #102A43; }
+body.tema-claro .titulo-pagina   { color: #102A43; }
+body.tema-claro .info-modulo p,
+body.tema-claro .subtitulo-pagina,
+body.tema-claro .descripcion-seccion { color: #486581; }
+
+body.tema-claro .bordo-azul:hover  { border-color: #0056b3; box-shadow: 0 0 15px rgba(0, 86, 179, 0.2); }
+body.tema-claro .bordo-verde:hover { border-color: #10b981; box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); }
+
+body.tema-claro .btn-confirmar       { border-color: #0056b3; color: #0056b3; }
+body.tema-claro .btn-confirmar:hover { background: #0056b3; color: #ffffff; }
+
+
+/* ==========================================================================
+   8. RESPONSIVE — Hamburguesa + sidebar deslizante
+   ========================================================================== */
+@media (max-width: 900px) {
+
+    /* Sidebar se esconde fuera de pantalla */
+    .menu-lado {
+        width: 260px;
+        background-color: #0c1216 !important; /* opaco forzado, sin transparencia */
+        left: -260px;
+        transition: left 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    }
+
+    .menu-lado.menu-abierto {
+        left: 0;
+        box-shadow: 10px 0 40px rgba(0, 0, 0, 0.8);
+    }
+
+    body.tema-claro .menu-lado {
+        background-color: #BCCCDC !important;
+    }
+
+    /* Contenido ocupa todo el ancho */
+    .contenido-centro {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 90px 20px 30px 20px !important;
+    }
+
+    /* Botón hamburguesa (tres rayas → X animada) */
+    .btn-hamburguesa {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 45px;
+        height: 40px;
+        background: #010409;
+        border: 1px solid var(--borde);
+        padding: 12px;
+        border-radius: 8px;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 2000;
+        cursor: pointer;
+    }
+
+    .btn-hamburguesa span {
+        width: 100%;
+        height: 3px;
+        background-color: var(--azul-neon);
+        border-radius: 10px;
+        transition: all 0.3s linear;
+    }
+
+    /* Animación de las tres líneas → X */
+    .btn-hamburguesa.X-activa span:nth-child(1) { transform: rotate(45deg)  translate(5px, 5px); }
+    .btn-hamburguesa.X-activa span:nth-child(2) { opacity: 0; }
+    .btn-hamburguesa.X-activa span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+    /* Botones en columna en mobile */
+    .bloque-botones-operativos { flex-direction: column; }
+}
+
+/* En desktop el botón hamburguesa no existe */
+@media (min-width: 901px) {
+    .btn-hamburguesa { display: none !important; }
+}
+
+/* Ajustes extra para pantallas muy pequeñas */
+@media (max-width: 600px) {
+    .titulo-pagina { font-size: 2rem; }
+
+    .tarjeta-modulo {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .cabecera-tarjeta-interna {
+        flex-direction: column;
+        text-align: center;
+    }
+}
