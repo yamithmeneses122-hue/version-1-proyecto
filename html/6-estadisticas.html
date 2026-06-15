@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signa Tech E</title>
+    <link rel="icon" href="/img/logo.jpeg" type="images/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/carpeta-css/6-estadisticas.css">
+</head>
+<body>
+
+    <input type="checkbox" id="menu">
+
+    <label for="menu" class="boton-menu">&#9776;</label>
+
+    <section class="pagina-completa">
+
+        <aside class="menu-lado">
+
+            <header class="encabezado-menu">
+                <h2>Signa Tech</h2>
+                <p>Panel Interprete</p>
+            </header>
+
+            <nav>
+                <ul>
+                    <li><a href="/html/Interprete.html">Inicio</a></li>
+                    <li><a href="/html/2-validar.html">Validar diccionario</a></li>
+                    <li><a href="/html/3-registrar.html">Registrar nuevas señas</a></li>
+                    <li><a href="/html/4-corregir.html">Corregir señas</a></li>
+                    <li><a href="/html/5-historial.html">Historial de cambios</a></li>
+                    <li><a href="/html/6-estadisticas.html" class="link-activo">Estadisticas</a></li>
+                    <li><a href="/html/7-perfil.html">Perfil</a></li>
+                    <li><a href="#">Cerrar sesion</a></li>
+                </ul>
+            </nav>
+
+            <footer class="pie-menu">
+                <img src="https://i.pravatar.cc/100" alt="">
+                <article>
+                    <p class="nombre-admin">Carlos Cortez</p>
+                    <p class="cargo-admin">Interprete</p>
+                    <span>En Linea</span>
+                </article>
+            </footer>
+
+        </aside>
+
+        <main class="contenido-centro">
+            <header class="cabecera-contenido">
+                <h1 class="titulo-pagina">Estadisticas</h1>
+                <p class="subtitulo-pagina"></p>
+            </header>
+            <section class="estadisticas">
+                <section class="tarjetas">
+                    <article class="card azul">
+                        <h2>124</h2>
+                        <h4>Señas validadas</h4>
+                        <p>Total de señas confirmadas</p>
+                    </article>
+                    <article class="card verde">
+                        <h2>36</h2>
+                        <h4>Nuevas señas</h4>
+                        <p>Registradas en el sistema</p>
+                    </article>
+                    <article class="card naranja">
+                        <h2>28</h2>
+                        <h4>Señas corregidas</h4>
+                        <p>Modificaciones realizadas</p>
+                    </article>
+                    <article class="card morado">
+                        <h2>18</h2>
+                        <h4>Señas pendientes</h4>
+                        <p>Esperando validación</p>
+                    </article>
+                </section>
+                <section class="fila">
+                    <article class="grafica">
+                        <h3>Señas registradas por mes</h3>
+                        <ul class="barras">
+                            <li style="height:40px"></li>
+                            <li style="height:70px"></li>
+                            <li style="height:90px"></li>
+                            <li style="height:110px"></li>
+                            <li style="height:130px"></li>
+                            <li style="height:160px"></li>
+                        </ul>
+                        <footer class="meses">
+                            <span>Ene</span>
+                            <span>Feb</span>
+                            <span>Mar</span>
+                            <span>Abr</span>
+                            <span>May</span>
+                            <span>Jun</span>
+                        </footer>
+                    </article>
+                    <article class="categorias">
+                        <h3>Distribución por categorías</h3>
+                        <section class="circulo"></section>
+                        <ul>
+                            <li>Educativas - 55%</li>
+                            <li>Cotidianas - 30%</li>
+                            <li>Técnicas - 15%</li>
+                        </ul>
+                    </article>
+                </section>
+                <section class="fila">
+                    <article class="actividad">
+                        <h3>Actividad en el sistema</h3>
+                        <img src="linea-grafica.png" alt="">
+                    </article>
+                    <article class="resumen">
+                        <h3>Resumen general</h3>
+                        <p>Total de señas: <strong>206</strong></p>
+                        <p>Activas: <strong>170</strong></p>
+                        <p>Inactivas: <strong>18</strong></p>
+                        <p>En revisión: <strong>18</strong></p>
+                    </article>
+                </section>
+                <article class="estado">
+                    <h3>Porcentaje de estado de las señas</h3>
+                    <section class="barra">
+                        <span class="activa"></span>
+                        <span class="revision"></span>
+                        <span class="inactiva"></span>
+                    </section>
+                    <footer class="porcentajes">
+                        <p><strong>82%</strong><br>Activas</p>
+                        <p><strong>9%</strong><br>En revisión</p>
+                        <p><strong>9%</strong><br>Inactivas</p>
+                    </footer>
+                </article>
+            </section>
+        </main>
+    </section>
+</body>
+</html>
