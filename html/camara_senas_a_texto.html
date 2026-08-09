@@ -13,6 +13,7 @@
 
     <section class="pagina-completa">
         
+        <!-- MENÚ LATERAL -->
         <aside class="menu-lado">
             <button type="button" class="btn-hamburguesa" id="comp-hamburguesa" aria-label="abrir menu">
                 <span></span>
@@ -25,8 +26,8 @@
             
             <nav class="navegacion-scroll">
                 <ul>
-                    <li><a href="./inicio.html" id="link-inicio" ><i class="fa-solid fa-chart-pie"></i> inicio </a></li>
-                    <li><a href="./texto_voz.html" id="link-texto-voz "><i class="fa-solid fa-volume-high"></i> Texto a Voz</a></li>
+                    <li><a href="./inicio.html" id="link-inicio"><i class="fa-solid fa-chart-pie"></i> inicio </a></li>
+                    <li><a href="./texto_voz.html" id="link-texto-voz"><i class="fa-solid fa-volume-high"></i> Texto a Voz</a></li>
                     <li><a href="./voz_a_texto.html" id="link-voz-a-texto"><i class="fa-solid fa-microphone"></i> Voz a Texto</a></li>
                     <li><a href="./camara_senas_a_texto.html" id="link-camara" class="active"><i class="fa-solid fa-camera"></i> Detección Cámara</a></li>
                     <li><a href="./diccionario.html" id="link-diccionario"><i class="fa-solid fa-book"></i> Diccionario LSC</a></li>
@@ -42,6 +43,7 @@
             </footer>
         </aside>
 
+        <!-- CONTENIDO PRINCIPAL -->
         <main class="contenido-centro">
             
             <header class="bloque-encabezado">
@@ -55,23 +57,50 @@
                     <h3>Streaming del Sensor LSC</h3>
                     <p class="descripcion-seccion">Monitoreo visual en vivo de la captura de manos a través del sensor OV5640.</p>
                     
+                    <!-- FEED DE CÁMARA (Ocupa el espacio dinámico) -->
                     <figure class="contenedor-feed-video">
                         <span class="badge-estado-streaming" id="live-badge">● DESCONECTADO</span>
                         
                         <figure class="pantalla-sensor-black" id="pantalla-camara">
+                            <video id="video-feed" autoplay playsinline muted></video>
                             <i class="fa-solid fa-camera-retro" id="icono-espera-cam"></i>
                             <p id="txt-estado-feed">Esperando vinculación del hardware periférico...</p>
                         </figure>
                     </figure>
 
+                    <!-- PANEL INFERIOR DE OPCIONES (TEXTO / ESCUCHAR / AVATAR) -->
                     <aside class="contenedor-salida-traduccion">
-                        <h4><i class="fa-solid fa-language"></i> Texto Traducido (Conversión LSC):</h4>
-                        <article class="consola-texto-neon">
+                        <header class="encabezado-salida">
+                            <h4><i class="fa-solid fa-language"></i> Modos de Salida:</h4>
+                            <nav class="selector-modos-salida">
+                                <button type="button" class="btn-modo active" id="btn-modo-texto">
+                                    <i class="fa-solid fa-align-left"></i> Texto
+                                </button>
+                                <button type="button" class="btn-modo" id="btn-modo-escuchar">
+                                    <i class="fa-solid fa-volume-high"></i> Escuchar
+                                </button>
+                                <button type="button" class="btn-modo" id="btn-modo-avatar">
+                                    <i class="fa-solid fa-user-astronaut"></i> Avatar
+                                </button>
+                            </nav>
+                        </header>
+
+                        <!-- Salida 1: Texto -->
+                        <article class="consola-texto-neon" id="panel-salida-texto">
                             <span class="prompt-ia">▶</span> 
                             <span id="texto-conversion-vivo">El sistema está apagado. Vincule las gafas para iniciar la interpretación automática de gestos...</span>
                         </article>
+
+                        <!-- Salida 2: Avatar (Oculto dinámicamente) -->
+                        <article class="panel-avatar-respuesta modo-oculto" id="panel-salida-avatar">
+                            <figure class="vista-avatar-mini">
+                                <i class="fa-solid fa-user-astronaut avatar-icon-anim"></i>
+                                <figcaption id="txt-avatar-status">Avatar listo para reproducir señas LSC</figcaption>
+                            </figure>
+                        </article>
                     </aside>
 
+                    <!-- CONTROLES DE CONEXIÓN -->
                     <section class="bloque-botones-operativos">
                         <button type="button" class="btn-accion-neon btn-azul" id="btn-vincular">
                             <i class="fa-solid fa-link"></i> Vincular Gafas
