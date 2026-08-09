@@ -1,47 +1,101 @@
-/* ==========================================================================
-   TEXTO_VOZ.CSS — Solo estilos exclusivos del módulo Texto a Voz
-   Requiere: base.css cargado antes en el HTML
-   ========================================================================== */
+/* --- RESET GLOBAL Y BLOQUEO DE SCROLL --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+html, body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
 
-/* Círculo animado con icono de audio */
+/* --- ESTRUCTURA DE PANTALLA COMPLETA --- */
+.pagina-completa {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.menu-lado {
+    width: 260px;
+    flex-shrink: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.contenido-centro {
+    flex: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.bloque-encabezado {
+    flex-shrink: 0;
+    margin-bottom: 0.75rem;
+}
+
+.flujo-vertical {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.caja-config-fila {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    gap: 10px;
+}
+
+/* --- CÍRCULO / SINTETIZADOR DE AUDIO --- */
 .contenedor-avatar-audio {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 35px;
+    flex-shrink: 0;
+    margin-bottom: 10px;
     width: 100%;
 }
 
 .circulo-onda-animada {
-    width: 120px;
-    height: 120px;
+    width: 90px;
+    height: 90px;
     background-color: rgba(255, 255, 255, 0.02);
-    border: 2px solid var(--borde);
+    border: 2px solid var(--borde, #2a3441);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.8rem;
-    color: var(--azul-neon);
+    font-size: 2.2rem;
+    color: var(--azul-neon, #00ccff);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     transition: all 0.4s ease;
 }
 
 .estado-reproduccion {
-    margin-top: 15px;
+    margin-top: 8px;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #8b949e;
     letter-spacing: 0.5px;
     transition: color 0.3s ease;
 }
 
-/* Animación neón cuando está "hablando" */
 .circulo-onda-animada.onda-hablando {
-    border-color: var(--verde-esmeralda);
-    color: var(--verde-esmeralda);
+    border-color: var(--verde-esmeralda, #10b981);
+    color: var(--verde-esmeralda, #10b981);
     box-shadow: 0 0 30px rgba(0, 247, 255, 0.3);
     animation: bounceScale 1.2s infinite ease-in-out;
 }
@@ -51,29 +105,38 @@
     50%       { transform: scale(1.06); }
 }
 
-/* Área de texto para escribir lo que se va a leer */
-.contenedor-input-audio { width: 100%; margin-top: 15px; }
+/* --- ÁREA DE TEXTO DINÁMICA (Ajustable sin scrollbar general) --- */
+.contenedor-input-audio {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    margin-top: 0;
+}
 
 .contenedor-input-audio label {
     display: block;
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 10px;
-    color: var(--gris-hielo);
+    margin-bottom: 6px;
+    color: var(--gris-hielo, #dbe2ef);
+    flex-shrink: 0;
 }
 
 .contenedor-input-audio textarea {
     width: 100%;
-    height: 200px;
+    flex: 1;
+    min-height: 0;
     background-color: rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--borde);
+    border: 1px solid var(--borde, #2a3441);
     border-radius: 8px;
-    padding: 20px;
-    color: var(--blanco-puro);
+    padding: 15px;
+    color: var(--blanco-puro, #ffffff);
     font-family: 'Lato', sans-serif;
-    font-size: 1.15rem;
+    font-size: 1rem;
     resize: none;
     outline: none;
     box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.6);
@@ -81,11 +144,17 @@
 }
 
 .contenedor-input-audio textarea:focus {
-    border-color: var(--azul-neon);
+    border-color: var(--azul-neon, #00ccff);
     box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 204, 255, 0.15);
 }
 
-/* Modo claro */
+.bloque-botones-operativos {
+    flex-shrink: 0;
+    display: flex;
+    gap: 12px;
+}
+
+/* --- MODO CLARO --- */
 body.tema-claro .circulo-onda-animada  { background-color: #fff; border-color: #BCCCDC; }
 body.tema-claro .circulo-onda-animada.onda-hablando { border-color: #10b981; color: #10b981; box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
 body.tema-claro .estado-reproduccion  { color: #486581; }
