@@ -1,15 +1,82 @@
-/* Contenedor del feed de video con badge flotante */
+/* --- RESET GLOBAL Y BLOQUEO DE SCROLL --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* --- ESTRUCTURA GENERAL --- */
+.pagina-completa {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.menu-lado {
+    width: 260px;
+    flex-shrink: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.contenido-centro {
+    flex: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.bloque-encabezado {
+    flex-shrink: 0;
+    margin-bottom: 0.75rem;
+}
+
+.flujo-vertical {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.caja-config-fila {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    gap: 10px;
+}
+
+.caja-config-fila h3, 
+.caja-config-fila .descripcion-seccion {
+    flex-shrink: 0;
+}
+
+/* --- FEED DE CÁMARA (Ocupa todo el alto visible central) --- */
 .contenedor-feed-video {
     position: relative;
     width: 100%;
-    margin-bottom: 25px;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    margin: 0;
 }
 
-/* Badge de estado (DESCONECTADO / TRANSMITIENDO) */
 .badge-estado-streaming {
     position: absolute;
-    top: 15px;
-    left: 15px;
+    top: 12px;
+    left: 12px;
     background-color: #34495e;
     color: #fff;
     padding: 5px 12px;
@@ -26,68 +93,183 @@
     animation: blinker 1.5s linear infinite;
 }
 
-/* Pantalla negra del sensor (estado inactivo) */
 .pantalla-sensor-black {
     width: 100%;
-    height: 380px;
+    height: 100%;
     background-color: #000000;
     border-radius: 8px;
-    border: 1px solid var(--borde);
+    border: 1px solid var(--borde, #2a3441);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
     color: #48566a;
     transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
 }
 
-.pantalla-sensor-black i { font-size: 3.5rem; transition: color 0.3s ease; }
+.pantalla-sensor-black video,
+.pantalla-sensor-black canvas {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
 
-/* Pantalla activa cuando las gafas están conectadas */
+.pantalla-sensor-black i,
+.pantalla-sensor-black p {
+    position: relative;
+    z-index: 2;
+}
+
+.pantalla-sensor-black i {
+    font-size: 3rem;
+    transition: color 0.3s ease;
+}
+
 .pantalla-sensor-black.pantalla-activa {
-    border-color: var(--azul-neon);
-    color: var(--azul-neon);
+    border-color: var(--azul-neon, #00ccff);
+    color: var(--azul-neon, #00ccff);
     background: radial-gradient(circle, rgba(0, 204, 255, 0.05) 0%, #000 80%);
     box-shadow: inset 0 0 25px rgba(0, 204, 255, 0.2);
 }
 
-/* Consola de texto traducido */
-.contenedor-salida-traduccion { margin-top: 20px; width: 100%; }
+.pantalla-sensor-black.pantalla-activa #icono-espera-cam,
+.pantalla-sensor-black.pantalla-activa #txt-estado-feed {
+    display: none;
+}
 
-.contenedor-salida-traduccion h4 {
+/* --- PANEL INFERIOR Y SELECTOR DE MODOS --- */
+.contenedor-salida-traduccion {
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.encabezado-salida {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.encabezado-salida h4 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    color: var(--blanco-puro);
-    margin-bottom: 10px;
+    font-size: 0.85rem;
+    color: var(--blanco-puro, #ffffff);
+}
+
+.selector-modos-salida {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-modo {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--borde, #2a3441);
+    color: #8b949e;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-modo:hover {
+    color: #ffffff;
+    border-color: var(--azul-neon, #00ccff);
+}
+
+.btn-modo.active {
+    background-color: var(--azul-neon, #00ccff);
+    color: #000000;
+    border-color: var(--azul-neon, #00ccff);
+    box-shadow: 0 0 10px rgba(0, 204, 255, 0.4);
 }
 
 .consola-texto-neon {
     background-color: rgba(0, 0, 0, 0.6);
-    border: 1px solid var(--borde);
+    border: 1px solid var(--borde, #2a3441);
     border-radius: 8px;
-    padding: 20px;
-    min-height: 75px;
+    padding: 10px 15px;
+    min-height: 50px;
+    max-height: 65px;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.25rem;
+    font-size: 0.95rem;
     color: #8b949e;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
 }
 
-/* Indicador "▶" parpadeante */
+.panel-avatar-respuesta {
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--azul-neon, #00ccff);
+    border-radius: 8px;
+    padding: 10px 15px;
+    min-height: 50px;
+    max-height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vista-avatar-mini {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--azul-neon, #00ccff);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.avatar-icon-anim {
+    font-size: 1.4rem;
+    animation: bounce 2s infinite;
+}
+
+.modo-oculto {
+    display: none !important;
+}
+
 .prompt-ia {
-    color: var(--verde-esmeralda);
-    font-size: 1rem;
+    color: var(--verde-esmeralda, #10b981);
+    font-size: 0.9rem;
     animation: blinker 1.2s linear infinite;
+    flex-shrink: 0;
 }
 
-@keyframes blinker { 50% { opacity: 0.3; } }
+.bloque-botones-operativos {
+    flex-shrink: 0;
+    display: flex;
+    gap: 12px;
+}
 
-/* Modo claro */
+/* ANIMACIONES */
+@keyframes blinker { 50% { opacity: 0.3; } }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+
+/* TEMA CLARO */
 body.tema-claro .pantalla-sensor-black { background-color: #fff; border-color: #BCCCDC; color: #9FB3C8; }
 body.tema-claro .pantalla-sensor-black.pantalla-activa { background: radial-gradient(circle, rgba(0, 86, 179, 0.03) 0%, #fff 80%); border-color: #0056b3; color: #0056b3; }
-body.tema-claro .consola-texto-neon { background-color: #ffffff; border-color: #BCCCDC; color: #102A43; }
-body.tema-claro .contenedor-salida-traduccion h4 { color: #102A43; }
+body.tema-claro .consola-texto-neon,
+body.tema-claro .panel-avatar-respuesta { background-color: #ffffff; border-color: #BCCCDC; color: #102A43; }
+body.tema-claro .btn-modo { background: #f0f4f8; border-color: #BCCCDC; color: #48566a; }
+body.tema-claro .btn-modo.active { background-color: #0056b3; color: #ffffff; }

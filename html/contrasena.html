@@ -7,6 +7,8 @@
     <title>Cambio de contraseña</title>
 </head>
 <body>
+    <a href="./login.html" class="atras"> <img src="../imag/regresar.png" alt="atras"> </a>
+
     <section class="fondo-imagen"></section>
     <section class="content-panel">
         <h1>SIGNA-TECH-APP</h1>
@@ -14,26 +16,21 @@
         <form >
              <article>
                 <label for="email">Correo electónico</label><br>
-               <input id="email" type="email" placeholder="tu@gmail.com">
+               <input id="email" name="email" type="email" placeholder="tu@gmail.com" required>
              </article>
              <p>Te enviaremos un enlace para restablecer tu contrasena.</p>
              <br>
              <br>
              
-                <a href="#" class="btn-contraseña"> Enviar enlace de recuperación</a>
+                <button type="submit" class="btn-contraseña">Enviar enlace de recuperación</button>
              
              <br>
              <br>
              <a href="./login.html" >Volver al inicio de sesión</a>
             </form>
     </section>
-      <br>
-    <br>
-    <footer>
-        <p>© 2026 SIGNA-TECH-APP. Comunicación accesible para todos.</p>
-    </footer>
-    <br>
-    <br>
     
+    <script src="../js/common.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 </html>

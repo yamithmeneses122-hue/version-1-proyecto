@@ -13,6 +13,7 @@
 
     <section class="pagina-completa">
         
+        <!-- MENÚ LATERAL -->
         <aside class="menu-lado">
             <button class="btn-hamburguesa" id="comp-hamburguesa" aria-label="abrir menu">
                 <span></span>
@@ -25,12 +26,12 @@
             
             <nav class="navegacion-scroll">
                 <ul>
-                    <li><a href="./inicio.html" id="link-inicio" ><i class="fa-solid fa-chart-pie"></i> inicio </a></li>
-                    <li><a href="./texto_voz.html" id="link-texto-voz "><i class="fa-solid fa-volume-high"></i> Texto a Voz</a></li>
+                    <li><a href="./inicio.html" id="link-inicio"><i class="fa-solid fa-chart-pie"></i> inicio </a></li>
+                    <li><a href="./texto_voz.html" id="link-texto-voz"><i class="fa-solid fa-volume-high"></i> Texto a Voz</a></li>
                     <li><a href="./voz_a_texto.html" id="link-voz-a-texto"><i class="fa-solid fa-microphone"></i> Voz a Texto</a></li>
                     <li><a href="./camara_senas_a_texto.html" id="link-camara"><i class="fa-solid fa-camera"></i> Detección Cámara</a></li>
                     <li><a href="./diccionario.html" id="link-diccionario"><i class="fa-solid fa-book"></i> Diccionario LSC</a></li>
-                    <li><a href="./avatar.html" id="link-avatar"class="active"><i class="fa-solid fa-user"></i> Avatar</a></li>
+                    <li><a href="./avatar.html" id="link-avatar" class="active"><i class="fa-solid fa-user"></i> Avatar</a></li>
                     <li><a href="./configuraccion.html" id="link-config"><i class="fa-solid fa-gear"></i> Configuración</a></li>
                 </ul>
             </nav>
@@ -42,6 +43,7 @@
             </footer>
         </aside>
 
+        <!-- CONTENIDO PRINCIPAL -->
         <main class="contenido-centro">
             
             <header class="bloque-encabezado">
@@ -49,14 +51,16 @@
                 <p class="subtitulo-pagina">Controla la visualización interactiva y el modelado de señas a través de flujos multimodales de datos.</p>
             </header>
 
-            <section class="flujo-vertical-avatar">
+            <!-- DISTRIBUCIÓN EN 2 COLUMNAS LADO A LADO -->
+            <section class="flujo-horizontal-avatar">
                 
+                <!-- COLUMNA IZQUIERDA: VISOR DE AVATAR -->
                 <article class="tarjeta-modulo bordo-verde">
                     <header class="cabecera-tarjeta-interna">
                         <span class="icono-modulo-wrapper">🤖</span>
                         <section class="info-modulo">
                             <h3>Visor de Modelado LSC</h3>
-                            <p>Monitorea la ejecución cinemática y el movimiento de manos del muñequito virtual en tiempo real.</p>
+                            <p>Monitorea la ejecución cinemática y el movimiento del muñequito virtual.</p>
                         </section>
                     </header>
 
@@ -73,12 +77,13 @@
                     </section>
                 </article>
 
+                <!-- COLUMNA DERECHA: INYECCIÓN DE SEÑALES Y CANALES -->
                 <article class="tarjeta-modulo bordo-azul">
                     <header class="cabecera-tarjeta-interna">
                         <span class="icono-modulo-wrapper">📥</span>
                         <section class="info-modulo">
                             <h3>Inyección de Señales</h3>
-                            <p>Selecciona un canal de datos aislado para transmitir información al Avatar.</p>
+                            <p>Selecciona un canal de datos para transmitir información al Avatar.</p>
                         </section>
                     </header>
 
@@ -88,24 +93,24 @@
                             <legend class="titulo-canal-interno"><i class="fa-solid fa-keyboard"></i> Canal A: Entrada de Texto</legend>
                             <p class="descripcion-canal-ux">Traduce caracteres directamente en movimientos cinemáticos.</p>
                             <section class="contenedor-control-lineal">
-                                <input type="text" id="input-texto-avatar" placeholder="Escribe un concepto aquí (Ej: Hola, Gracias...)...">
-                                <button type="submit" class="btn-operativo-modulo btn-confirmar">Enviar Texto</button>
+                                <input type="text" id="input-texto-avatar" placeholder="Escribe un concepto (Ej: Hola, Gracias)...">
+                                <button type="submit" class="btn-operativo-modulo btn-confirmar">Enviar</button>
                             </section>
                         </fieldset>
 
                         <fieldset class="seccion-canal-entrada">
-                            <legend class="titulo-canal-interno"><i class="fa-solid fa-microphone"></i> Canal B: Captura de Audio Ambiental</legend>
-                            <p class="descripcion-canal-ux">Sincroniza el micrófono periférico para convertir ondas sonoras en señas.</p>
+                            <legend class="titulo-canal-interno"><i class="fa-solid fa-microphone"></i> Canal B: Captura de Audio</legend>
+                            <p class="descripcion-canal-ux">Sincroniza el micrófono para convertir ondas sonoras en señas.</p>
                             <button type="button" class="btn-periferico-accion-expandido" id="btn-audio-avatar">
                                 <i class="fa-solid fa-play"></i> Activar Reconocimiento de Voz
-                    </button>
+                            </button>
                         </fieldset>
 
                         <fieldset class="seccion-canal-entrada">
-                            <legend class="titulo-canal-interno"><i class="fa-solid fa-camera"></i> Canal C: Sensor de Gafas Inteligentes</legend>
-                            <p class="descripcion-canal-ux">Vincula la señal de video por USB para auditar la traducción gestual en tiempo real.</p>
+                            <legend class="titulo-canal-interno"><i class="fa-solid fa-camera"></i> Canal C: Sensor de Gafas</legend>
+                            <p class="descripcion-canal-ux">Vincula la señal de video para auditar traducción en vivo.</p>
                             <button type="button" class="btn-periferico-accion-expandido" id="btn-video-avatar">
-                                <i class="fa-solid fa-link"></i> Vincular Streaming de Video (Gafas)
+                                <i class="fa-solid fa-link"></i> Vincular Streaming de Video
                             </button>
                         </fieldset>
 
@@ -117,7 +122,7 @@
 
     </section>
 
-    <script>
+    <!-- Lógica trasladada a js/common.js y js/operator.js. <script>
         document.addEventListener("DOMContentLoaded", function () {
             const botonHamburguesa = document.getElementById("comp-hamburguesa");
             const menuLateral = document.querySelector(".menu-lado");
@@ -201,6 +206,8 @@
                 document.body.classList.add('tema-claro');
             }
         });
-    </script>
+    </script> -->
+    <script src="../js/common.js"></script>
+    <script src="../js/operator.js"></script>
 </body>
 </html>
