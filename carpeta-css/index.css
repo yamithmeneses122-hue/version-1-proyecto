@@ -1955,4 +1955,105 @@ body{
     }
 }
 
+/* =========================================================
+   ESTILOS DEL INDEX
+   Botones y paneles públicos
+   ========================================================= */
 
+.btn-publico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+    padding: .75rem 1.25rem;
+
+    border-radius: 14px;
+
+    color: #fff;
+    text-decoration: none;
+
+    border: 1px solid rgba(255, 255, 255, .18);
+
+    background: rgba(255, 255, 255, .06);
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease;
+}
+
+.btn-publico.primario {
+    border: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00ccff,
+            #099dcb
+        );
+}
+
+.btn-publico:hover {
+    transform: translateY(-2px);
+
+    border-color: #00ccff;
+}
+
+
+/* =========================================================
+   PANEL DE DESCARGA
+   ========================================================= */
+
+.download-panel {
+    max-width: 1000px;
+
+    margin: 0 auto 5rem;
+
+    padding: 2rem;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 1.5rem;
+
+    border:
+        1px solid
+        rgba(0, 204, 255, .4);
+
+    border-radius: 24px;
+
+    background:
+        rgba(0, 204, 255, .08);
+
+    color: #fff;
+}
+
+
+
+
+@media screen and (max-width: 900px) {
+
+    .download-panel {
+        margin:
+            0 1.5rem 3rem;
+    }
+
+}
+
+
+@media screen and (max-width: 600px) {
+
+    .btn-publico {
+        width: 100%;
+    }
+
+    .download-panel {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+}

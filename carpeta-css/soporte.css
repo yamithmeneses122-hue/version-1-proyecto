@@ -1,0 +1,854 @@
+/* ==========================================================================
+   SIGNA-TECH APP
+   soporte.css
+   CSS exclusivo de soporte.html
+   ========================================================================== */
+
+
+/* ==========================================================================
+   CONFIGURACIÓN GENERAL
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Montserrat", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(0, 204, 255, .12),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            rgb(12, 18, 22),
+            rgb(20, 27, 31)
+        );
+
+    color: white;
+
+    overflow-x: hidden;
+}
+
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+
+.nav-body {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        1rem
+        5rem;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 10;
+
+    background-color:
+        rgba(23, 28, 30, .65);
+
+    backdrop-filter: blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, .05);
+}
+
+.nav-body-section {
+    display: flex;
+
+    align-items: center;
+
+    gap: 1rem;
+}
+
+.nav-body-section-article1 {
+    width: 70px;
+    height: 70px;
+}
+
+.nav-body-section-article1-img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, .08);
+
+    box-shadow:
+        0 10px 25px
+        rgba(0, 0, 0, .25);
+}
+
+.nav-body-section-article2 h1 {
+    color: white;
+
+    font-size: 1.3rem;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+/* ==========================================================================
+   BOTONES NAVBAR
+   ========================================================================== */
+
+.nav-body-section-button {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 2rem;
+}
+
+.nav-body-section-button-iniciar-sesion {
+    text-decoration: none;
+
+    color: #d9d9d9;
+
+    font-weight: 500;
+
+    transition: .3s ease;
+}
+
+.nav-body-section-button-iniciar-sesion:hover {
+    color: #00CCFF;
+}
+
+.nav-body-section-button-comienza {
+    text-decoration: none;
+}
+
+.nav-body-section-button-comienza-button {
+    width: 180px;
+    height: 55px;
+
+    border: none;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00CCFF,
+            #099DCB
+        );
+
+    color: white;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .35s ease;
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 204, 255, .25);
+}
+
+.nav-body-section-button-comienza-button:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 20px 40px
+        rgba(0, 204, 255, .35);
+}
+
+
+/* ==========================================================================
+   CONTENIDO PRINCIPAL
+   ========================================================================== */
+
+.public-main {
+    max-width: 1600px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    padding-top: 7rem;
+}
+
+
+/* ==========================================================================
+   HERO DE SOPORTE
+   ========================================================================== */
+
+.support-hero {
+    padding:
+        8rem
+        5rem
+        4rem;
+
+    text-align: center;
+
+    color: #fff;
+}
+
+.support-hero h1 {
+    font-size:
+        clamp(
+            2.2rem,
+            6vw,
+            4.6rem
+        );
+
+    margin:
+        0 auto 1rem;
+
+    max-width: 950px;
+
+    line-height: 1.1;
+}
+
+.support-hero p {
+    color: #c7d0d9;
+
+    font-size:
+        clamp(
+            1rem,
+            2.2vw,
+            1.2rem
+        );
+
+    line-height: 1.75;
+
+    max-width: 760px;
+
+    margin: auto;
+}
+
+
+/* ==========================================================================
+   SECCIONES DE SOPORTE
+   ========================================================================== */
+
+.support-section {
+    padding:
+        2rem
+        5rem
+        5rem;
+
+    color: #fff;
+}
+
+.support-section h2 {
+    font-size:
+        clamp(
+            1.7rem,
+            4vw,
+            2.5rem
+        );
+
+    text-align: center;
+
+    margin-bottom: 2rem;
+}
+
+
+/* ==========================================================================
+   GRID DE SOPORTE
+   ========================================================================== */
+
+.support-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 1.25rem;
+
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+
+/* ==========================================================================
+   TARJETAS DE SOPORTE
+   ========================================================================== */
+
+.support-card {
+    padding: 1.5rem;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, .1);
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, .04);
+
+    color: #c7d0d9;
+
+    line-height: 1.65;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.support-card:hover {
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(0, 204, 255, .4);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, .2);
+}
+
+.support-card h3 {
+    color: #fff;
+
+    margin-top: 0;
+}
+
+.support-card p {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================================================
+   FORMULARIO
+   ========================================================================== */
+
+.support-form {
+    max-width: 680px;
+
+    margin: auto;
+
+    display: grid;
+
+    gap: 1rem;
+}
+
+.support-form input,
+.support-form textarea {
+    width: 100%;
+
+    padding: .9rem;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, .2);
+
+    border-radius: 10px;
+
+    background:
+        rgba(0, 0, 0, .2);
+
+    color: #fff;
+
+    outline: none;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.support-form input::placeholder,
+.support-form textarea::placeholder {
+    color:
+        rgba(255, 255, 255, .55);
+}
+
+.support-form input:focus,
+.support-form textarea:focus {
+    border-color:
+        #00CCFF;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(0, 204, 255, .10);
+}
+
+.support-form textarea {
+    min-height: 150px;
+
+    resize: vertical;
+}
+
+
+/* ==========================================================================
+   BOTÓN DEL FORMULARIO
+   ========================================================================== */
+
+.btn-publico {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding:
+        .75rem
+        1.25rem;
+
+    border-radius: 14px;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, .18);
+
+    background:
+        rgba(255, 255, 255, .06);
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease;
+}
+
+.btn-publico.primario {
+    border: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00ccff,
+            #099dcb
+        );
+}
+
+.btn-publico:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        #00ccff;
+}
+
+
+/* ==========================================================================
+   TABLET - 768px a 991px
+   ========================================================================== */
+
+@media screen and (min-width: 768px)
+       and (max-width: 991px) {
+
+    .nav-body {
+        padding:
+            1.2rem
+            2rem;
+    }
+
+    .nav-body-section-article1 {
+        width: 5vw;
+        height: 4vh;
+    }
+
+    .nav-body-section-article2 h1 {
+        font-size: 1.2rem;
+    }
+
+    .nav-body-section-button {
+        gap: 1rem;
+    }
+
+    .nav-body-section-button-iniciar-sesion {
+        font-size: .85rem;
+    }
+
+    .nav-body-section-button-comienza-button {
+        width: 18vw;
+
+        height: 3.6vh;
+
+        border-radius: 1.5vw;
+
+        font-size: .88rem;
+    }
+
+    .support-hero {
+        padding:
+            5rem
+            2rem
+            3rem;
+    }
+
+    .support-section {
+        padding:
+            2rem
+            2rem
+            4rem;
+    }
+
+    .support-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+}
+
+
+/* ==========================================================================
+   MÓVILES - 256px a 767px
+   ========================================================================== */
+
+@media screen and (min-width: 256px)
+       and (max-width: 767px) {
+
+    .nav-body {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        padding:
+            1rem
+            1.5rem;
+    }
+
+    .nav-body-section {
+        gap: .8rem;
+    }
+
+    .nav-body-section-article1 {
+        width: 50px;
+        height: 50px;
+    }
+
+    .nav-body-section-article2 h1 {
+        font-size: .9rem;
+    }
+
+    .nav-body-section-button {
+        gap: 1rem;
+    }
+
+    .nav-body-section-button-iniciar-sesion {
+        font-size: .8rem;
+    }
+
+    .nav-body-section-button-comienza-button {
+        width: 120px;
+
+        height: 42px;
+
+        border-radius: 14px;
+
+        font-size: .75rem;
+    }
+
+    .support-hero {
+        padding:
+            4rem
+            1.5rem
+            2rem;
+    }
+
+    .support-hero h1 {
+        font-size:
+            clamp(
+                2.2rem,
+                9vw,
+                3.5rem
+            );
+    }
+
+    .support-hero p {
+        font-size: 1rem;
+    }
+
+    .support-section {
+        padding:
+            2rem
+            1.5rem
+            4rem;
+    }
+
+    .support-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .support-card {
+        padding: 1.5rem;
+    }
+
+    .support-form {
+        width: 100%;
+    }
+
+    .btn-publico {
+        width: 100%;
+    }
+}
+
+
+/* ==========================================================================
+   PANTALLAS MUY PEQUEÑAS - MENOS DE 255px
+   ========================================================================== */
+
+@media screen and (max-width: 255px) {
+
+    .nav-body {
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 1rem;
+
+        padding: 1rem;
+
+        position: relative;
+    }
+
+    .nav-body-section {
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: .8rem;
+    }
+
+    .nav-body-section-article1 {
+        width: 45px;
+        height: 45px;
+    }
+
+    .nav-body-section-article2 h1 {
+        font-size: .75rem;
+
+        text-align: center;
+    }
+
+    .nav-body-section-button {
+        display: flex;
+
+        flex-direction: column;
+
+        width: 100%;
+
+        gap: .8rem;
+    }
+
+    .nav-body-section-button-iniciar-sesion {
+        text-align: center;
+
+        font-size: .7rem;
+    }
+
+    .nav-body-section-button-comienza {
+        width: 100%;
+    }
+
+    .nav-body-section-button-comienza-button {
+        width: 100%;
+
+        height: 40px;
+
+        border-radius: 12px;
+
+        font-size: .7rem;
+    }
+
+    .public-main {
+        padding-top: 2rem;
+    }
+
+    .support-hero {
+        padding:
+            2rem
+            1rem;
+    }
+
+    .support-hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .support-hero p {
+        font-size: .7rem;
+
+        line-height: 1.6;
+    }
+
+    .support-section {
+        padding:
+            1rem;
+    }
+
+    .support-section h2 {
+        font-size: 1.2rem;
+    }
+
+    .support-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .support-card {
+        padding: 1rem;
+
+        border-radius: 18px;
+
+        font-size: .7rem;
+    }
+
+    .support-card h3 {
+        font-size: .9rem;
+    }
+
+    .support-form {
+        gap: .7rem;
+    }
+
+    .support-form input,
+    .support-form textarea {
+        padding: .7rem;
+
+        font-size: .7rem;
+    }
+
+    .support-form textarea {
+        min-height: 120px;
+    }
+
+    .btn-publico {
+        min-height: 40px;
+
+        padding:
+            .6rem;
+
+        font-size: .7rem;
+    }
+}
+
+
+/* ==========================================================================
+   PANTALLAS GRANDES - 1400px EN ADELANTE
+   ========================================================================== */
+
+@media screen and (min-width: 1400px) {
+
+    .nav-body {
+        padding:
+            1rem
+            5rem;
+    }
+
+    .support-hero {
+        padding:
+            9rem
+            5rem
+            4rem;
+    }
+
+    .support-section {
+        padding:
+            2rem
+            5rem
+            5rem;
+    }
+
+    .support-grid {
+        gap: 1.5rem;
+    }
+
+    .support-card {
+        padding: 2rem;
+
+        border-radius: 24px;
+    }
+}
+
+
+/* ==========================================================================
+   ACCESIBILIDAD
+   ========================================================================== */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline:
+        2px solid
+        #00CCFF;
+
+    outline-offset: 3px;
+}
+
+
+/* ==========================================================================
+   REDUCIR MOVIMIENTO
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: .01ms !important;
+    }
+}
