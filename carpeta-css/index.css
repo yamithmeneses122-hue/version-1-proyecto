@@ -119,6 +119,18 @@ body{
         font-size: .85rem;
         color: #d9d9d9;
     }
+    .ul1{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    }
+
+    .ul1_li1{
+    text-decoration: none;
+    color: white;
+    font-size: .80rem;
+    }
 
     .nav-body-section-button-comienza-button {
         width: 18vw;
@@ -499,6 +511,24 @@ body{
         box-shadow: 0 20px 40px rgba(0,204,255,.35);
     }
 
+    .ul1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.8rem;
+    list-style: none;
+}
+
+.ul1_li1{
+    text-decoration: none;
+    color: #fff;
+    font-size: .95rem;
+    transition: .3s;
+}
+
+.ul1_li1:hover{
+    color: #00CCFF;
+}
     .section-body {
         display: flex;
         align-items: center;
@@ -1086,6 +1116,9 @@ body{
         font-size: .7rem;
         color: #c7d0d9;
     }
+    .ul1{
+    display: none;
+}
 
 }
 /* PUNTO DE QUIEBRE S - TABLETS Y MÓVILES */
@@ -1461,7 +1494,9 @@ body{
         font-size: .9rem;
         color: #c7d0d9;
     }
-
+    .ul1{
+    display: none;
+}
 }
 /*pantallas grandotas */
 /*pantallas grandotas */
@@ -1549,7 +1584,19 @@ body{
         font-weight: 700;
         letter-spacing: 1px;
     }
+    .ul1{
+        display: flex;
+        list-style: none;
+        gap: 2rem;
 
+        
+    }
+    .ul1_li1{
+        color: #fff;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+    
     .nav-body-section-button{
         display: flex;
         align-items: center;
