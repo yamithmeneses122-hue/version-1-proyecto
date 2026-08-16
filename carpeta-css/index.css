@@ -19,6 +19,15 @@ body{
     );
     overflow-x: hidden;
 }
+    .ul1_li11{
+        color: #fff;
+        text-decoration: none;
+        font-size: 1rem;
+        
+    }
+    .footer-article1-ul-li{
+        margin-top: 3rem;
+    }
 /* PUNTO DE QUIEBRE M - TABLETS GRANDES */
 /* PUNTO DE QUIEBRE M - TABLETS GRANDES */
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -406,6 +415,7 @@ body{
 
         color: #c7d0d9;
     }
+
 
 }
 
@@ -1596,6 +1606,7 @@ body{
         text-decoration: none;
         font-size: 1rem;
     }
+
     
     .nav-body-section-button{
         display: flex;
@@ -1953,7 +1964,12 @@ body{
     .footer-article1-ul-li:hover{
         color: #00CCFF;
     }
+    .footer-article1-ul-li-a{
+        
+    }
 }
+
+
 
 /* =========================================================
    ESTILOS DEL INDEX
@@ -1972,6 +1988,7 @@ body{
 
     color: #fff;
     text-decoration: none;
+    margin-left:1rem;
 
     border: 1px solid rgba(255, 255, 255, .18);
 
@@ -1995,7 +2012,7 @@ body{
 
 .btn-publico:hover {
     transform: translateY(-2px);
-
+    box-shadow: 0px 0px 26px 2px #00CCFF;
     border-color: #00ccff;
 }
 
