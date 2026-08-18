@@ -22,3 +22,50 @@
         document.querySelectorAll(".paginacion button").forEach((button) => button.addEventListener("click", () => { document.querySelectorAll(".paginacion button").forEach((item) => item.classList.remove("activa", "pagina-activa")); button.classList.add("activa", "pagina-activa"); }));
     });
 }());
+//link para que carguen segun el tipo de necesidad 
+var cajita1 = document.querySelector(".cajita-numero")
+cajita1.addEventListener("click",()=>{
+    window.location.href = "5-historial.html";
+})
+var cajita4 = document.querySelector(".cajita-numero1")
+cajita4.addEventListener("click",()=>{
+    window.location.href = "4-corregir.html";
+})
+var cajita2 = document.querySelector(".cajita-numero.green")
+cajita2.addEventListener("click",()=>{
+    window.location.href = "5-historial.html";
+})
+var cajita3 = document.querySelector(".cajita-numero.rojo")
+cajita3.addEventListener("click",()=>{
+    window.location.href = "2-validar.html";
+})
+
+//animacion para las la grafica de barras
+document.addEventListener("DOMContentLoaded", function () {
+
+    const barras = document.querySelectorAll(".barra");
+
+    barras.forEach(function (barra, indice) {
+
+        // Guardar la altura original de cada barra
+        const altura = getComputedStyle(barra).height;
+
+        // Estado inicial
+        barra.style.height = "0px";
+        barra.style.opacity = "0";
+        barra.style.transform = "scaleY(0)";
+
+        // Animar una por una
+        setTimeout(function () {
+
+            barra.style.height = altura;
+            barra.style.opacity = "1";
+            barra.style.transform = "scaleY(1)";
+
+        }, indice * 150);
+
+    });
+
+});
+
+
