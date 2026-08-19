@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprobación de Señas | SIGNA-TECH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/aprobacion_senas.css">
+</head>
+<body>
+
+    <section class="pagina-completa">
+        
+        <aside class="menu-lado" id="menu-lateral">
+            <button class="btn-hamburguesa" id="comp-hamburguesa" aria-label="abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <h2 class="logo">SIGNA-TECH</h2>
+            <p class="rol">PANEL ADMINISTRADOR</p>
+            
+            <nav class="navegacion-scroll">
+                <ul>
+                    <li><a href="inicio.html"><i class="fa-solid fa-chart-pie"></i> Panel Global</a></li>
+                    <li><a href="gestion_de_usuarios.html"><i class="fa-solid fa-users-gear"></i> Gestión Usuarios</a></li>
+                    <li><a href="gestion_de_roles.html"><i class="fa-solid fa-shield-halved"></i> Roles y Permisos</a></li>
+                    <li><a href="diccionario.html"><i class="fa-solid fa-book-bookmark"></i> Diccionario LSC</a></li>
+                    <li><a href="aprobacion_senas.html" class="active"><i class="fa-solid fa-circle-check"></i> Aprobación Señas</a></li>
+                    <li><a href="configuracion.html"><i class="fa-solid fa-sliders"></i> Configuración</a></li>
+                </ul>
+            </nav>
+            
+            <footer class="caja-logout-fija">
+                <a href="../login/home.html" id="btn-logout" title="Cerrar Sesión" onclick="return confirm('¿Desea cerrar la sesión?')">
+                    <i class="fa-solid fa-door-open"></i> Cerrar Sesión
+                </a>
+            </footer>
+        </aside>
+
+        <main class="contenido-centro">
+            
+            <header class="bloque-encabezado">
+                <h1 class="titulo-pagina">Módulo de Auditoría Léxica</h1>
+                <p class="subtitulo-pagina">Cola de moderación en tiempo real. Examina y valida las nuevas incorporaciones o correcciones propuestas por los intérpretes.</p>
+            </header>
+
+            <section class="flujo-vertical-config">
+                
+                <article class="tarjeta-modulo bordo-azul">
+                    <header class="cabecera-tarjeta-interna">
+                        <span class="icono-modulo-wrapper"><i class="fa-solid fa-hands-asl-interpreting"></i></span>
+                        <section class="info-modulo">
+                            <h3>Nuevas Señas Solicitadas</h3>
+                            <p>Términos inéditos cargados que requieren autorización para ingresar al diccionario oficial de la IA.</p>
+                        </section>
+                    </header>
+
+                    <ul class="lista-gestion-cuentas" id="lista-nuevas-señas">
+                        
+                        <li class="item-solicitud-aprobacion" id="solicitud-n1">
+                            <section class="meta-datos-usuario">
+                                <strong class="nombre-usuario-tabla">Concepto: Servidor <span>(Nuevo)</span></strong>
+                                <span class="correo-usuario-tabla"><strong>Gesticulación:</strong> Manos paralelas moviéndose verticalmente simulando racks físicos rígidos.</span>
+                                <nav class="badges-usuario-fila">
+                                    <span class="badge-rol-usuario tecnico">Técnico</span>
+                                    <span class="badge-autor-interprete">Enviado por: Katherin Gómez</span>
+                                </nav>
+                            </section>
+                            <footer class="acciones-aprobacion-bloque">
+                                <button type="button" class="btn-operativo-modulo btn-confirmar" onclick="gestionarFilaAprobacion('n1', 'Aprobado')"><i class="fa-solid fa-check"></i> Aprobar</button>
+                                <button type="button" class="btn-operativo-modulo btn-rechazar" onclick="gestionarFilaAprobacion('n1', 'Rechazado')"><i class="fa-solid fa-xmark"></i> Rechazar</button>
+                            </footer>
+                        </li>
+
+                    </ul>
+                </article>
+
+                <article class="tarjeta-modulo bordo-verde">
+                    <header class="cabecera-tarjeta-interna">
+                        <span class="icono-modulo-wrapper"><i class="fa-solid fa-scale-balanced"></i></span>
+                        <section class="info-modulo">
+                            <h3>Correcciones y Mutaciones Léxicas</h3>
+                            <p>Modificaciones sugeridas a conceptos ya públicos para optimizar la precisión lingüística de la comunidad sorda.</p>
+                        </section>
+                    </header>
+
+                    <ul class="lista-gestion-cuentas" id="lista-correcciones-señas">
+                        
+                        <li class="item-solicitud-aprobacion c-columna" id="solicitud-c1">
+                            <header class="encabezado-fila-interna">
+                                <strong class="nombre-usuario-tabla">Concepto en Mutación: Software <i class="fa-solid fa-laptop"></i></strong>
+                                <span class="badge-autor-interprete">Propuesto por: Dayanna Popayán</span>
+                            </header>
+
+                            <section class="contenedor-comparador-lexico">
+                                <article class="caja-estado-lexico anterior">
+                                    <strong class="titulo-estado-caja">Definición Actual Activa</strong>
+                                    <p>Configuración de la mano dominante en forma de pinza tocando la sien de manera repetitiva.</p>
+                                </article>
+
+                                <article class="caja-estado-lexico propuesta">
+                                    <strong class="titulo-estado-caja">Modificación Propuesta</strong>
+                                    <p>Palma extendida no dominante actúa como pantalla, mientras la mano dominante dibuja líneas lógicas fluidas descendentes.</p>
+                                </article>
+                            </section>
+
+                            <footer class="acciones-aprobacion-bloque extendido">
+                                <button type="button" class="btn-operativo-modulo btn-confirmar" onclick="gestionarFilaAprobacion('c1', 'Mutación Aplicada')"><i class="fa-solid fa-code-merge"></i> Validar e Intercambiar</button>
+                                <button type="button" class="btn-operativo-modulo btn-rechazar" onclick="gestionarFilaAprobacion('c1', 'Mutación Rechazada')"><i class="fa-solid fa-trash-arrow-up"></i> Descartar Sugerencia</button>
+                            </footer>
+                        </li>
+
+                    </ul>
+                </article>
+
+            </section>
+        </main>
+
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const botonHamburguesa = document.getElementById("comp-hamburguesa");
+            const menuLateral = document.getElementById("menu-lateral");
+
+            if (botonHamburguesa && menuLateral) {
+                botonHamburguesa.addEventListener("click", function (e) {
+                    e.stopPropagation(); 
+                    menuLateral.classList.toggle("menu-abierto"); 
+                    botonHamburguesa.classList.toggle("X-activa"); 
+                });
+                document.addEventListener("click", function (evento) {
+                    if (!menuLateral.contains(evento.target) && !botonHamburguesa.contains(evento.target)) {
+                        menuLateral.classList.remove("menu-abierto");
+                        botonHamburguesa.classList.remove("X-activa");
+                    }
+                });
+            }
+
+            const temaGuardado = localStorage.getItem('tema-sinatex-glasses') || 'oscuro';
+            if (temaGuardado === 'claro') {
+                document.body.classList.add('tema-claro');
+            }
+        });
+
+        // Control de estado de la moderación (Historia de Usuario)
+        function gestionarFilaAprobacion(id, estadoDestino) {
+            if (confirm(`¿Confirmar acción administrativa: "${estadoDestino}" para este registro?`)) {
+                const fila = document.getElementById("solicitud-" + id);
+                fila.style.transform = "scale(0.95)";
+                fila.style.opacity = "0";
+                setTimeout(() => {
+                    fila.remove();
+                    alert(`[AUDITORÍA]: Operación ejecutada con éxito. Estado: ${estadoDestino}`);
+                }, 300);
+            }
+        }
+    </script>
+</body>
+</html>
