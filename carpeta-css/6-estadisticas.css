@@ -193,7 +193,12 @@ body {
     border-radius:15px;
     padding:20px;
     box-shadow: 5px 2px 5px var(--azul);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px var(--azul);
 }
 
 .card h2{
@@ -244,6 +249,15 @@ body {
     box-shadow: 5px 2px 5px var(--azul);
 }
 
+.grafica{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grafica:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px var(--azul);
+}
+
 .barras{
     height:180px;
     display:flex;
@@ -257,6 +271,25 @@ body {
     width:35px;
     background:#2563eb;
     border-radius:5px 5px 0 0;
+    animation: cargarBarras 1.2s ease;
+}
+
+.grafica:hover .barras li{
+    animation: cargarBarras 1.2s ease;
+}
+
+@keyframes cargarBarras{
+    from{
+        transform: scaleY(0);
+        transform-origin: bottom;
+        opacity: 0.3;
+    }
+
+    to{
+        transform: scaleY(1);
+        transform-origin: bottom;
+        opacity: 1;
+    }
 }
 
 .meses{
@@ -289,6 +322,36 @@ body {
     left:45px;
 }
 
+.categorias{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.categorias:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px var(--azul);
+}
+
+.circulo{
+    transition: transform 0.3s ease;
+    animation: cargarGrafico 1.5s ease;
+}
+
+.categorias:hover .circulo{
+    animation: cargarGrafico 1.2s ease;
+}
+
+@keyframes cargarGrafico{
+    from{
+        transform: rotate(-90deg) scale(0.7);
+        opacity: 0.4;
+    }
+
+    to{
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
 .categorias ul{
     list-style:none;
 }
@@ -304,6 +367,7 @@ body {
 }
 
 .barra{
+    width:100%;
     height:20px;
     display:flex;
     border-radius:20px;
@@ -313,17 +377,32 @@ body {
 
 .activa{
     width:82%;
+    height:100%;
     background:#16a34a;
+    flex-shrink:0;
 }
 
 .revision{
     width:9%;
+    height:100%;
     background:#f59e0b;
+    flex-shrink:0;
 }
 
 .inactiva{
     width:9%;
+    height:100%;
     background:#7c3aed;
+    flex-shrink:0;
+}
+
+.estado{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.estado:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px var(--azul);
 }
 
 .porcentajes{
@@ -335,6 +414,15 @@ body {
     font-size:22px;
 }
 
+.actividad{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.actividad:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px var(--azul);
+}
+
 /* RESPONSIVE */
 @media screen and (min-width:1466px){
     .titulo-pagina {
@@ -342,14 +430,44 @@ body {
     }
 }
 
-/* RESPONSIVE */
+.resumen{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resumen:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px var(--azul);
+}
+/* ANIMACIÓN DE CARGA DEL PORCENTAJE DE ESTADO */
+
+.estado .barra{
+    animation: cargarEstado 1.2s ease;
+}
+
+.estado:hover .barra{
+    animation: cargarEstado 1.2s ease;
+}
+
+@keyframes cargarEstado{
+    from{
+        transform: scaleX(0);
+        transform-origin: left;
+        opacity: 0.3;
+    }
+
+    to{
+        transform: scaleX(1);
+        transform-origin: left;
+        opacity: 1;
+    }
+}
 @media screen and (min-width:1001px) and (max-width:1465px){
     
     .titulo-pagina {
         font-size: 120%;
     }
 }
-/* RESPONSIVE */
+
 @media screen and (min-width:768px) and (max-width:1000px){
     .boton-menu {
         display: block;
@@ -377,7 +495,7 @@ body {
     }
 }
 
-/* RESPONSIVE TABLET */
+
 @media screen and (min-width:256px) and (max-width:767px) {
 
     .boton-menu {
@@ -406,7 +524,6 @@ body {
     }  
 }
 
-/* RESPONSIVE CELULAR */
 @media screen and (min-width:0px) and (max-width:255px) {
     
     .boton-menu {
