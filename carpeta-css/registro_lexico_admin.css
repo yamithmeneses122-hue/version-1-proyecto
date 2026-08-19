@@ -1,0 +1,222 @@
+/* VARIABLES Y RESETEO GENERAL */
+
+:root {
+    --fondo-negro: #000000;
+    --fondo-card: #010409;
+    --azul-neon: #00CCFF;         
+    --verde-esmeralda: #00f7ff;   
+    --blanco-puro: #FFFFFF;
+    --gris-hielo: #F4F7F9;
+    --borde: #1d212a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+.cuerpo-pagina {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--fondo-negro);
+    color: var(--blanco-puro);
+}
+
+/*BARRA LATERAL (ASIDE) */
+.barra-lateral {
+    width: 280px;
+    background-color: var(--fondo-card);
+    border-right: 1px solid var(--borde);
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 0;
+}
+
+.encabezado-logo {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.titulo-principal {
+    color: var(--azul-neon);
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.subtitulo-panel {
+    color: var(--verde-esmeralda);
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    margin-top: 0.3rem;
+    font-weight: 700;
+}
+
+.navegacion-menu {
+    flex-grow: 1;
+}
+
+.lista-menu {
+    list-style: none;
+}
+
+.enlace-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 2.5rem;
+    color: var(--gris-hielo);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.enlace-menu:hover, .item-menu.activo .enlace-menu {
+    background-color: rgba(0, 204, 255, 0.05);
+    color: var(--azul-neon);
+    border-right: 3px solid var(--azul-neon);
+}
+
+.pie-lateral {
+    padding: 0 2rem;
+}
+
+.boton-salir {
+    background: transparent;
+    border: 1px solid var(--borde);
+    color: var(--azul-neon);
+    padding: 0.8rem;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    font-weight: 700;
+}
+
+/*ÁREA DE TRABAJO (MAIN) */
+.contenido-central {
+    flex-grow: 1;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.texto-informativo {
+    color: #8892b0;
+    font-size: 1.05rem;
+}
+
+/* PANTALLA DE RESUMEN (ÉXITO)*/
+.seccion-resumen {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.tarjeta-resumen {
+    background-color: var(--fondo-card);
+    border: 1px solid var(--azul-neon);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 0 15px rgba(0, 204, 255, 0.1);
+    width: 100%;
+    max-width: 850px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.cabecera-resumen {
+    text-align: center;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 1rem;
+}
+
+.titulo-resumen {
+    color: var(--azul-neon);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Sección circular central */
+.estado-registro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.subtitulo-estado {
+    color: var(--gris-hielo);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contenedor-icono-exito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* El círculo con brillo esmeralda */
+.contenedor-icono-exito i {
+    font-size: 3rem;
+    color: var(--verde-esmeralda);
+    background-color: rgba(0, 247, 255, 0.05);
+    border: 2px solid var(--verde-esmeralda);
+    border-radius: 50%;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0, 247, 255, 0.2), inset 0 0 15px rgba(0, 247, 255, 0.1);
+}
+
+.texto-exito {
+    color: var(--gris-hielo);
+    font-size: 1rem;
+}
+
+/* Lista de datos con Grid semántico */
+.detalle-registro {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.titulo-datos {
+    color: var(--azul-neon);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.lista-detalles {
+    display: grid;
+    grid-template-columns: minmax(250px, max-content) 1fr;
+    row-gap: 1rem;
+    column-gap: 2rem;
+    align-items: baseline;
+}
+
+.etiqueta-dato {
+    color: var(--azul-neon);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.valor-dato {
+    color: var(--blanco-puro);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Detalle especial para el ícono dentro del texto */
+.valor-dato i {
+    color: var(--verde-esmeralda);
+    margin-right: 0.5rem;
+}
