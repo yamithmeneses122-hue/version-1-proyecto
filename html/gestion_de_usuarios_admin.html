@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios | SIGNA-TECH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/gestion_de_usuarios.css">
+</head>
+<body>
+
+    <section class="pagina-completa">
+        
+        <aside class="menu-lado" id="menu-lateral">
+            <button class="btn-hamburguesa" id="comp-hamburguesa" aria-label="abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <h2 class="logo">SIGNA-TECH</h2>
+            <p class="rol">PANEL ADMINISTRADOR</p>
+            
+            <nav class="navegacion-scroll">
+                <ul>
+                    <li><a href="inicio.html"><i class="fa-solid fa-chart-pie"></i> Panel Global</a></li>
+                    <li><a href="gestion_de_usuarios.html" class="active"><i class="fa-solid fa-users-gear"></i> Gestión Usuarios</a></li>
+                    <li><a href="gestion_de_roles.html"><i class="fa-solid fa-shield-halved"></i> Roles y Permisos</a></li>
+                    <li><a href="diccionario.html"><i class="fa-solid fa-book-bookmark"></i> Diccionario LSC</a></li>
+                    <li><a href="aprobacion_senas.html"><i class="fa-solid fa-circle-check"></i> Aprobación Señas</a></li>
+                    <li><a href="configuracion.html"><i class="fa-solid fa-sliders"></i> Configuración</a></li>
+                </ul>
+            </nav>
+            
+            <footer class="caja-logout-fija">
+                <a href="../login/home.html" id="btn-logout" title="Cerrar Sesión" onclick="return confirm('¿Desea cerrar la sesión?')">
+                    <i class="fa-solid fa-door-open"></i> Cerrar Sesión
+                </a>
+            </footer>
+        </aside>
+
+        <main class="contenido-centro">
+            
+            <header class="bloque-encabezado">
+                <h1 class="titulo-pagina">Gestión de Usuarios</h1>
+                <p class="subtitulo-pagina">Controla el ciclo de vida de las cuentas de operadores e intérpretes. Registra, modifica privilegios o suspende accesos.</p>
+            </header>
+
+            <section class="flujo-vertical-config">
+                
+                <article class="tarjeta-modulo bordo-azul">
+                    <header class="cabecera-tarjeta-interna">
+                        <span class="icono-modulo-wrapper"><i class="fa-solid fa-user-plus"></i></span>
+                        <section class="info-modulo">
+                            <h3>Registrar Nuevo Usuario</h3>
+                            <p>Asigna credenciales iniciales de autenticación y vincula el rol operativo correspondiente.</p>
+                        </section>
+                    </header>
+
+                    <form class="formulario-interno-config" id="form-registro-usuario">
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Nombre Completo</legend>
+                            <input type="text" placeholder="Ej: Juan Carlos Pérez Popayán" required>
+                        </fieldset>
+                        
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Correo Electrónico Corporativo</legend>
+                            <input type="email" placeholder="usuario@signatech.com" required>
+                        </fieldset>
+
+                        <section class="subgrupo-formulario-fila">
+                            <fieldset class="grupo-formulario-interno">
+                                <legend>Asignación de Rol</legend>
+                                <select required>
+                                    <option value="" disabled selected>Seleccione un rol...</option>
+                                    <option value="operador">Operador de Sistema</option>
+                                    <option value="interprete">Intérprete LSC</option>
+                                    <option value="administrador">Administrador Global</option>
+                                </select>
+                            </fieldset>
+                            <fieldset class="grupo-formulario-interno">
+                                <legend>Número Celular</legend>
+                                <input type="tel" placeholder="3XXXXXXXXX" required>
+                            </fieldset>
+                        </section>
+
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Contraseña Temporal de Acceso</legend>
+                            <input type="password" placeholder="Asigne una clave provisional segura" required>
+                        </fieldset>
+
+                        <button type="submit" class="btn-operativo-modulo btn-confirmar">Crear Cuenta de Usuario</button>
+                    </form>
+                </article>
+
+                <article class="tarjeta-modulo bordo-verde">
+                    <header class="cabecera-tarjeta-interna">
+                        <span class="icono-modulo-wrapper"><i class="fa-solid fa-users-gear"></i></span>
+                        <section class="info-modulo">
+                            <h3>Cuentas y Estados del Sistema</h3>
+                            <p>Modifica la información de perfiles guardados o altera su estado lógico de acceso (Activo / Inactivo).</p>
+                        </section>
+                    </header>
+
+                    <fieldset class="grupo-formulario-interno" style="margin-bottom: 10px;">
+                        <legend>Filtrar por Nombre o Correo</legend>
+                        <input type="text" id="buscador-usuarios" placeholder="Buscar cuenta activa...">
+                    </fieldset>
+
+                    <ul class="lista-gestion-cuentas" id="contenedor-usuarios-lista">
+                        
+                        <li class="item-usuario-registro" data-nombre="katherin gomez">
+                            <section class="meta-datos-usuario">
+                                <strong class="nombre-usuario-tabla">Charlie Satizabal</strong>
+                                <span class="correo-usuario-tabla">c.satizabal@signatech.com</span>
+                                <nav class="badges-usuario-fila">
+                                    <span class="badge-rol-usuario interprete">Intérprete LSC</span>
+                                    <span class="badge-estado-usuario activo" id="estado-u1">Activo</span>
+                                </nav>
+                            </section>
+                            <footer class="acciones-usuario-bloque">
+                                <button type="button" class="btn-accion-cuenta editar" onclick="alert('Abriendo consola de edición para Katherin...')"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button type="button" class="btn-accion-cuenta desactivar" id="btn-toggle-u1" onclick="toggleEstadoUsuario('u1')"><i class="fa-solid fa-user-slash"></i></button>
+                            </footer>
+                        </li>
+
+                        <li class="item-usuario-registro" data-nombre="dayanna popayan">
+                            <section class="meta-datos-usuario">
+                                <strong class="nombre-usuario-tabla">Edwin Silva</strong>
+                                <span class="correo-usuario-tabla">e.silva@signatech.com</span>
+                                <nav class="badges-usuario-fila">
+                                    <span class="badge-rol-usuario operador">Operador</span>
+                                    <span class="badge-estado-usuario activo" id="estado-u2">Activo</span>
+                                </nav>
+                            </section>
+                            <footer class="acciones-usuario-bloque">
+                                <button type="button" class="btn-accion-cuenta editar" onclick="alert('Abriendo consola de edición para Dayanna...')"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button type="button" class="btn-accion-cuenta desactivar" id="btn-toggle-u2" onclick="toggleEstadoUsuario('u2')"><i class="fa-solid fa-user-slash"></i></button>
+                            </footer>
+                        </li>
+
+                        <li class="item-usuario-registro cuenta-desactivada" data-nombre="andrea silva">
+                            <section class="meta-datos-usuario">
+                                <strong class="nombre-usuario-tabla">Andrea Silva</strong>
+                                <span class="correo-usuario-tabla">a.silva@signatech.com</span>
+                                <nav class="badges-usuario-fila">
+                                    <span class="badge-rol-usuario operador">Operador</span>
+                                    <span class="badge-estado-usuario inactivo" id="estado-u3">Inactivo</span>
+                                </nav>
+                            </section>
+                            <footer class="acciones-usuario-bloque">
+                                <button type="button" class="btn-accion-cuenta editar" onclick="alert('Abriendo consola de edición para Andrea...')"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button type="button" class="btn-accion-cuenta activar" id="btn-toggle-u3" onclick="toggleEstadoUsuario('u3')"><i class="fa-solid fa-user-check"></i></button>
+                            </footer>
+                        </li>
+
+                    </ul>
+                </article>
+
+            </section>
+        </main>
+
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const botonHamburguesa = document.getElementById("comp-hamburguesa");
+            const menuLateral = document.getElementById("menu-lateral");
+
+            if (botonHamburguesa && menuLateral) {
+                botonHamburguesa.addEventListener("click", function (e) {
+                    e.stopPropagation(); 
+                    menuLateral.classList.toggle("menu-abierto"); 
+                    botonHamburguesa.classList.toggle("X-activa"); 
+                });
+                document.addEventListener("click", function (evento) {
+                    if (!menuLateral.contains(evento.target) && !botonHamburguesa.contains(evento.target)) {
+                        menuLateral.classList.remove("menu-abierto");
+                        botonHamburguesa.classList.remove("X-activa");
+                    }
+                });
+            }
+
+            // Lógica funcional de búsqueda UX en vivo
+            const buscador = document.getElementById("buscador-usuarios");
+            const cuentas = document.querySelectorAll(".item-usuario-registro");
+
+            buscador.addEventListener("input", function () {
+                const query = buscador.value.toLowerCase().trim();
+                cuentas.forEach(function (cuenta) {
+                    const nombre = cuenta.getAttribute("data-nombre");
+                    if (nombre.includes(query)) {
+                        cuenta.style.display = "flex";
+                    } else {
+                        cuenta.style.display = "none";
+                    }
+                });
+            });
+
+            // Alerta de simulación de registro
+            document.getElementById("form-registro-usuario").addEventListener("submit", function (e) {
+                e.preventDefault();
+                alert("¡Usuario registrado con éxito en los servidores de SIGNA-TECH!");
+                this.reset();
+            });
+
+            // Persistencia del tema Claro / Oscuro
+            const temaGuardado = localStorage.getItem('tema-sinatex-glasses') || 'oscuro';
+            if (temaGuardado === 'claro') {
+                document.body.classList.add('tema-claro');
+            }
+        });
+
+        // Función dinámica para desactivar / activar cuentas (Historias de Usuario)
+        function toggleEstadoUsuario(id) {
+            const labelEstado = document.getElementById("estado-" + id);
+            const botonToggle = document.getElementById("btn-toggle-" + id);
+            const itemLista = labelEstado.closest(".item-usuario-registro");
+
+            if (labelEstado.classList.contains("activo")) {
+                if (confirm("¿Está seguro de suspender y desactivar los privilegios de esta cuenta?")) {
+                    labelEstado.textContent = "Inactivo";
+                    labelEstado.classList.remove("activo");
+                    labelEstado.classList.add("inactivo");
+                    itemLista.classList.add("cuenta-desactivada");
+                    botonToggle.innerHTML = '<i class="fa-solid fa-user-check"></i>';
+                    botonToggle.className = "btn-accion-cuenta activar";
+                }
+            } else {
+                labelEstado.textContent = "Activo";
+                labelEstado.classList.remove("inactivo"); // Aquí corregí el "inactive" en inglés que tenías, mi rey
+                labelEstado.classList.add("activo");
+                itemLista.classList.remove("cuenta-desactivada");
+                botonToggle.innerHTML = '<i class="fa-solid fa-user-slash"></i>';
+                botonToggle.className = "btn-accion-cuenta desactivar";
+            }
+        }
+    </script>
+</body>
+</html>

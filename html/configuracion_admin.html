@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración Sistema | SIGNA-TECH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/administrador/css/configuracion.css">
+</head>
+<body>
+
+    <section class="pagina-completa">
+        
+        <aside class="menu-lado" id="menu-lateral">
+            <button class="btn-hamburguesa" id="comp-hamburguesa" aria-label="abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <h2 class="logo">SIGNA-TECH</h2>
+            <p class="rol">PANEL ADMINISTRADOR</p>
+            
+            <nav class="navegacion-scroll">
+                <ul>
+                    <li><a href="inicio.html"><i class="fa-solid fa-chart-pie"></i> Panel Global</a></li>
+                    <li><a href="gestion_de_usuarios.html"><i class="fa-solid fa-users-gear"></i> Gestión Usuarios</a></li>
+                    <li><a href="gestion_de_roles.html"><i class="fa-solid fa-shield-halved"></i> Roles y Permisos</a></li>
+                    <li><a href="diccionario.html"><i class="fa-solid fa-book-bookmark"></i> Diccionario LSC</a></li>
+                    <li><a href="aprobacion_senas.html"><i class="fa-solid fa-circle-check"></i> Aprobación Señas</a></li>
+                    <li><a href="configuracion.html" class="active"><i class="fa-solid fa-sliders"></i> Configuración</a></li>
+                </ul>
+            </nav>
+            
+            <footer class="caja-logout-fija">
+                <a href="../login/home.html" id="btn-logout" title="Cerrar Sesión" onclick="return confirm('¿Desea cerrar la sesión?')">
+                    <i class="fa-solid fa-door-open"></i> Cerrar Sesión
+                </a>
+            </footer>
+        </aside>
+
+        <main class="contenido-centro">
+            
+            <header class="bloque-encabezado">
+                <h1 class="titulo-pagina">Configuración del Sistema</h1>
+                <p class="subtitulo-pagina">Gobernanza técnica. Administra los respaldos de las bases de datos, los canales de la IA y el mantenimiento del servidor local.</p>
+            </header>
+
+            <section class="flujo-vertical-config">
+                
+                <article class="tarjeta-modulo bordo-azul">
+                    <header class="cabecera-tarjeta-interna">
+                        <span class="icono-modulo-wrapper"><i class="fa-solid fa-database"></i></span>
+                        <section class="info-modulo">
+                            <h3>Copias de Seguridad y Restauración</h3>
+                            <p>Exporta el estado lógico del diccionario LSC y el padrón de usuarios para salvaguardar la información.</p>
+                        </section>
+                    </header>
+
+                    <form class="formulario-interno-config" onsubmit="event.preventDefault();">
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Formato de Salida Estándar</legend>
+                            <select id="select-backup-format">
+                                <option value="sql" selected>Estructura SQL Pura (*.sql Dumps)</option>
+                                <option value="json">Esquema de Intercambio JSON (*.json)</option>
+                            </select>
+                        </fieldset>
+
+                        <footer class="bloque-controles-internos" style="margin-top: 5px;">
+                            <button type="button" class="btn-operativo-modulo btn-confirmar" onclick="alert('Generando volcado de base de datos... Descarga iniciada.')">
+                                <i class="fa-solid fa-download"></i> Exportar Base de Datos
+                            </button>
+                            
+                            <!-- Botón de cargar archivos (Restaurar) conectado al input oculto -->
+                            <button type="button" class="btn-operativo-modulo btn-secundario" onclick="document.getElementById('selector-archivos-respaldo').click();">
+                                <i class="fa-solid fa-upload"></i> Restaurar Respaldo
+                            </button>
+                            
+                            <!-- Etiqueta semántica HTML5 para abrir el explorador del sistema (Oculta visualmente) -->
+                            <input type="file" id="selector-archivos-respaldo" accept=".sql, .json" style="display: none;">
+                        </footer>
+                    </form>
+                </article>
+
+                <article class="tarjeta-modulo bordo-verde">
+                    <header class="cabecera-tarjeta-interna">
+                        <span class="icono-modulo-wrapper"><i class="fa-solid fa-brain"></i></span>
+                        <section class="info-modulo">
+                            <h3>Conectividad Core e Inteligencia Artificial</h3>
+                            <p>Calibra los límites de comunicación del traductor en la nube y la latencia del sensor de las gafas.</p>
+                        </section>
+                    </header>
+
+                    <form class="formulario-interno-config" onsubmit="event.preventDefault(); alert('¡Parámetros de enlace actualizados con éxito!');">
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Servidor del Modelo de Redes Neuronales</legend>
+                            <select>
+                                <option value="local" selected>Modelo de Interpretación Local (Gafas Integrado)</option>
+                                <option value="cloud-api">API de Alta Precisión (Streaming en la Nube)</option>
+                            </select>
+                        </fieldset>
+
+                        <section class="subgrupo-formulario-fila">
+                            <fieldset class="grupo-formulario-interno">
+                                <legend>Tiempo Límite de Respuesta (Timeout)</legend>
+                                <select>
+                                    <option value="1500">Ultra Rápido (1500ms)</option>
+                                    <option value="3000" selected>Estándar Tolerante (3000ms)</option>
+                                </select>
+                            </fieldset>
+                            <fieldset class="grupo-formulario-interno">
+                                <legend>Tasa de Refresco de Cuadros (FPS)</legend>
+                                <select>
+                                    <option value="30">Muestreo Estándar (30 FPS)</option>
+                                    <option value="60" selected>Muestreo Cinemático Fluido (60 FPS)</option>
+                                </select>
+                            </fieldset>
+                        </section>
+
+                        <button type="submit" class="btn-operativo-modulo btn-confirmar">Actualizar Canales de IA</button>
+                    </form>
+                </article>
+
+                <article class="tarjeta-modulo bordo-azul">
+                    <header class="cabecera-tarjeta-interna">
+                        <span class="icono-modulo-wrapper"><i class="fa-solid fa-circle-half-stroke"></i></span>
+                        <section class="info-modulo">
+                            <h3>Mantenimiento Técnico e Interfaz</h3>
+                            <p>Purga los registros acumulados del servidor y personaliza la apariencia visual del panel administrativo.</p>
+                        </section>
+                    </header>
+
+                    <form id="form-selector-tema" class="formulario-interno-config">
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Modo de Contraste y Apariencia</legend>
+                            <select id="selector-tema-global">
+                                <option value="oscuro">Modo Oscuro (Predeterminado Cyberpunk)</option>
+                                <option value="claro">Modo Claro (Contraste Alto)</option>
+                            </select>
+                        </fieldset>
+
+                        <footer class="bloque-controles-internos" style="margin-top: 5px;">
+                            <button type="submit" class="btn-operativo-modulo btn-confirmar">Guardar Apariencia</button>
+                            <button type="button" class="btn-operativo-modulo btn-danger" onclick="if(confirm('¿Desea purgar los buffers de almacenamiento temporal? Esta acción no altera el diccionario.')) alert('¡Buffer y memoria caché del servidor limpiados!');">
+                                <i class="fa-solid fa-broom"></i> Limpiar Caché de Logs
+                            </button>
+                        </footer>
+                    </form>
+                </article>
+
+            </section>
+        </main>
+
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const botonHamburguesa = document.getElementById("comp-hamburguesa");
+            const menuLateral = document.getElementById("menu-lateral");
+
+            if (botonHamburguesa && menuLateral) {
+                botonHamburguesa.addEventListener("click", function (e) {
+                    e.stopPropagation(); 
+                    menuLateral.classList.toggle("menu-abierto"); 
+                    botonHamburguesa.classList.toggle("X-activa"); 
+                });
+                document.addEventListener("click", function (evento) {
+                    if (!menuLateral.contains(evento.target) && !botonHamburguesa.contains(evento.target)) {
+                        menuLateral.classList.remove("menu-abierto");
+                        botonHamburguesa.classList.remove("X-activa");
+                    }
+                });
+            }
+
+            // Lógica e inyección de tema persistente
+            const selectorTema = document.getElementById("selector-tema-global");
+            const formTema = document.getElementById("form-selector-tema");
+            
+            const temaGuardado = localStorage.getItem('tema-sinatex-glasses') || 'oscuro';
+            selectorTema.value = temaGuardado;
+            if (temaGuardado === 'claro') {
+                document.body.classList.add('tema-claro');
+            }
+
+            formTema.addEventListener("submit", function (e) {
+                e.preventDefault();
+                const temaSeleccionado = selectorTema.value;
+                localStorage.setItem('tema-sinatex-glasses', temaSeleccionado);
+                
+                if (temaSeleccionado === 'claro') {
+                    document.body.classList.add('tema-claro');
+                } else {
+                    document.body.classList.remove('tema-claro');
+                }
+                alert("¡Configuración del sistema guardada con éxito!");
+            });
+        });
+    </script>
+</body>
+</html>

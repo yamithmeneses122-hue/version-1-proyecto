@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración Diccionario | SIGNA-TECH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/administrador/css/diccionario_adm.css">
+</head>
+<body>
+
+    <section class="pagina-completa">
+        
+        <aside class="menu-lado" id="menu-lateral">
+            <button class="btn-hamburguesa" id="comp-hamburguesa" aria-label="abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <h2 class="logo">SIGNA-TECH</h2>
+            <p class="rol">PANEL ADMINISTRADOR</p>
+            
+            <nav class="navegacion-scroll">
+                <ul>
+                    <li><a href="inicio.html"><i class="fa-solid fa-chart-pie"></i> Panel Global</a></li>
+                    <li><a href="gestion_de_usuarios.html"><i class="fa-solid fa-users-gear"></i> Gestión Usuarios</a></li>
+                    <li><a href="gestion_de_roles.html"><i class="fa-solid fa-shield-halved"></i> Roles y Permisos</a></li>
+                    <li><a href="diccionario.html" class="active"><i class="fa-solid fa-book-bookmark"></i> Diccionario LSC</a></li>
+                    <li><a href="aprobacion_senas.html"><i class="fa-solid fa-circle-check"></i> Aprobación Señas</a></li>
+                    <li><a href="configuracion.html"><i class="fa-solid fa-sliders"></i> Configuración</a></li>
+                </ul>
+            </nav>
+            
+            <footer class="caja-logout-fija">
+                <a href="../login/home.html" id="btn-logout" title="Cerrar Sesión" onclick="return confirm('¿Desea cerrar la sesión?')">
+                    <i class="fa-solid fa-door-open"></i> Cerrar Sesión
+                </a>
+            </footer>
+        </aside>
+
+        <main class="contenido-centro">
+            
+            <header class="bloque-encabezado">
+                <h1 class="titulo-pagina">Consola del Diccionario LSC</h1>
+                <p class="subtitulo-pagina">Módulo CRUD avanzado. Inserta nuevos términos léxicos, altera traducciones o elimina registros de la base de datos central.</p>
+            </header>
+
+            <section class="flujo-vertical-config">
+                
+                <article class="tarjeta-modulo bordo-azul">
+                    <header class="cabecera-tarjeta-interna">
+                        <span class="icono-modulo-wrapper"><i class="fa-solid fa-file-pen"></i></span>
+                        <section class="info-modulo">
+                            <h3 id="titulo-form-crud">Agregar Nueva Seña Oficial</h3>
+                            <p id="desc-form-crud">Inserta un nuevo concepto semántico indexado para el motor de traducción de las gafas.</p>
+                        </section>
+                    </header>
+
+                    <form class="formulario-interno-config" id="form-diccionario-crud">
+                        <input type="hidden" id="seña-id-edicion" value="">
+
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Concepto / Palabra Clave</legend>
+                            <input type="text" id="input-palabra" placeholder="Ej: Hardware, Computador, Hola..." required>
+                        </fieldset>
+
+                        <section class="subgrupo-formulario-fila">
+                            <fieldset class="grupo-formulario-interno">
+                                <legend>Categoría Léxica</legend>
+                                <select id="input-categoria" required>
+                                    <option value="" disabled selected>Seleccione categoría...</option>
+                                    <option value="Saludos">Saludos</option>
+                                    <option value="Cortesía">Cortesía</option>
+                                    <option value="Técnico">Técnico</option>
+                                    <option value="Social">Social</option>
+                                </select>
+                            </fieldset>
+                            <fieldset class="grupo-formulario-interno">
+                                <legend>Símbolo Representativo (Ícono)</legend>
+                                <input type="text" id="input-icono" placeholder="Ej: fa-solid fa-laptop" required>
+                            </fieldset>
+                        </section>
+
+                        <fieldset class="grupo-formulario-interno">
+                            <legend>Descripción Técnica de la Gesticulación</legend>
+                            <input type="text" id="input-descripcion" placeholder="Detalla de forma exacta el movimiento cinemático de las manos..." required>
+                        </fieldset>
+
+                        <footer class="bloque-controles-internos" style="margin-top: 5px;">
+                            <button type="submit" class="btn-operativo-modulo btn-confirmar" id="btn-submit-crud">Cargar Registro Léxico</button>
+                            <button type="button" class="btn-operativo-modulo btn-cancelar" id="btn-cancelar-edicion" style="display: none;" onclick="cancelarModoEdicion()">Cancelar Edición</button>
+                        </footer>
+                    </form>
+                </article>
+
+                <article class="tarjeta-modulo bordo-verde">
+                    <header class="cabecera-tarjeta-interna">
+                        <span class="icono-modulo-wrapper"><i class="fa-solid fa-book"></i></span>
+                        <section class="info-modulo">
+                            <h3>Glosario de Control Técnico</h3>
+                            <p>Consulta el catálogo guardado, visualiza sus estructuras o ejecuta eliminaciones físicas del repositorio.</p>
+                        </section>
+                    </header>
+
+                    <fieldset class="grupo-formulario-interno" style="margin-bottom: 5px;">
+                        <legend>Buscador de Consultas Rápidas</legend>
+                        <input type="text" id="buscador-diccionario" placeholder="Filtrar señas por concepto operativo...">
+                    </fieldset>
+
+                    <ul class="lista-gestion-cuentas" id="contenedor-señas-lista">
+                        
+                        <!-- Adaptados los atributos data-emoji a data-icono y las figuras -->
+                        <li class="item-seña-registro" data-palabra="hola" data-categoria="Saludos" data-descripcion="Seña de saludo inicial. Se realiza pasando la palma extendida cerca de la frente con un movimiento hacia afuera." data-icono="fa-solid fa-hand" id="registro-s1">
+                            <figure class="preview-seña-avatar"><i class="fa-solid fa-hand"></i></figure>
+                            <section class="meta-datos-usuario">
+                                <strong class="nombre-usuario-tabla">Concepto: Hola</strong>
+                                <span class="correo-usuario-tabla">Se realiza pasando la palma extendida cerca de la frente.</span>
+                                <nav class="badges-usuario-fila">
+                                    <span class="badge-rol-usuario saludo">Saludos</span>
+                                </nav>
+                            </section>
+                            <footer class="acciones-usuario-bloque">
+                                <button type="button" class="btn-accion-cuenta consultar" title="Visualizar Seña" onclick="consultarSeña('s1')"><i class="fa-solid fa-eye"></i></button>
+                                <button type="button" class="btn-accion-cuenta editar" title="Editar Seña" onclick="cargarSeñaAEdicion('s1')"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button type="button" class="btn-accion-cuenta eliminar" title="Eliminar Seña" onclick="eliminarSeña('s1')"><i class="fa-solid fa-trash-can"></i></button>
+                            </footer>
+                        </li>
+
+                        <li class="item-seña-registro" data-palabra="hardware" data-categoria="Técnico" data-descripcion="Término técnico de informática. Se representa configurando ambas manos en forma de pinza simulando estructuras físicas rígidas." data-icono="fa-solid fa-laptop" id="registro-s2">
+                            <figure class="preview-seña-avatar"><i class="fa-solid fa-laptop"></i></figure>
+                            <section class="meta-datos-usuario">
+                                <strong class="nombre-usuario-tabla">Concepto: Hardware</strong>
+                                <span class="correo-usuario-tabla">Configuración de ambas manos en forma de pinza simulando estructuras rígidas.</span>
+                                <nav class="badges-usuario-fila">
+                                    <span class="badge-rol-usuario tecnico">Técnico</span>
+                                </nav>
+                            </section>
+                            <footer class="acciones-usuario-bloque">
+                                <button type="button" class="btn-accion-cuenta consultar" title="Visualizar Seña" onclick="consultarSeña('s2')"><i class="fa-solid fa-eye"></i></button>
+                                <button type="button" class="btn-accion-cuenta editar" title="Editar Seña" onclick="cargarSeñaAEdicion('s2')"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button type="button" class="btn-accion-cuenta eliminar" title="Eliminar Seña" onclick="eliminarSeña('s2')"><i class="fa-solid fa-trash-can"></i></button>
+                            </footer>
+                        </li>
+
+                        <li class="item-seña-registro" data-palabra="gracias" data-categoria="Cortesía" data-descripcion="Expresión de cortesía. Se ejecuta apoyando las yemas de los dedos en los labios y extendiendo la mano hacia el receptor." data-icono="fa-solid fa-hands-praying" id="registro-s3">
+                            <figure class="preview-seña-avatar"><i class="fa-solid fa-hands-praying"></i></figure>
+                            <section class="meta-datos-usuario">
+                                <strong class="nombre-usuario-tabla">Concepto: Gracias</strong>
+                                <span class="correo-usuario-tabla">Se ejecuta apoyando las yemas de los dedos en los labios.</span>
+                                <nav class="badges-usuario-fila">
+                                    <span class="badge-rol-usuario cortesia">Cortesía</span>
+                                </nav>
+                            </section>
+                            <footer class="acciones-usuario-bloque">
+                                <button type="button" class="btn-accion-cuenta consultar" title="Visualizar Seña" onclick="consultarSeña('s3')"><i class="fa-solid fa-eye"></i></button>
+                                <button type="button" class="btn-accion-cuenta editar" title="Editar Seña" onclick="cargarSeñaAEdicion('s3')"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button type="button" class="btn-accion-cuenta eliminar" title="Eliminar Seña" onclick="eliminarSeña('s3')"><i class="fa-solid fa-trash-can"></i></button>
+                            </footer>
+                        </li>
+
+                    </ul>
+                </article>
+
+            </section>
+        </main>
+
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const botonHamburguesa = document.getElementById("comp-hamburguesa");
+            const menuLateral = document.getElementById("menu-lateral");
+
+            if (botonHamburguesa && menuLateral) {
+                botonHamburguesa.addEventListener("click", function (e) {
+                    e.stopPropagation(); 
+                    menuLateral.classList.toggle("menu-abierto"); 
+                    botonHamburguesa.classList.toggle("X-activa"); 
+                });
+                document.addEventListener("click", function (evento) {
+                    if (!menuLateral.contains(evento.target) && !botonHamburguesa.contains(evento.target)) {
+                        menuLateral.classList.remove("menu-abierto");
+                        botonHamburguesa.classList.remove("X-activa");
+                    }
+                });
+            }
+
+            // Lógica funcional del buscador de consultas (Read)
+            const buscador = document.getElementById("buscador-diccionario");
+            const señas = document.querySelectorAll(".item-seña-registro");
+
+            buscador.addEventListener("input", function () {
+                const query = buscador.value.toLowerCase().trim();
+                señas.forEach(function (seña) {
+                    const palabra = seña.getAttribute("data-palabra");
+                    if (palabra.includes(query)) {
+                        seña.style.display = "flex";
+                    } else {
+                        seña.style.display = "none";
+                    }
+                });
+            });
+
+            // Lógica de inserción / mutación (Create/Update)
+            document.getElementById("form-diccionario-crud").addEventListener("submit", function (e) {
+                e.preventDefault();
+                const idEdicion = document.getElementById("seña-id-edicion").value;
+                if (idEdicion !== "") {
+                    alert("¡Seña oficial modificada y re-indexada con éxito en la base de datos!");
+                    cancelarModoEdicion();
+                } else {
+                    alert("¡Nueva seña registrada correctamente en el catálogo global!");
+                }
+                this.reset();
+            });
+
+            // Persistencia del tema Claro / Oscuro
+            const temaGuardado = localStorage.getItem('tema-sinatex-glasses') || 'oscuro';
+            if (temaGuardado === 'claro') {
+                document.body.classList.add('tema-claro');
+            }
+        });
+
+        // Consulta específica (Consultar/Visualizar)
+        function consultarSeña(id) {
+            const item = document.getElementById("registro-" + id);
+            const palabra = item.getAttribute("data-palabra").toUpperCase();
+            const descripcion = item.getAttribute("data-descripcion");
+            // Se quitaron los emojis de la alerta
+            alert(`[TELEMETRÍA LSC]\n\nConcepto: ${palabra}\n\nGesticulación: ${descripcion}`);
+        }
+
+        // Carga de metadatos al formulario (Editar)
+        function cargarSeñaAEdicion(id) {
+            const item = document.getElementById("registro-" + id);
+            
+            document.getElementById("seña-id-edicion").value = id;
+            document.getElementById("input-palabra").value = item.getAttribute("data-palabra");
+            document.getElementById("input-categoria").value = item.getAttribute("data-categoria");
+            // Cambiado de data-emoji a data-icono
+            document.getElementById("input-icono").value = item.getAttribute("data-icono");
+            document.getElementById("input-descripcion").value = item.getAttribute("data-descripcion");
+
+            document.getElementById("titulo-form-crud").textContent = "Modificar Seña Guardada";
+            document.getElementById("desc-form-crud").textContent = "Estás editando los parámetros lógicos de un registro existente.";
+            document.getElementById("btn-submit-crud").textContent = "Actualizar Cambios Léxicos";
+            document.getElementById("btn-cancelar-edicion").style.display = "inline-block";
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function cancelarModoEdicion() {
+            document.getElementById("seña-id-edicion").value = "";
+            document.getElementById("form-diccionario-crud").reset();
+            document.getElementById("titulo-form-crud").textContent = "Agregar Nueva Seña Oficial";
+            document.getElementById("desc-form-crud").textContent = "Inserta un nuevo concepto semántico indexado para el motor de traducción de las gafas.";
+            document.getElementById("btn-submit-crud").textContent = "Cargar Registro Léxico";
+            document.getElementById("btn-cancelar-edicion").style.display = "none";
+        }
+
+        // Destrucción lógica (Eliminar)
+        function eliminarSeña(id) {
+            // Se quitó el emoji de la alerta
+            if (confirm("ATENCIÓN ADMINISTRADOR\n\n¿Está absolutamente seguro de eliminar físicamente esta seña del diccionario? Esta acción descalibrará la interpretación de la IA en tiempo real.")) {
+                const item = document.getElementById("registro-" + id);
+                item.remove();
+                alert("Registro eliminado permanentemente del servidor central.");
+            }
+        }
+    </script>
+</body>
+</html>
