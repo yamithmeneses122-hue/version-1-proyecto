@@ -1,7 +1,3 @@
-/* JavaScript exclusivo de index.html */
-
-"use strict";
-
 document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
