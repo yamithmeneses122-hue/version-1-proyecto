@@ -1,6 +1,4 @@
-/* JavaScript exclusivo de soporte.html */
 
-"use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
 

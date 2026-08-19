@@ -1,6 +1,4 @@
-/* JavaScript exclusivo de producto.html */
 
-"use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
 
