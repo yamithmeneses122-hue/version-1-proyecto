@@ -175,61 +175,555 @@ body {
     color: var(--texto-suave);
 }
 
-/* CAJITAS */
+/* =========================================================
+   CAJITAS DE ESTADÍSTICAS
+   ========================================================= */
+
 .fila-cajitas {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+
     margin-bottom: 25px;
 }
 
+
+/* CAJA PRINCIPAL */
 .cajita-numero {
-    background-color: var(--fondo-menu);
-    padding: 20px;
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(22, 27, 34, .98),
+            rgba(1, 4, 9, .98)
+        );
+
+    padding: 22px;
+
+    border-radius: 14px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, .07);
+
+    border-left:
+        4px solid
+        var(--azul);
+
+    min-height: 145px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, .25);
+}
+
+
+/* EFECTO DE LUZ */
+
+.cajita-numero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+
+    top: -60px;
+    right: -40px;
+
+    background:
+        rgba(0, 204, 255, .12);
+
+    border-radius: 50%;
+
+    filter: blur(25px);
+
+    transition:
+        transform .4s ease,
+        opacity .4s ease;
+}
+
+
+/* LÍNEA SUPERIOR */
+
+.cajita-numero::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 20px;
+
+    width: 45px;
+    height: 2px;
+
+    background: var(--azul);
+
     border-radius: 10px;
-    border-left: 4px solid var(--azul);
-    flex: 1 1 180px;
-    box-shadow: 5px 2px 5px var(--azul);
 
+    box-shadow:
+        0 0 10px
+        rgba(0, 204, 255, .7);
 }
 
-.cajita-numero.green {
-    border-left-color: var(--verde);
+
+/* HOVER */
+
+.cajita-numero:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(0, 204, 255, .35);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, .45),
+
+        0 0 20px
+        rgba(0, 204, 255, .10);
 }
 
-.cajita-numero.rojo {
-    border-left-color: var(--rojo);
+.cajita-numero:hover::before {
+
+    transform:
+        scale(1.5);
+
+    opacity: .8;
 }
+
+
+/* TÍTULO */
 
 .cajita-numero h3 {
+
+    position: relative;
+
+    z-index: 1;
+
     font-size: 75%;
-    color: var(--texto-suave);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
+
+    color:
+        var(--texto-suave);
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        .7px;
+
+    margin-bottom:
+        10px;
 }
-.cajita-numero h6{
-    color: rgb(172, 171, 171);
-}
+
+
+/* NÚMERO */
+
 .cajita-numero span {
-    font-size: 180%;
-    font-weight: 700;
-    color: var(--texto);
-    display: block;
+
+    position: relative;
+
+    z-index: 1;
+
+    font-size:
+        clamp(
+            1.8rem,
+            3vw,
+            2.3rem
+        );
+
+    font-weight:
+        700;
+
+    color:
+        var(--texto);
+
+    display:
+        block;
+
+    line-height:
+        1;
+
+    transition:
+        transform .3s ease;
 }
 
-.variacion-positiva {
-    display: block;
-    font-size: 70%;
-    color: var(--verde);
-    margin-top: 6px;
+
+/* MOVIMIENTO DEL NÚMERO */
+
+.cajita-numero:hover span {
+
+    transform:
+        scale(1.05);
 }
 
-.variacion-negativa {
-    display: block;
-    font-size: 70%;
-    color: var(--rojo);
-    margin-top: 6px;
+
+/* DESCRIPCIÓN */
+
+.cajita-numero h6 {
+
+    position: relative;
+
+    z-index: 1;
+
+    color:
+        rgb(172, 171, 171);
+
+    font-size:
+        70%;
+
+    font-weight:
+        400;
+
+    margin-top:
+        10px;
+}
+
+
+
+.cajita-numero1 {
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(22, 27, 34, .98),
+            rgba(1, 4, 9, .98)
+        );
+
+    padding: 22px;
+
+    border-radius: 14px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, .07);
+
+    border-left:
+        4px solid
+        var(--azul);
+
+    min-height: 145px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, .25);
+}
+
+
+/* EFECTO DE LUZ */
+
+.cajita-numero1::before {
+    content: "";
+
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+
+    top: -60px;
+    right: -40px;
+
+    background:
+        rgba(0, 204, 255, .12);
+
+    border-radius: 50%;
+
+    filter: blur(25px);
+
+    transition:
+        transform .4s ease,
+        opacity .4s ease;
+}
+
+
+/* LÍNEA SUPERIOR */
+
+.cajita-numero1::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 20px;
+
+    width: 45px;
+    height: 2px;
+
+    background: var(--azul);
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 10px
+        rgba(0, 204, 255, .7);
+}
+
+
+/* HOVER */
+
+.cajita-numero1:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(0, 204, 255, .35);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, .45),
+
+        0 0 20px
+        rgba(0, 204, 255, .10);
+}
+
+.cajita-numero1:hover::before {
+
+    transform:
+        scale(1.5);
+
+    opacity: .8;
+}
+
+
+/* TÍTULO */
+
+.cajita-numero1 h3 {
+
+    position: relative;
+
+    z-index: 1;
+
+    font-size: 75%;
+
+    color:
+        var(--texto-suave);
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        .7px;
+
+    margin-bottom:
+        10px;
+}
+
+
+/* NÚMERO */
+
+.cajita-numero1 span {
+
+    position: relative;
+
+    z-index: 1;
+
+    font-size:
+        clamp(
+            1.8rem,
+            3vw,
+            2.3rem
+        );
+
+    font-weight:
+        700;
+
+    color:
+        var(--texto);
+
+    display:
+        block;
+
+    line-height:
+        1;
+
+    transition:
+        transform .3s ease;
+}
+
+
+/* MOVIMIENTO DEL NÚMERO */
+
+.cajita-numero1:hover span {
+
+    transform:
+        scale(1.05);
+}
+
+
+/* DESCRIPCIÓN */
+
+.cajita-numero1 h6 {
+
+    position: relative;
+
+    z-index: 1;
+
+    color:
+        rgb(172, 171, 171);
+
+    font-size:
+        70%;
+
+    font-weight:
+        400;
+
+    margin-top:
+        10px;
+}
+
+
+/* =========================================================
+   CAJITA VERDE
+   ========================================================= */
+
+.cajita-numero.green {
+
+    border-left-color:
+        var(--verde);
+}
+
+.cajita-numero.green::before {
+
+    background:
+        rgba(46, 204, 113, .12);
+}
+
+.cajita-numero.green::after {
+
+    background:
+        var(--verde);
+
+    box-shadow:
+        0 0 10px
+        rgba(46, 204, 113, .7);
+}
+
+.cajita-numero.green:hover {
+
+    border-color:
+        rgba(46, 204, 113, .35);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, .45),
+
+        0 0 20px
+        rgba(46, 204, 113, .10);
+}
+
+
+/* =========================================================
+   CAJITA ROJA
+   ========================================================= */
+
+.cajita-numero.rojo {
+
+    border-left-color:
+        var(--rojo);
+}
+
+.cajita-numero.rojo::before {
+
+    background:
+        rgba(231, 76, 60, .12);
+}
+
+.cajita-numero.rojo::after {
+
+    background:
+        var(--rojo);
+
+    box-shadow:
+        0 0 10px
+        rgba(231, 76, 60, .7);
+}
+
+.cajita-numero.rojo:hover {
+
+    border-color:
+        rgba(231, 76, 60, .35);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, .45),
+
+        0 0 20px
+        rgba(231, 76, 60, .10);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media screen and (max-width: 1100px) {
+
+    .fila-cajitas {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+}
+
+
+@media screen and (max-width: 600px) {
+
+    .fila-cajitas {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 14px;
+
+    }
+
+    .cajita-numero {
+
+        min-height:
+            130px;
+
+        padding:
+            20px;
+
+    }
+
 }
 /* TARJETAS */
 .estadisticas{
@@ -276,144 +770,665 @@ body {
     color: var(--azul);
 }
 /* GRÁFICA DE BARRAS */
+/* =========================================================
+   GRÁFICA DE BARRAS
+   ========================================================= */
 
-.grafica-barras{
-    height: 250px;
-}
+.grafica-barras {
+    position: relative;
 
-.barras{
-    height: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    list-style: none;
-}
+    height: 300px;
 
-.barras li{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
+    padding:
+        25px
+        10px
+        35px;
 
-/* BARRAS */
-
-.barra{
-    width: 35px;
-    background: #3b82f6;
-    border-radius: 8px 8px 0 0;
-}
-
-.enero{
-    height: 80px;
-}
-
-.febrero{
-    height: 110px;
-}
-
-.marzo{
-    height: 140px;
-}
-
-.abril{
-    height: 160px;
-}
-
-.mayo{
-    height: 180px;
-}
-
-.junio{
-    height: 230px;
-}
-
-/* GRÁFICA CIRCULAR */
-
-.grafica-circular{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 20px;
-    height: 250px;
-}
-
-/* CÍRCULO */
-
-.circulo{
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
+    border-radius: 14px;
 
     background:
-    conic-gradient(
-        #3b82f6 0% 55%,
-        #22c55e 55% 85%,
-        #f59e0b 85% 100%
-    );
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, .025),
+            rgba(255, 255, 255, .01)
+        );
 
-    position: relative;
+    overflow: hidden;
 }
 
-/* CENTRO BLANCO */
 
-.circulo::before{
+/* LÍNEAS DE REFERENCIA */
+
+.grafica-barras::before {
     content: "";
 
     position: absolute;
 
-    width: 80px;
-    height: 80px;
+    left: 10px;
+    right: 10px;
+    top: 25px;
+    bottom: 35px;
 
-    background: rgb(0, 0, 0);
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, .08) 0,
+            rgba(255, 255, 255, .08) 1px,
+            transparent 1px,
+            transparent 25%
+        );
+
+    pointer-events: none;
+}
+
+
+/* CONTENEDOR DE BARRAS */
+
+.barras {
+    position: relative;
+
+    z-index: 1;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content:
+        space-around;
+
+    gap: 18px;
+
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+}
+
+
+/* CADA MES */
+
+.barras li {
+    height: 100%;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 9px;
+
+    position: relative;
+}
+
+
+/* NOMBRE DEL MES */
+
+.barras li::after {
+    content: "";
+
+    color:
+        var(--texto-suave);
+
+    font-size: 11px;
+}
+
+
+/* BARRAS */
+
+.barra {
+    position: relative;
+
+    width: min(42px, 70%);
+
+    min-height: 8px;
+
+    border-radius:
+        9px
+        9px
+        3px
+        3px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #00ccff 0%,
+            #099dcb 55%,
+            #087fa3 100%
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(0, 204, 255, .25);
+
+    transform-origin: bottom;
+
+    transition:
+        height .7s ease,
+        transform .3s ease,
+        filter .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* BRILLO INTERNO */
+
+.barra::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 4px;
+    right: 4px;
+
+    height: 3px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, .7);
+
+    box-shadow:
+        0 0 8px
+        rgba(255, 255, 255, .5);
+}
+
+
+/* REFLEJO */
+
+.barra::after {
+    content: "";
+
+    position: absolute;
+
+    top: 8px;
+    left: 6px;
+
+    width: 3px;
+
+    height: 45%;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, .25);
+}
+
+
+/* EFECTO HOVER */
+
+.barras li:hover .barra {
+
+    transform:
+        scaleX(1.12);
+
+    filter:
+        brightness(1.2);
+
+    box-shadow:
+        0 0 20px
+        rgba(0, 204, 255, .45);
+}
+
+
+/* VALOR SOBRE LA BARRA */
+
+.barra::marker {
+    display: none;
+}
+
+
+/* MESES */
+
+.enero {
+    height: 80px;
+}
+
+.febrero {
+    height: 110px;
+}
+
+.marzo {
+    height: 140px;
+}
+
+.abril {
+    height: 160px;
+}
+
+.mayo {
+    height: 180px;
+}
+
+.junio {
+    height: 230px;
+}
+
+
+/* =========================================================
+   ETIQUETAS DE LOS MESES
+   ========================================================= */
+
+.barras li span {
+    color:
+        var(--texto-suave);
+
+    font-size:
+        11px;
+
+    font-weight:
+        500;
+
+    white-space:
+        nowrap;
+
+    transition:
+        color .3s ease,
+        transform .3s ease;
+}
+
+.barras li:hover span {
+    color:
+        var(--azul);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   ANIMACIÓN INICIAL DE LAS BARRAS
+   ========================================================= */
+
+.barra {
+    transition:
+        height .7s ease,
+        transform .7s ease,
+        opacity .7s ease;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media screen and (max-width: 900px) {
+
+    .grafica-barras {
+        height: 270px;
+    }
+
+    .barras {
+        gap: 10px;
+    }
+
+    .barra {
+        width: 32px;
+    }
+
+}
+
+
+@media screen and (max-width: 600px) {
+
+    .grafica-barras {
+        height: 240px;
+
+        padding:
+            20px
+            5px
+            30px;
+    }
+
+    .barras {
+        gap: 5px;
+    }
+
+    .barra {
+        width: 25px;
+    }
+
+    .barras li span {
+        font-size: 9px;
+    }
+
+}
+
+
+@media screen and (max-width: 400px) {
+
+    .grafica-barras {
+        height: 220px;
+
+        overflow-x: auto;
+    }
+
+    .barras {
+        min-width: 330px;
+
+        gap: 8px;
+    }
+
+    .barra {
+        width: 24px;
+    }
+
+}
+
+/* =========================================================
+   GRÁFICA CIRCULAR
+   ========================================================= */
+
+.grafica-circular {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 35px;
+
+    min-height: 280px;
+    padding: 25px;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   CÍRCULO
+   ========================================================= */
+
+.circulo {
+    width: 180px;
+    height: 180px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            #3b82f6 0% 55%,
+            #22c55e 55% 85%,
+            #f59e0b 85% 100%
+        );
+
+    position: relative;
+
+    box-shadow:
+        0 0 20px rgba(59, 130, 246, .15),
+        0 0 35px rgba(34, 197, 94, .08);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* EFECTO AL PASAR EL MOUSE */
+
+.circulo:hover {
+    transform: scale(1.04);
+
+    box-shadow:
+        0 0 25px rgba(59, 130, 246, .25),
+        0 0 45px rgba(34, 197, 94, .12);
+}
+
+
+/* =========================================================
+   CENTRO DEL GRÁFICO
+   ========================================================= */
+
+.circulo::before {
+    content: "";
+
+    position: absolute;
+
+    width: 88px;
+    height: 88px;
+
+    background:
+        #0b0e14;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, .08);
 
     border-radius: 50%;
 
     top: 50%;
     left: 50%;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
+
+    box-shadow:
+        inset 0 0 15px
+        rgba(0, 0, 0, .5);
 }
 
-/* LEYENDA */
 
-.leyenda{
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
+/* =========================================================
+   CÍRCULO INTERIOR DECORATIVO
+   ========================================================= */
 
-.leyenda li{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color:var(--texto-suave);
-    font-size: 15px;
-}
+.circulo::after {
+    content: "";
 
-.leyenda strong{
-    margin-left: auto;
-}
+    position: absolute;
 
-/* COLORES */
-
-.color{
     width: 12px;
     height: 12px;
+
     border-radius: 50%;
+
+    background: #00ccff;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    box-shadow:
+        0 0 12px
+        rgba(0, 204, 255, .8);
 }
 
-.azul{
+
+/* =========================================================
+   LEYENDA
+   ========================================================= */
+
+.leyenda {
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+    margin: 0;
+    padding: 0;
+
+    min-width: 180px;
+}
+
+
+/* CADA ELEMENTO */
+
+.leyenda li {
+    display: grid;
+
+    grid-template-columns:
+        14px 1fr auto;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 12px;
+
+    border-radius: 10px;
+
+    color:
+        var(--texto-suave);
+
+    font-size: 14px;
+
+    background:
+        rgba(255, 255, 255, .025);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, .05);
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease;
+}
+
+
+/* HOVER DE LA LEYENDA */
+
+.leyenda li:hover {
+    transform:
+        translateX(5px);
+
+    background:
+        rgba(255, 255, 255, .06);
+
+    border-color:
+        rgba(0, 204, 255, .25);
+}
+
+
+/* TEXTO */
+
+.leyenda p {
+    margin: 0;
+
+    color:
+        var(--texto);
+
+    font-size: 14px;
+}
+
+
+/* PORCENTAJES */
+
+.leyenda strong {
+    margin-left: 0;
+
+    font-size: 14px;
+
+    color:
+        var(--texto);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   COLORES DE LA LEYENDA
+   ========================================================= */
+
+.color {
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    display: block;
+
+    box-shadow:
+        0 0 8px
+        currentColor;
+}
+
+
+.color.azul {
     background: #3b82f6;
+    color: #3b82f6;
 }
 
-.verde{
+.color.verde {
     background: #22c55e;
+    color: #22c55e;
 }
 
-.naranja{
+.color.naranja {
     background: #f59e0b;
+    color: #f59e0b;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media screen and (max-width: 700px) {
+
+    .grafica-circular {
+        flex-direction: column;
+
+        justify-content: center;
+
+        gap: 25px;
+
+        padding:
+            20px 10px;
+    }
+
+    .circulo {
+        width: 160px;
+        height: 160px;
+    }
+
+    .circulo::before {
+        width: 78px;
+        height: 78px;
+    }
+
+    .leyenda {
+        width: 100%;
+        max-width: 320px;
+    }
+
+}
+
+
+@media screen and (max-width: 400px) {
+
+    .grafica-circular {
+        padding:
+            15px 5px;
+    }
+
+    .circulo {
+        width: 145px;
+        height: 145px;
+    }
+
+    .circulo::before {
+        width: 70px;
+        height: 70px;
+    }
+
+    .leyenda li {
+        padding:
+            8px 10px;
+
+        font-size: 13px;
+    }
+
 }
 
 /* USUARIOS */

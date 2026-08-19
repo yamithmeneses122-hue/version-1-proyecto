@@ -26,29 +26,28 @@
         <form>
             <article>
                     <label for="email">Correo electónico</label><br>
-                    <input id="email" type="email" placeholder="tu@gmail.com">
+                    <input id="email" name="email" type="email" placeholder="tu@gmail.com" required>
             </article>
             <article class="label-row">
                 <label for="pass">Contraseña</label> 
                 <a href="./contrasena.html" class="forgot-password">¿Olvidaste tu contraseña?</a> <br>
-               <input id="pass" type="password" placeholder="••••••••••••" required>
+               <input id="pass" name="password" type="password" placeholder="••••••••••••" required>
             </article>
              <article class="recordar">
                 <input id="remember" type="checkbox">
                 <label for="remember">Recordar mi sesión</label>
             </article>
             <nav>
-                <ul>
-                    <li><a href="./inicio.html"class="btn-login">Iniciar sesión <span>&rarr;</span></a></li>
-                </ul>
-            </nav> 
+                <button type="submit" class="btn-login">Iniciar sesión <span>&rarr;</span></button></nav>
                 <section class="divisor-contenedor"> <samp class="divisor-texto">¿Nuevo en SIGNA-TECH?</samp></section>
                 <section class="boton">
                     <a href="./nv_cuenta.html" class="btn-create-account">Crear cuenta nueva</a>
                 </section>
+            
         </form>
             </main>
         </section>
     </header>        
+    <script src=""></script>
 </body>
 </html>

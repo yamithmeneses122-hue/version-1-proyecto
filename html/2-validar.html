@@ -52,14 +52,54 @@
                 <h1 class="titulo-pagina">Validar diccionario</h1>
                 <p class="subtitulo-pagina">Confirma que la seña y su significado sean correctos</p>
             </header>
-            <nav class="filtros">
-                <select>
-                    <option>Todas las categorías</option>
-                </select>
-                <select>
-                    <option>Todos los estados</option>
-                </select>
-            </nav>
+    <nav class="filtros">
+
+        <select id="filtroCategoria">
+
+            <option value="todas">
+                Todas las categorías
+            </option>
+
+            <option value="educativa">
+                Educativa
+            </option>
+
+            <option value="tecnologia">
+                Tecnología
+            </option>
+
+            <option value="comunicacion">
+                Comunicación
+            </option>
+
+            <option value="salud">
+                Salud
+            </option>
+
+        </select>
+
+
+        <select id="filtroEstado">
+
+            <option value="todos">
+                Todos los estados
+            </option>
+
+            <option value="pendiente">
+                Pendiente
+            </option>
+
+            <option value="validada">
+                Validada
+            </option>
+
+            <option value="rechazada">
+                Rechazada
+            </option>
+
+        </select>
+
+    </nav>
             <!-- CONTENIDO -->
             <section class="contenido">
             <!-- PANEL IZQUIERDO -->
@@ -179,5 +219,6 @@
 
     </section>
 
+    <script src="../js/interpreter.js"></script>
 </body>
 </html>

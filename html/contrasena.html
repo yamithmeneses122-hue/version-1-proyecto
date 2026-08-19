@@ -16,13 +16,13 @@
         <form >
              <article>
                 <label for="email">Correo electónico</label><br>
-               <input id="email" type="email" placeholder="tu@gmail.com">
+               <input id="email" name="email" type="email" placeholder="tu@gmail.com" required>
              </article>
              <p>Te enviaremos un enlace para restablecer tu contrasena.</p>
              <br>
              <br>
              
-                <a href="#" class="btn-contraseña"> Enviar enlace de recuperación</a>
+                <button type="submit" class="btn-contraseña">Enviar enlace de recuperación</button>
              
              <br>
              <br>
@@ -30,5 +30,7 @@
             </form>
     </section>
     
+    <script src="../js/common.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 </html>
