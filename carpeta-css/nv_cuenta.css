@@ -19,7 +19,7 @@ body {
     text-align: center;
 }
 .fondo{
-    background-image: url('../img/fondo.png');
+    background-image: url('../imag/fondo.png');
     background-size: cover;
     background-position: center;
     position: fixed;
