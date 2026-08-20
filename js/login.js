@@ -40,7 +40,7 @@ boton.addEventListener("click", (evento) => {
     } else if (correo.value.trim() === "admin@sena.com" && contraseña.value.trim() === "9012") {
 
         evento.preventDefault();
-        window.location.href = "../html/Inicio_admin.html";
+        window.location.href = "../html/inicioAdmin.html";
 
     // CORREO O CONTRASEÑA INCORRECTOS
     } else {
