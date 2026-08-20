@@ -26,7 +26,7 @@ boton.addEventListener("click", (evento) => {
     } else if (correo.value.trim() === "operador@sena.com" && contraseña.value.trim() === "1234") {
 
         evento.preventDefault();
-        window.location.href = "./html/inicio.html";
+        window.location.href = "../html/inicio.html";
 
 
 
@@ -34,13 +34,13 @@ boton.addEventListener("click", (evento) => {
     } else if (correo.value.trim() === "interprete@sena.com" && contraseña.value.trim() === "5678") {
 
         evento.preventDefault();
-        window.location.href = "./html/interprete.html";
+        window.location.href = "../html/interprete.html";
 
     // LOGIN DEL ADMINISTRADOR
     } else if (correo.value.trim() === "admin@sena.com" && contraseña.value.trim() === "9012") {
 
         evento.preventDefault();
-        window.location.href = "./html/inicio_admin.html";
+        window.location.href = "../html/inicio_admin.html";
 
     // CORREO O CONTRASEÑA INCORRECTOS
     } else {
