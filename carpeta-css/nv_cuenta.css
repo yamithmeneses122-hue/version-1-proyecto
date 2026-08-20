@@ -19,7 +19,7 @@ body {
     text-align: center;
 }
 .fondo{
-    background-image: url('../img/fondo.png');
+    background-image: url('../imag/fondo.png');
     background-size: cover;
     background-position: center;
     position: fixed;
@@ -256,10 +256,25 @@ section{
 }
 
 @media screen and (max-width: 767px) {
-    
+
     body {
         margin: 0;
         padding: 14px;
+        min-height: 100vh;
+        height: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        align-items: flex-start;
+    }
+
+    section {
+        width: 100%;
+        min-width: 0;
+        margin: 72px auto 24px;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
     }
 }
 h1{
