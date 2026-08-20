@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 html,
 body {
     width: 100%;
@@ -5,6 +9,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    overflow-x: hidden;
 }
 
 body {
@@ -55,7 +60,7 @@ body {
 .form-panel {
     width: 50%;
     height: 100vh;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -73,7 +78,7 @@ body {
 }
 
 .imagen_logo img {
-    width: 60px;
+    width: 50px;
     height: auto;
     border-radius: 10px;
 }
@@ -83,19 +88,19 @@ body {
 main {
     width: 100%;
     max-width: 530px;
-    max-height: calc(100vh - 40px);
-    padding: 20px;
-    background-color: #000;
+    max-height: calc(100vh - 50px);
+    padding: 9px;
+    background-color: #000000a8;
     border: 1px solid #00CCFF;
     border-radius: 12px;
     box-shadow: 0 8px 30px rgba(0, 204, 255, 0.18);
-    overflow: hidden;
+    
 }
 
 
 .imagen_logo h2 {
     color: #00CCFF;
-    margin: 8px 0;
+    margin:  0;
     font-size: clamp(1.2rem, 2vw, 1.8rem);
 }
 
@@ -254,6 +259,7 @@ nav {
 
     .form-panel {
         width: 100%;
+        min-width: 0;
         height: 100vh;
         padding: 30px 20px;
         display: flex;
@@ -264,6 +270,7 @@ nav {
 
     main {
         width: 100%;
+        min-width: 0;
         max-width: 600px;
     }
 }
