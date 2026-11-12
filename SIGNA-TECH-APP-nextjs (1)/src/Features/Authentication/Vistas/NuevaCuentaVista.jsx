@@ -2,8 +2,8 @@
 
 import NuevaCuentaComponente from "../Componentes/NuevaCuentaComponente";
 import Link from "next/link";
-const fondo = "/images/feactures/fondo2.jpeg";
-const regresar = "/images/feactures/regresar.png";
+const fondo = "/images/feactures/fondo2.webp";
+const regresar = "/images/feactures/regresar.webp";
 
 export default function NuevaCuentaVista() {
     return (

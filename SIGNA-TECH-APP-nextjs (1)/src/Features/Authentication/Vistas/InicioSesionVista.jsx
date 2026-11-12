@@ -2,9 +2,9 @@
 
 import InicioSesionComponente from "../Componentes/InicioSesionComponente";
 import Link from "next/link";
-const fondo = "/images/feactures/fondo1.png";
-const regresar = "/images/feactures/regresar.png";
-const logo = "/images/logo/logoA.jpg";
+const fondo = "/images/feactures/fondo1.webp";
+const regresar = "/images/feactures/regresar.webp";
+const logo = "/images/logo/logoA.webp";
 
 export default function InicioSesionVista() {
     return (

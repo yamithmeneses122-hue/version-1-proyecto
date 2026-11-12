@@ -157,7 +157,7 @@ export default function ContenidoRegistro() {
         </fieldset>
         <footer className="mt-5 flex flex-wrap justify-end gap-2">
           <button className="rounded-xl border border-cyan-500/20 bg-slate-950/50 px-4 py-2.5 text-sm font-bold hover:bg-cyan-500/10" type="button" onClick={clearForm}>Limpiar</button>
-          <button className="rounded-xl bg-cyan-500 px-4 py-2.5 text-sm font-bold text-slate-950 transition-colors hover:bg-cyan-300 disabled:cursor-wait disabled:opacity-60" type="submit" disabled={readingFile}>Registrar seña</button>
+          <button className="rounded-xl bg-gradient-to-r from-blue-700 via-sky-600 to-cyan-400 px-5 py-2.5 text-sm font-bold text-white shadow-[0_0_18px_rgba(34,211,238,0.2)] transition-all hover:from-blue-600 hover:via-sky-500 hover:to-cyan-300" type="submit">Registrar seña</button>
         </footer>
         {draftWarning && <p className="mt-4 text-sm text-amber-300" role="alert">{draftWarning}</p>}
         {error && <p className="mt-4 text-sm text-rose-300" role="alert">{error}</p>}
