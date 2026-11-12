@@ -83,19 +83,19 @@ export default function VistaAvatar() {
 
         <main className="relative z-10 flex-1 p-5 md:ml-64 md:p-10">
           <section className="mx-auto max-w-7xl space-y-8">
-            <header className="flex flex-col gap-4 rounded-3xl border border-cyan-500/20 bg-slate-900/70 p-6 shadow-[0_0_30px_rgba(34,211,238,0.12)] backdrop-blur md:flex-row md:items-center md:justify-between">
+            <header className="flex min-h-[260px] flex-col gap-4 rounded-3xl border border-cyan-500/20 bg-slate-900/70 p-6 shadow-[0_0_30px_rgba(34,211,238,0.12)] backdrop-blur md:min-h-[200px] md:flex-row md:items-center md:justify-between">
               <section>
                 <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
                   <SparklesIcon className="h-3.5 w-3.5" />
                   Laboratorio LSC
                 </span>
                 <h1 className="mt-3 text-3xl font-black tracking-tight text-white md:text-5xl">Avatar 3D</h1>
-                <p className="mt-2 max-w-2xl text-sm text-slate-300 md:text-base">
+                <p className="mt-2 text-sm text-slate-300 md:text-base xl:whitespace-nowrap">
                   Visualiza y controla la interpretación de señas mediante señales de texto, audio y video.
                 </p>
               </section>
               <aside className="flex items-center gap-3 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3">
-                <span className={`flex h-10 w-10 items-center justify-center rounded-full ${isGesturing ? 'animate-pulse bg-cyan-400/30 text-cyan-200' : 'bg-slate-800 text-slate-400'}`}>
+                <span className={`flex h-10 w-10 items-center justify-center rounded-full text-cyan-300 ${isGesturing ? 'animate-pulse bg-cyan-400/30' : 'bg-cyan-400/20'}`}>
                   <SignalIcon className="h-5 w-5" />
                 </span>
                 <section>

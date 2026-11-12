@@ -1,27 +1,16 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import EncabezadoTarjetaAdmin from '../Componentes/EncabezadoTarjetaAdmin';
 import DisenoAdmin from '../Componentes/DisenoAdmin';
 import { estilosAdmin } from '../Componentes/estilosAdmin';
 import { useToast } from '../../../Hooks/useToastHook';
+import { useTheme } from '@/componentes/tema/TemaProvider';
 
 const Configuracion = () => {
     const { toasts, toast } = useToast();
-    const [tema, setTema] = useState('oscuro');
-    const [listo, setListo] = useState(false);
+    const { theme, setTheme } = useTheme();
     const fileInputRef = useRef(null);
-
-    useEffect(() => {
-        setTema(localStorage.getItem('tema-sinatex-glasses') || 'oscuro');
-        setListo(true);
-    }, []);
-
-    useEffect(() => {
-        if (!listo) return;
-        document.documentElement.dataset.theme = tema === 'claro' ? 'light' : 'dark';
-        localStorage.setItem('tema-sinatex-glasses', tema);
-    }, [tema, listo]);
 
     const handleBackupExport = () => {
         toast('Generando volcado de base de datos... Descarga iniciada.', 'info');
@@ -124,7 +113,7 @@ const Configuracion = () => {
                         <form className={estilosAdmin.form} onSubmit={guardarApariencia}>
                             <fieldset className={estilosAdmin.fieldset}>
                                 <legend className={estilosAdmin.legend}>Modo de Contraste y Apariencia</legend>
-                                <select className={estilosAdmin.input} value={tema} onChange={(e) => setTema(e.target.value)}>
+                                <select className={estilosAdmin.input} value={theme === 'light' ? 'claro' : 'oscuro'} onChange={(e) => setTheme(e.target.value === 'claro' ? 'light' : 'dark')}>
                                     <option value="oscuro">Modo Oscuro (Predeterminado)</option>
                                     <option value="claro">Modo Claro (Contraste Alto)</option>
                                 </select>

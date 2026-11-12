@@ -1,8 +1,10 @@
 "use client";
 
 import { ArrowLeftStartOnRectangleIcon } from '@heroicons/react/24/outline';
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
+import { useTheme } from "@/componentes/tema/TemaProvider";
 const NAV_LINKS = [
     { to: '/inicio_admin', icon: 'fa-solid fa-chart-pie', label: 'Panel Global' },
     { to: '/gestion_usuarios', icon: 'fa-solid fa-users-gear', label: 'Gestión Usuarios' },
@@ -16,7 +18,8 @@ function BarraLateral({ menuAbierto, onClose }) {
     const pathname = usePathname();
     const location = { pathname };
     const router = useRouter();
-  const navigate = (ruta) => router.push(ruta);
+    const navigate = (ruta) => router.push(ruta);
+    const { theme, toggleTheme } = useTheme();
 
     const cerrarSesion = () => {
         localStorage.removeItem('usuario');
@@ -48,6 +51,15 @@ function BarraLateral({ menuAbierto, onClose }) {
                         <h2 className="font-['Montserrat'] text-xl font-bold tracking-wider text-white theme-light:text-cyan-700">SIGNA-TECH</h2>
                         <p className="text-xs font-semibold uppercase tracking-widest text-cyan-400">Panel Administrador</p>
                     </section>
+                    <button
+                        type="button"
+                        onClick={toggleTheme}
+                        title={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+                        aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+                        className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-slate-300 transition-colors hover:bg-slate-700 hover:text-cyan-300 theme-light:bg-slate-100 theme-light:text-slate-600 theme-light:hover:bg-slate-200 theme-light:hover:text-cyan-700"
+                    >
+                        {theme === 'dark' ? <SunIcon className="h-5 w-5 text-yellow-400" /> : <MoonIcon className="h-5 w-5 text-cyan-700" />}
+                    </button>
                     <button
                         type="button"
                         className="flex h-9 w-9 items-center justify-center rounded-full text-xl text-slate-300 transition-colors hover:bg-slate-800 hover:text-cyan-300 theme-light:text-slate-600 theme-light:hover:bg-slate-100 theme-light:hover:text-cyan-700 md:hidden"

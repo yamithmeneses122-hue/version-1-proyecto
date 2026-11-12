@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from 'react';
 import Link from "next/link";
 import NavLink from "@/componentes/compartidos/NavLink";
+import { useTheme } from "@/componentes/tema/TemaProvider";
 import {
   HomeIcon,
   SpeakerWaveIcon,
@@ -17,22 +17,7 @@ import {
 } from '@heroicons/react/24/outline';
 
 export default function BarraLateral({ isOpen, onClose }) {
-  const [theme, setTheme] = useState('dark');
-
-  useEffect(() => {
-    setTheme(localStorage.getItem('signa-theme') || 'dark');
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-  }, [theme]);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    localStorage.setItem('signa-theme', newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
-  };
+  const { theme, toggleTheme } = useTheme();
 
   const navItems = [
     { path: '/operador', name: 'Inicio', icon: HomeIcon },
@@ -61,8 +46,10 @@ export default function BarraLateral({ isOpen, onClose }) {
           </section>
 
           <button
+            type="button"
             onClick={toggleTheme}
-            title={theme === 'dark' ? 'Cambiar a Modo Claro' : 'Cambiar a Modo Oscuro'}
+            title={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+            aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
             className="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 transform hover:scale-110 bg-slate-100 text-slate-600 hover:text-cyan-600 hover:bg-slate-200 hover:shadow-[0_0_10px_rgba(6,182,212,0.2)] dark:bg-slate-800 dark:text-slate-300 dark:hover:text-cyan-300 dark:hover:bg-slate-700 dark:hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]"
           >
             {theme === 'dark' ? (

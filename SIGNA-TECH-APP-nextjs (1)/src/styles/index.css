@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @custom-variant theme-light (&:where([data-theme=light], [data-theme=light] *));
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 :root {
     font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -67,6 +68,150 @@ select option {
 select option:checked {
     background-color: #115e59;
     color: #ffffff;
+}
+
+[data-theme="light"].theme-shell {
+    min-height: 100vh;
+    color-scheme: light;
+    background-color: #f8fafc;
+    color: #0f172a;
+}
+
+[data-theme="light"] .bg-slate-950,
+[data-theme="light"] .bg-gray-950,
+[data-theme="light"] .bg-zinc-950 {
+    background-color: #f8fafc;
+}
+
+[data-theme="light"] .bg-slate-900,
+[data-theme="light"] .bg-gray-900,
+[data-theme="light"] .bg-zinc-900,
+[data-theme="light"] [class~="bg-slate-900/95"],
+[data-theme="light"] [class~="bg-slate-900/90"],
+[data-theme="light"] [class~="bg-slate-900/80"],
+[data-theme="light"] [class~="bg-slate-900/70"],
+[data-theme="light"] [class~="bg-slate-900/60"],
+[data-theme="light"] [class~="bg-slate-900/50"],
+[data-theme="light"] [class~="bg-slate-900/40"],
+[data-theme="light"] [class~="bg-slate-900/30"],
+[data-theme="light"] [class~="bg-slate-900/20"],
+[data-theme="light"] [class~="bg-slate-900/10"],
+[data-theme="light"] [class~="bg-slate-950/95"],
+[data-theme="light"] [class~="bg-slate-950/90"],
+[data-theme="light"] [class~="bg-slate-950/80"],
+[data-theme="light"] [class~="bg-slate-950/70"],
+[data-theme="light"] [class~="bg-slate-950/60"],
+[data-theme="light"] [class~="bg-slate-950/50"],
+[data-theme="light"] [class~="bg-slate-950/40"],
+[data-theme="light"] [class~="bg-slate-950/30"],
+[data-theme="light"] [class~="bg-slate-950/20"],
+[data-theme="light"] [class~="bg-slate-950/10"],
+[data-theme="light"] [class~="bg-slate-800/95"],
+[data-theme="light"] [class~="bg-slate-800/90"],
+[data-theme="light"] [class~="bg-slate-800/80"],
+[data-theme="light"] [class~="bg-slate-800/70"],
+[data-theme="light"] [class~="bg-slate-800/60"],
+[data-theme="light"] [class~="bg-slate-800/50"],
+[data-theme="light"] [class~="bg-slate-800/40"],
+[data-theme="light"] [class~="bg-slate-800/30"],
+[data-theme="light"] [class~="bg-slate-800/20"],
+[data-theme="light"] [class~="bg-slate-800/10"] {
+    background-color: #ffffff;
+}
+
+[data-theme="light"] .bg-slate-800,
+[data-theme="light"] .bg-slate-700,
+[data-theme="light"] [class~="bg-slate-700/50"] {
+    background-color: #f1f5f9;
+}
+
+[data-theme="light"] .from-slate-900 {
+    --tw-gradient-from: #ffffff;
+}
+
+[data-theme="light"] .via-slate-900 {
+    --tw-gradient-via: #f0fdff;
+}
+
+[data-theme="light"] [class~="to-cyan-950/50"],
+[data-theme="light"] [class~="to-cyan-950/30"] {
+    --tw-gradient-to: rgb(236 254 255 / 0.8) var(--tw-gradient-to-position);
+}
+
+[data-theme="light"] [class~="bg-[rgba(23,28,30,.70)]"] {
+    background-color: rgba(255, 255, 255, 0.94);
+}
+
+[data-theme="light"] .text-white,
+[data-theme="light"] .text-slate-100 {
+    color: #0f172a;
+}
+
+[data-theme="light"] .text-slate-200,
+[data-theme="light"] .text-slate-300 {
+    color: #1e293b;
+}
+
+[data-theme="light"] .text-slate-400,
+[data-theme="light"] .text-slate-500,
+[data-theme="light"] .text-slate-600 {
+    color: #475569;
+}
+
+[data-theme="light"] .text-cyan-100,
+[data-theme="light"] .text-cyan-200,
+[data-theme="light"] .text-cyan-300,
+[data-theme="light"] .text-sky-200,
+[data-theme="light"] .text-sky-300,
+[data-theme="light"] .text-blue-200,
+[data-theme="light"] .text-blue-300 {
+    color: #0e7490;
+}
+
+[data-theme="light"] .text-emerald-300 {
+    color: #047857;
+}
+
+[data-theme="light"] .text-violet-300 {
+    color: #6d28d9;
+}
+
+[data-theme="light"] .text-orange-300,
+[data-theme="light"] .text-amber-300 {
+    color: #b45309;
+}
+
+[data-theme="light"] .text-rose-200,
+[data-theme="light"] .text-rose-300 {
+    color: #be123c;
+}
+
+[data-theme="light"] .border-slate-800,
+[data-theme="light"] .border-slate-700,
+[data-theme="light"] [class~="border-white/5"],
+[data-theme="light"] [class~="border-white/10"] {
+    border-color: #e2e8f0;
+}
+
+[data-theme="light"] input,
+[data-theme="light"] textarea,
+[data-theme="light"] select {
+    color: #0f172a;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+    color: #64748b;
+}
+
+[data-theme="light"] select option {
+    background-color: #ffffff;
+    color: #1e293b;
+}
+
+[data-theme="light"] select option:checked {
+    background-color: #cffafe;
+    color: #164e63;
 }
 
 [data-theme="light"] select:focus,

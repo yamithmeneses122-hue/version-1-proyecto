@@ -11,7 +11,6 @@ import {
   SignalIcon,
   SpeakerWaveIcon,
   StopIcon,
-  UserCircleIcon,
 } from '@heroicons/react/24/outline';
 import BarraLateral from '../Componentes/BarraLateral';
 import SelectorModoSalida from '../Componentes/SelectorModoSalida';
@@ -110,7 +109,7 @@ export default function VistaDeteccionCamara() {
 
       <main className="relative z-10 flex-1 p-5 md:ml-64 md:p-10">
         <section className="mx-auto max-w-7xl space-y-8">
-          <header className="flex flex-col gap-4 rounded-3xl border border-cyan-500/20 bg-slate-900/70 p-6 shadow-[0_0_30px_rgba(34,211,238,0.12)] backdrop-blur md:flex-row md:items-center md:justify-between">
+          <header className="flex min-h-[260px] flex-col gap-4 rounded-3xl border border-cyan-500/20 bg-slate-900/70 p-6 shadow-[0_0_30px_rgba(34,211,238,0.12)] backdrop-blur md:min-h-[200px] md:flex-row md:items-center md:justify-between">
             <section className="space-y-3">
               <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
                 <SignalIcon className="h-3.5 w-3.5" />
@@ -124,8 +123,8 @@ export default function VistaDeteccionCamara() {
               </section>
             </section>
 
-            <section className="flex items-center gap-3 self-start rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 shadow-[0_0_20px_rgba(34,211,238,0.15)]">
-              <section className={`flex h-10 w-10 items-center justify-center rounded-full ${conectado ? 'animate-pulse bg-cyan-400/30 text-cyan-200' : 'bg-slate-800 text-slate-400'}`}>
+            <section className="flex w-full items-center gap-3 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 shadow-[0_0_20px_rgba(34,211,238,0.15)] md:w-auto">
+              <section className={`flex h-10 w-10 items-center justify-center rounded-full text-cyan-300 ${conectado ? 'animate-pulse bg-cyan-400/30' : 'bg-cyan-400/20'}`}>
                 <CameraIcon className="h-5 w-5" />
               </section>
               <section>
@@ -211,7 +210,7 @@ export default function VistaDeteccionCamara() {
                   <h2 className="text-xl font-bold text-white">Estado del sistema</h2>
                   <p className="mt-1 text-sm text-slate-400">Diagnóstico rápido del periférico.</p>
                 </section>
-                {conectado ? <CheckCircleIcon className="h-6 w-6 text-cyan-300" /> : <ExclamationTriangleIcon className="h-6 w-6 text-amber-300" />}
+                {conectado ? <CheckCircleIcon className="h-6 w-6 text-cyan-300" /> : <ExclamationTriangleIcon className="h-6 w-6 text-cyan-300" />}
               </section>
 
               <section className="mt-6 space-y-3">
@@ -247,9 +246,9 @@ export default function VistaDeteccionCamara() {
               <SelectorModoSalida modoActual={modoSalida} onSelectModo={setModoSalida} />
             </section>
 
-            <section className="mt-5 rounded-2xl border border-slate-700 bg-slate-950/70 p-5">
+            <section id="panel-salida" className="mt-5 flex min-h-[180px] items-center justify-center rounded-2xl border border-slate-700 bg-slate-950/70 p-5">
               {modoSalida === 'texto' && (
-                <section className="flex items-start gap-3 font-mono text-sm leading-7 text-slate-300">
+                <section className="flex w-full items-start gap-3 font-mono text-sm leading-7 text-slate-300">
                   <span className="text-cyan-400">▶</span>
                   <span>{textoConversion}</span>
                 </section>
@@ -258,12 +257,6 @@ export default function VistaDeteccionCamara() {
                 <section className="flex items-center gap-3 text-sm text-cyan-200">
                   <SpeakerWaveIcon className="h-6 w-6 animate-pulse text-cyan-300" />
                   <span>Sintetizador de voz listo para transmitir el gesto interpretado.</span>
-                </section>
-              )}
-              {modoSalida === 'avatar' && (
-                <section className="flex flex-col items-center gap-3 py-4 text-center">
-                  <UserCircleIcon className="h-12 w-12 animate-pulse text-cyan-300" />
-                  <p className="text-sm font-semibold text-slate-300">Avatar listo para reproducir señas LSC.</p>
                 </section>
               )}
             </section>

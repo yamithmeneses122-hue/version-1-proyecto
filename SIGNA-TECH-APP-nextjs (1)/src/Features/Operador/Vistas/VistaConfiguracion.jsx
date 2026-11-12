@@ -17,23 +17,16 @@ import {
 } from '@heroicons/react/24/outline';
 import BarraLateral from '../Componentes/BarraLateral';
 import SelectorOptimizacionIA from '../Componentes/SelectorOptimizacionIA';
+import { useTheme } from '@/componentes/tema/TemaProvider';
 
 export default function VistaConfiguracion() {
   const [menuAbierto, setMenuAbierto] = useState(false);
-  const [tema, setTema] = useState('oscuro');
+  const { theme, setTheme } = useTheme();
   const [nombre, setNombre] = useState('Edwin Alexis Silva Sandoval');
   const [correo, setCorreo] = useState('edwin.silva@sena.edu.co');
   const [notificaciones, setNotificaciones] = useState(true);
   const [accesibilidad, setAccesibilidad] = useState(true);
   const [mensaje, setMensaje] = useState('');
-
-  useEffect(() => {
-    setTema(localStorage.getItem('tema-sinatex-glasses') || 'oscuro');
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', tema === 'oscuro');
-  }, [tema]);
 
   const mostrarMensaje = (texto) => {
     setMensaje(texto);
@@ -47,7 +40,6 @@ export default function VistaConfiguracion() {
 
   const guardarTema = (event) => {
     event.preventDefault();
-    localStorage.setItem('tema-sinatex-glasses', tema);
     mostrarMensaje('Apariencia guardada correctamente');
   };
 
@@ -80,11 +72,8 @@ export default function VistaConfiguracion() {
 
         <main className="relative z-10 flex-1 p-5 md:ml-64 md:p-10">
           <section className="mx-auto max-w-7xl space-y-8">
-            <header className="flex flex-col gap-5 rounded-3xl border border-cyan-500/20 bg-slate-900/70 p-6 shadow-[0_0_30px_rgba(34,211,238,0.12)] backdrop-blur md:flex-row md:items-center md:justify-between">
-              <section className="flex items-center gap-4">
-                <figure className="flex h-16 w-16 items-center justify-center rounded-2xl border border-cyan-300/40 bg-cyan-500/15 text-cyan-200 shadow-[0_0_25px_rgba(34,211,238,0.2)]">
-                  <UserCircleIcon className="h-10 w-10" />
-                </figure>
+            <header className="flex min-h-[260px] flex-col gap-5 rounded-3xl border border-cyan-500/20 bg-slate-900/70 p-6 shadow-[0_0_30px_rgba(34,211,238,0.12)] backdrop-blur md:min-h-[200px] md:flex-row md:items-center md:justify-between">
+              <section>
                 <section>
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">Perfil del operador</p>
                   <h1 className="mt-1 text-3xl font-black tracking-tight text-white md:text-5xl">Configuración</h1>
@@ -245,7 +234,7 @@ export default function VistaConfiguracion() {
                 <form className="mt-6 space-y-4" onSubmit={guardarTema}>
                   <label className="block space-y-2 text-sm font-semibold text-slate-300">
                     Tema visual
-                    <select className={inputClass} value={tema} onChange={(event) => setTema(event.target.value)}>
+                    <select className={inputClass} value={theme === 'light' ? 'claro' : 'oscuro'} onChange={(event) => setTheme(event.target.value === 'claro' ? 'light' : 'dark')}>
                       <option value="oscuro">Oscuro neón</option>
                       <option value="claro">Claro alto contraste</option>
                     </select>

@@ -4,14 +4,12 @@ import {
   Bars3BottomLeftIcon,
   LanguageIcon,
   SpeakerWaveIcon,
-  UserCircleIcon,
 } from '@heroicons/react/24/outline';
 
 export default function SelectorModoSalida({ modoActual, onSelectModo }) {
   const modos = [
     { id: 'texto', label: 'Texto', icon: Bars3BottomLeftIcon },
-    { id: 'escuchar', label: 'Escuchar', icon: SpeakerWaveIcon },
-    { id: 'avatar', label: 'Avatar', icon: UserCircleIcon },
+    { id: 'escuchar', label: 'Voz', icon: SpeakerWaveIcon },
   ];
 
   return (

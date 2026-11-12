@@ -82,7 +82,7 @@ export default function VistaDiccionario() {
 
       <main className="relative z-10 flex-1 p-5 md:ml-64 md:p-10">
         <section className="mx-auto max-w-7xl space-y-8">
-          <header className="flex flex-col gap-4 rounded-3xl border border-cyan-500/20 bg-slate-900/70 p-6 shadow-[0_0_30px_rgba(34,211,238,0.12)] backdrop-blur md:flex-row md:items-center md:justify-between">
+          <header className="flex min-h-[260px] flex-col gap-4 rounded-3xl border border-cyan-500/20 bg-slate-900/70 p-6 shadow-[0_0_30px_rgba(34,211,238,0.12)] backdrop-blur md:min-h-[200px] md:flex-row md:items-center md:justify-between">
             <section className="space-y-3">
               <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
                 <BookOpenIcon className="h-3.5 w-3.5" />
@@ -90,13 +90,13 @@ export default function VistaDiccionario() {
               </span>
               <section>
                 <h1 className="text-3xl font-black tracking-tight text-white md:text-5xl">Diccionario LSC</h1>
-                <p className="mt-2 max-w-2xl text-sm text-slate-300 md:text-base">
+                <p className="mt-2 text-sm text-slate-300 md:text-base xl:whitespace-nowrap">
                   Explora señas de la Lengua de Señas Colombiana de forma sencilla, visual e intuitiva.
                 </p>
               </section>
             </section>
 
-            <section className="flex items-center gap-3 self-start rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 shadow-[0_0_20px_rgba(34,211,238,0.15)]">
+            <section className="flex w-full items-center gap-3 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 shadow-[0_0_20px_rgba(34,211,238,0.15)] md:w-auto">
               <section className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-400/20 text-cyan-300">
                 <SparklesIcon className="h-5 w-5" />
               </section>
@@ -197,7 +197,7 @@ export default function VistaDiccionario() {
           <section className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3" id="contenedor-tarjetas-senas">
             {signosFiltrados.length === 0 ? (
               <section className="col-span-full rounded-3xl border border-slate-800 bg-slate-900/60 py-14 text-center">
-                <MagnifyingGlassIcon className="mx-auto h-10 w-10 text-slate-600" />
+                <MagnifyingGlassIcon className="mx-auto h-10 w-10 text-cyan-300" />
                 <p className="mt-4 font-semibold text-slate-300">No encontramos esa seña</p>
                 <p className="mt-1 text-sm text-slate-500">Prueba con otra palabra o categoría.</p>
               </section>

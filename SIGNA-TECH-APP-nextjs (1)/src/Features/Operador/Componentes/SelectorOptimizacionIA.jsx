@@ -4,55 +4,63 @@ import { useState } from 'react';
 
 export default function SelectorOptimizacionIA() {
   const [modoSeleccionado, setModoSeleccionado] = useState('rapido');
-  const [descripcion, setDescripcion] = useState(
-    '⚡ Modo Rápido: Optimizado para hardware de bajos recursos. Respuesta instantánea con una tasa de muestreo reducida.'
-  );
 
   const modos = [
     {
       id: 'rapido',
       label: 'Rápido',
+      resumen: 'Menor consumo',
       desc: '⚡ Modo Rápido: Optimizado para hardware de bajos recursos. Respuesta instantánea con una tasa de muestreo reducida.',
     },
     {
       id: 'equilibrado',
       label: 'Equilibrado',
+      resumen: 'Recomendado',
       desc: '⚖️ Modo Equilibrado: Balance perfecto entre precisión léxica y consumo de FPS (Recomendado).',
     },
     {
       id: 'precision',
       label: 'Precisión',
+      resumen: 'Mayor detalle',
       desc: '🎯 Alta Precisión: Carga el modelo completo de redes neuronales profundas. Requiere mayor capacidad de procesamiento.',
     },
   ];
 
-  const handleSelectMode = (modo) => {
-    setModoSeleccionado(modo.id);
-    setDescripcion(modo.desc);
-  };
+  const modoActual = modos.find((modo) => modo.id === modoSeleccionado) || modos[0];
 
   return (
-    <>
-      <nav className="flex flex-col sm:flex-row items-center gap-3">
+    <section className="space-y-4">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3" role="group" aria-label="Modo de optimización de IA">
         {modos.map((modo) => (
           <button
             key={modo.id}
             type="button"
-            className={`flex-1 w-full py-3 px-4 rounded-xl text-xs font-bold tracking-wide transition-all shadow-md text-center cursor-pointer border ${
+            aria-pressed={modoSeleccionado === modo.id}
+            className={`flex min-h-20 w-full flex-col items-start justify-center gap-1 rounded-xl border px-4 py-3 text-left transition-all duration-200 ${
               modoSeleccionado === modo.id
-                ? 'bg-teal-600 text-white border-teal-500 shadow-teal-500/20'
-                : 'bg-slate-950 text-slate-400 border-slate-800 hover:bg-slate-800 hover:text-white'
+                ? 'border-cyan-400 bg-cyan-600 text-white shadow-[0_0_18px_rgba(34,211,238,0.2)] theme-light:border-cyan-300 theme-light:bg-cyan-50 theme-light:text-cyan-800 theme-light:shadow-[0_0_12px_rgba(6,182,212,0.12)]'
+                : 'border-slate-700 bg-slate-950/60 text-slate-300 hover:border-cyan-500/50 hover:bg-slate-800 hover:text-white theme-light:border-slate-200 theme-light:bg-white theme-light:text-slate-700 theme-light:hover:border-cyan-300 theme-light:hover:bg-cyan-50 theme-light:hover:text-cyan-800'
             }`}
-            onClick={() => handleSelectMode(modo)}
+            onClick={() => setModoSeleccionado(modo.id)}
           >
-            {modo.label}
+            <span className="text-sm font-bold">{modo.label}</span>
+            <span className={`text-xs ${modoSeleccionado === modo.id ? 'text-cyan-100 theme-light:text-cyan-700' : 'text-slate-400 theme-light:text-slate-500'}`}>
+              {modo.resumen}
+            </span>
           </button>
         ))}
-      </nav>
+      </div>
 
-      <section className="p-4 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-300 leading-relaxed font-mono" id="txt-descripcion-ia">
-        {descripcion}
+      <section
+        className="rounded-xl border border-cyan-500/20 bg-slate-950/60 p-4 text-sm leading-relaxed text-slate-300 theme-light:border-cyan-200 theme-light:bg-cyan-50 theme-light:text-slate-700"
+        id="txt-descripcion-ia"
+        aria-live="polite"
+      >
+        <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-cyan-300 theme-light:text-cyan-700">
+          Modo seleccionado: {modoActual.label}
+        </p>
+        <p>{modoActual.desc}</p>
       </section>
-    </>
+    </section>
   );
 }

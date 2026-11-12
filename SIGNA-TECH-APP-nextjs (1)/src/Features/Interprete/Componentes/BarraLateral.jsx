@@ -7,10 +7,13 @@ import {
   HomeIcon,
   PencilSquareIcon,
   PlusCircleIcon,
+  MoonIcon,
+  SunIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
 import NavLink from "@/componentes/compartidos/NavLink";
 import { useRouter } from "next/navigation";
+import { useTheme } from "@/componentes/tema/TemaProvider";
 const items = [
   { path: "/interprete", name: "Inicio", icon: HomeIcon, end: true },
   { path: "/interprete/validar", name: "Validar señas", icon: CheckBadgeIcon },
@@ -23,6 +26,7 @@ const items = [
 export default function BarraLateral({ open, onClose }) {
   const router = useRouter();
   const navigate = (ruta) => router.push(ruta);
+  const { theme, toggleTheme } = useTheme();
 
   function logout() {
     localStorage.removeItem("usuario");
@@ -41,6 +45,15 @@ export default function BarraLateral({ open, onClose }) {
             Panel intérprete
           </p>
         </section>
+        <button
+          className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-slate-300 transition-colors hover:bg-slate-700 hover:text-cyan-300"
+          type="button"
+          onClick={toggleTheme}
+          title={theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+          aria-label={theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+        >
+          {theme === "dark" ? <SunIcon className="h-5 w-5 text-yellow-400" /> : <MoonIcon className="h-5 w-5 text-cyan-700" />}
+        </button>
         <button
           className="flex h-9 w-9 items-center justify-center rounded-full text-xl text-slate-300 transition-colors hover:bg-slate-800 hover:text-cyan-300 md:hidden"
           type="button"
@@ -61,16 +74,16 @@ export default function BarraLateral({ open, onClose }) {
                 onClick={onClose}
                 className={({ isActive }) => `group flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-300 hover:scale-[1.02] ${
                   isActive
-                    ? "border border-cyan-400/50 bg-cyan-900/40 text-white shadow-[0_0_15px_rgba(34,211,238,0.25)]"
-                    : "text-slate-300 hover:bg-slate-800/80 hover:text-white hover:shadow-[0_0_12px_rgba(34,211,238,0.15)]"
+                    ? "border border-cyan-400/50 bg-cyan-900/40 text-white shadow-[0_0_15px_rgba(34,211,238,0.25)] theme-light:border-cyan-300 theme-light:bg-cyan-50 theme-light:text-cyan-700 theme-light:shadow-[0_0_10px_rgba(6,182,212,0.2)]"
+                    : "text-slate-300 hover:bg-slate-800/80 hover:text-white hover:shadow-[0_0_12px_rgba(34,211,238,0.15)] theme-light:text-slate-600 theme-light:hover:bg-cyan-50 theme-light:hover:text-cyan-700 theme-light:hover:shadow-[0_0_10px_rgba(6,182,212,0.15)]"
                 }`}
               >
                 {({ isActive }) => (
                   <>
                     <Icono className={`h-5 w-5 text-cyan-400 transition-colors ${
                       isActive
-                        ? "drop-shadow-[0_0_5px_rgba(34,211,238,0.8)]"
-                        : "group-hover:text-cyan-300"
+                        ? "drop-shadow-[0_0_5px_rgba(34,211,238,0.8)] theme-light:text-cyan-700"
+                        : "group-hover:text-cyan-300 theme-light:text-cyan-600 theme-light:group-hover:text-cyan-700"
                     }`} aria-hidden="true" />
                     <span>{name}</span>
                   </>
