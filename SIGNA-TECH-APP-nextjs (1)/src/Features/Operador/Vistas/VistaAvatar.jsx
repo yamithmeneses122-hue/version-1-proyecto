@@ -94,12 +94,12 @@ export default function VistaAvatar() {
                   Visualiza y controla la interpretación de señas mediante señales de texto, audio y video.
                 </p>
               </section>
-              <aside className="flex items-center gap-3 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3">
+              <aside className="flex min-h-[72px] w-full shrink-0 items-center gap-3 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 shadow-[0_0_20px_rgba(34,211,238,0.15)] md:w-64">
                 <span className={`flex h-10 w-10 items-center justify-center rounded-full text-cyan-300 ${isGesturing ? 'animate-pulse bg-cyan-400/30' : 'bg-cyan-400/20'}`}>
                   <SignalIcon className="h-5 w-5" />
                 </span>
                 <section>
-                  <p className="text-xs uppercase tracking-[0.2em] text-cyan-300/80">Estado</p>
+                  <p className="text-xs uppercase tracking-[0.2em] text-cyan-300/80 theme-light:text-cyan-800">Estado</p>
                   <p className="font-semibold text-white">{isGesturing ? 'Interpretando' : 'Listo para usar'}</p>
                 </section>
               </aside>

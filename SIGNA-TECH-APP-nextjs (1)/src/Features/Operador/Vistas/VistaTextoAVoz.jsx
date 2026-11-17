@@ -130,12 +130,12 @@ export default function VistaTextoAVoz() {
               </section>
             </section>
 
-            <section className="flex w-full items-center gap-3 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 shadow-[0_0_20px_rgba(34,211,238,0.15)] md:w-auto">
+            <section className="flex min-h-[72px] w-full shrink-0 items-center gap-3 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 shadow-[0_0_20px_rgba(34,211,238,0.15)] md:w-64">
               <section className={`flex h-10 w-10 items-center justify-center rounded-full text-cyan-300 ${isSynthesizing ? 'animate-pulse bg-cyan-400/30' : 'bg-cyan-400/20'}`}>
                 <SpeakerWaveIcon className="h-5 w-5" />
               </section>
               <section>
-                <p className="text-xs uppercase tracking-[0.2em] text-cyan-300/80">Sintetizador</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-cyan-300/80 theme-light:text-cyan-800">Sintetizador</p>
                 <p className="font-semibold text-white">{isSynthesizing ? 'Reproduciendo' : 'Listo para usar'}</p>
               </section>
             </section>
@@ -161,7 +161,7 @@ export default function VistaTextoAVoz() {
           </section>
 
           <section className="grid gap-6 xl:grid-cols-[1.35fr_0.8fr]">
-            <article className="rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/50 p-6 shadow-[0_0_30px_rgba(14,165,233,0.12)]">
+            <article className="flex h-full flex-col justify-between rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/50 p-6 shadow-[0_0_30px_rgba(14,165,233,0.12)]">
               <section className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <section>
                   <h2 className="text-xl font-bold text-white">Mensaje a sintetizar</h2>
@@ -172,7 +172,7 @@ export default function VistaTextoAVoz() {
                 </span>
               </section>
 
-              <section className="mt-6">
+              <section>
                 <label htmlFor="texto-sintesis" className="sr-only">Mensaje a sintetizar</label>
                 <textarea
                   id="texto-sintesis"
@@ -188,7 +188,7 @@ export default function VistaTextoAVoz() {
                 </section>
               </section>
 
-              <section className="mt-5 rounded-2xl border border-slate-700 bg-slate-950/50 p-4">
+              <section className="rounded-2xl border border-slate-700 bg-slate-950/50 p-4">
                 <section className="flex items-center justify-between gap-4">
                   <section>
                     <p className="text-sm font-semibold text-white">Velocidad de lectura</p>
@@ -213,26 +213,28 @@ export default function VistaTextoAVoz() {
                 </section>
               </section>
 
-              <section className="mt-6 grid gap-3 sm:grid-cols-3">
-                <button type="button" onClick={handleReproducir} disabled={isSynthesizing} className={`flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-all sm:col-span-2 ${isSynthesizing ? 'cursor-not-allowed border border-slate-700 bg-slate-800 text-slate-500' : 'border border-cyan-400 bg-cyan-500 text-slate-950 shadow-[0_0_22px_rgba(34,211,238,0.25)] hover:bg-cyan-300'}`}>
-                  <PlayIcon className="h-5 w-5" />
-                  Reproducir audio
-                </button>
-                <button type="button" onClick={handleDetener} disabled={!isSynthesizing} className={`flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-all ${!isSynthesizing ? 'cursor-not-allowed border border-slate-700 bg-slate-800 text-slate-500' : 'border border-rose-400/60 bg-rose-500/90 text-white hover:bg-rose-400'}`}>
-                  <StopIcon className="h-5 w-5" />
-                  Detener
-                </button>
-              </section>
+              <section>
+                <section className="grid gap-3 sm:grid-cols-3">
+                  <button type="button" onClick={handleReproducir} disabled={isSynthesizing} className={`flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-all sm:col-span-2 ${isSynthesizing ? 'cursor-not-allowed border border-slate-700 bg-slate-800 text-slate-500' : 'border border-cyan-400 bg-cyan-500 text-slate-950 shadow-[0_0_22px_rgba(34,211,238,0.25)] hover:bg-cyan-300'}`}>
+                    <PlayIcon className="h-5 w-5" />
+                    Reproducir audio
+                  </button>
+                  <button type="button" onClick={handleDetener} disabled={!isSynthesizing} className={`flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-all ${!isSynthesizing ? 'cursor-not-allowed border border-slate-700 bg-slate-800 text-slate-500' : 'border border-rose-400/60 bg-rose-500/90 text-white hover:bg-rose-400'}`}>
+                    <StopIcon className="h-5 w-5" />
+                    Detener
+                  </button>
+                </section>
 
-              <section className="mt-5 flex flex-col gap-3 sm:flex-row">
-                <button type="button" onClick={handleCopy} className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-cyan-400/40 bg-cyan-500/10 px-4 py-3 text-sm font-bold text-cyan-200 transition-all hover:bg-cyan-500/20">
-                  <ClipboardDocumentIcon className="h-5 w-5" />
-                  {copiado ? '¡Texto copiado!' : 'Copiar texto'}
-                </button>
-                <button type="button" onClick={handleClear} className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-800/70 px-4 py-3 text-sm font-bold text-slate-300 transition-all hover:border-cyan-500/50 hover:text-cyan-200">
-                  <TrashIcon className="h-5 w-5" />
-                  Limpiar
-                </button>
+                <section className="mt-5 flex flex-col gap-3 sm:flex-row">
+                  <button type="button" onClick={handleCopy} className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-cyan-400/40 bg-cyan-500/10 px-4 py-3 text-sm font-bold text-cyan-200 transition-all hover:bg-cyan-500/20">
+                    <ClipboardDocumentIcon className="h-5 w-5" />
+                    {copiado ? '¡Texto copiado!' : 'Copiar texto'}
+                  </button>
+                  <button type="button" onClick={handleClear} className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-800/70 px-4 py-3 text-sm font-bold text-slate-300 transition-all hover:border-cyan-500/50 hover:text-cyan-200">
+                    <TrashIcon className="h-5 w-5" />
+                    Limpiar
+                  </button>
+                </section>
               </section>
             </article>
 

@@ -1,6 +1,8 @@
 "use client";
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { useTheme } from '@/componentes/tema/TemaProvider';
 import {
   Bars3Icon,
   BookOpenIcon,
@@ -9,6 +11,7 @@ import {
   PlayIcon,
   SparklesIcon,
   StarIcon,
+  XMarkIcon,
 } from '@heroicons/react/24/outline';
 import BarraLateral from '../Componentes/BarraLateral';
 import TarjetaSena from '../Componentes/TarjetaSena';
@@ -22,6 +25,10 @@ const signosData = [
   { id: 6, title: 'Bien', category: 'Saludos', description: 'Indica que algo está correcto o funciona.', icon: 'check' },
   { id: 7, title: 'Amor', category: 'Emociones', description: 'Expresa afecto, cariño o amor.', icon: 'heart' },
   { id: 8, title: 'Uno', category: 'Números', description: 'Primer número natural.', icon: 'number' },
+  { id: 9, title: 'Dos', category: 'Números', description: 'Segundo número natural.', icon: 'number' },
+  { id: 10, title: 'Tres', category: 'Números', description: 'Tercer número natural.', icon: 'number' },
+  { id: 11, title: 'Feliz', category: 'Emociones', description: 'Estado de alegría o satisfacción.', icon: 'smile' },
+  { id: 12, title: 'Triste', category: 'Emociones', description: 'Estado de melancolía o desánimo.', icon: 'frown' },
 ];
 
 const categorias = ['Todos', 'Saludos', 'Cotidiano', 'Emociones', 'Números'];
@@ -33,6 +40,27 @@ export default function VistaDiccionario() {
   const [favoritos, setFavoritos] = useState([]);
   const [seleccionado, setSeleccionado] = useState(null);
   const [soloFavoritos, setSoloFavoritos] = useState(false);
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    if (!seleccionado) return undefined;
+
+    const overflowAnterior = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const cerrarConEscape = (event) => {
+      if (event.key === 'Escape') {
+        window.speechSynthesis?.cancel();
+        setSeleccionado(null);
+      }
+    };
+
+    window.addEventListener('keydown', cerrarConEscape);
+    return () => {
+      document.body.style.overflow = overflowAnterior;
+      window.removeEventListener('keydown', cerrarConEscape);
+    };
+  }, [seleccionado]);
 
   const signosFiltrados = useMemo(() => {
     const termino = busqueda.trim().toLowerCase();
@@ -59,6 +87,11 @@ export default function VistaDiccionario() {
     mensaje.lang = 'es-CO';
     window.speechSynthesis?.cancel();
     window.speechSynthesis?.speak(mensaje);
+  };
+
+  const cerrarVistaSena = () => {
+    window.speechSynthesis?.cancel();
+    setSeleccionado(null);
   };
 
   return (
@@ -96,12 +129,12 @@ export default function VistaDiccionario() {
               </section>
             </section>
 
-            <section className="flex w-full items-center gap-3 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 shadow-[0_0_20px_rgba(34,211,238,0.15)] md:w-auto">
+            <section className="flex min-h-[72px] w-full shrink-0 items-center gap-3 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 shadow-[0_0_20px_rgba(34,211,238,0.15)] md:w-64">
               <section className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-400/20 text-cyan-300">
                 <SparklesIcon className="h-5 w-5" />
               </section>
               <section>
-                <p className="text-xs uppercase tracking-[0.2em] text-cyan-300/80">Biblioteca</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-cyan-300/80 theme-light:text-cyan-800">Biblioteca</p>
                 <p className="font-semibold text-white">{signosData.length} señas disponibles</p>
               </section>
             </section>
@@ -180,18 +213,51 @@ export default function VistaDiccionario() {
           </section>
 
           {seleccionado && (
-            <section className="flex flex-col gap-4 rounded-3xl border border-cyan-400/30 bg-cyan-500/10 p-5 shadow-[0_0_25px_rgba(34,211,238,0.12)] sm:flex-row sm:items-center sm:justify-between">
-              <section className="flex items-center gap-4">
-                <section className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/40 bg-slate-950/60 text-cyan-300">
-                  <PlayIcon className="h-6 w-6" />
+            createPortal(
+              <div
+                data-theme={theme}
+                className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm theme-light:bg-slate-900/30"
+                onClick={cerrarVistaSena}
+              >
+                <section
+                  aria-labelledby="dialogo-vista-sena"
+                  aria-modal="true"
+                  className="flex max-h-[90vh] min-h-[70vh] w-full max-w-4xl flex-col overflow-y-auto rounded-3xl border border-cyan-400/30 bg-slate-900 p-6 shadow-[0_0_40px_rgba(34,211,238,0.2)] theme-light:border-cyan-200 theme-light:bg-white theme-light:shadow-cyan-100"
+                  onClick={(event) => event.stopPropagation()}
+                  role="dialog"
+                >
+                  <header className="relative flex items-start justify-center gap-4 text-center">
+                    <section>
+                      <p className="text-3xl font-bold uppercase leading-tight tracking-wide text-cyan-300 md:text-4xl theme-light:text-cyan-800">
+                        Vista de seña
+                      </p>
+                      <h2 className="mt-1 text-3xl font-bold text-white md:text-4xl theme-light:text-slate-900" id="dialogo-vista-sena">
+                        {seleccionado.title}
+                      </h2>
+                    </section>
+                    <button
+                      type="button"
+                      aria-label="Cerrar vista de seña"
+                      className="absolute right-0 top-0 rounded-full border border-slate-700 p-2 text-slate-300 transition-colors hover:border-cyan-400/50 hover:text-cyan-300 theme-light:border-slate-300 theme-light:text-slate-600 theme-light:hover:text-cyan-700"
+                      onClick={cerrarVistaSena}
+                    >
+                      <XMarkIcon className="h-5 w-5" />
+                    </button>
+                  </header>
+
+                  <section className="mt-6 flex flex-1 items-center justify-center">
+                    <section className="flex aspect-square w-full max-w-lg shrink-0 items-center justify-center rounded-2xl border border-dashed border-slate-700 bg-slate-950/60 p-8 text-center theme-light:border-slate-300 theme-light:bg-slate-50">
+                      <section>
+                        <SparklesIcon className="mx-auto h-12 w-12 text-cyan-300 theme-light:text-cyan-700" />
+                        <p className="mt-4 font-semibold text-slate-200 theme-light:text-slate-700">La representación visual de esta seña aún no está disponible.</p>
+                        <p className="mt-2 text-sm text-slate-400 theme-light:text-slate-500">{seleccionado.description}</p>
+                      </section>
+                    </section>
+                  </section>
                 </section>
-                <section>
-                  <p className="text-xs uppercase tracking-[0.2em] text-cyan-300/80">Seña seleccionada</p>
-                  <p className="text-lg font-bold text-white">{seleccionado.title}</p>
-                </section>
-              </section>
-              <p className="text-sm text-slate-300">{seleccionado.description}</p>
-            </section>
+              </div>,
+              document.body
+            )
           )}
 
           <section className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3" id="contenedor-tarjetas-senas">
@@ -205,6 +271,7 @@ export default function VistaDiccionario() {
               signosFiltrados.map((signo) => (
                 <TarjetaSena
                   key={signo.id}
+                  accent={signo.id % 2 === 1 ? 'blue' : 'cyan'}
                   icon={signo.icon}
                   title={signo.title}
                   category={signo.category}

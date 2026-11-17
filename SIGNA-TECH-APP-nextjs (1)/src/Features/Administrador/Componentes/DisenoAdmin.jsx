@@ -9,7 +9,7 @@ function DisenoAdmin({ title, description, icon, toasts = [], children }) {
     const { menuAbierto, toggleMenu, cerrar } = useBarraLateral();
 
     return (
-        <section className="relative isolate flex min-h-screen overflow-hidden bg-slate-950 font-sans text-slate-100 transition-colors theme-light:bg-slate-100 theme-light:text-slate-900">
+        <section className="relative isolate flex min-h-screen overflow-hidden bg-slate-950 font-sans text-slate-100 theme-light:bg-slate-100 theme-light:text-slate-900">
             <section className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
                 <span className="absolute -left-16 top-16 h-72 w-72 rounded-full bg-cyan-500/15 blur-3xl" />
                 <span className="absolute right-0 top-0 h-96 w-96 rounded-full bg-blue-600/15 blur-3xl" />

@@ -9,7 +9,7 @@ const tones = {
 
 function TarjetaEstadisticaAdmin({ label, value, detail, icon, tone = 'cyan' }) {
     return (
-        <article className="rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/30 p-6 shadow-[0_0_30px_rgba(34,211,238,0.12)] transition-colors theme-light:border-slate-300 theme-light:bg-none theme-light:bg-white theme-light:shadow-slate-200">
+        <article className="rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/30 p-6 shadow-[0_0_30px_rgba(34,211,238,0.12)] theme-light:border-slate-300 theme-light:bg-none theme-light:bg-white theme-light:shadow-slate-200">
             <header className="flex items-center gap-3 text-sm text-slate-400 theme-light:text-slate-600">
                 {icon && (
                     <span

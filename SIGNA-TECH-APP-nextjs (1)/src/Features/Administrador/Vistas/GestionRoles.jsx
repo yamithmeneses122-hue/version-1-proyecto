@@ -121,7 +121,7 @@ const GestionRoles = () => {
                             <ul className={estilosAdmin.list} role="list">
                                 <Permiso id="opModulos" label="Uso de Módulos de Conversión" descripcion="Acceso completo a las vistas de Texto a Voz, Voz a Texto y Detección de Cámara." checked={permisos.opModulos} onChange={() => handleToggle('opModulos')} />
                                 <Permiso id="opDiccionario" label="Consulta de Diccionario Nativo" descripcion="Visualizar el glosario de términos LSC de manera interna para soporte." checked={permisos.opDiccionario} onChange={() => handleToggle('opDiccionario')} />
-                                <Permiso id="opBypass" label="Bypass de Configuración Avanzada" descripcion="Alterar los periféricos de entrada/salida USB o los niveles de optimización de la IA." checked={permisos.opBypass} onChange={() => handleToggle('opBypass')} />
+                                <Permiso id="opBypass" label="Bypass de Configuración Avanzada" descripcion="Alterar los periféricos de entrada/salida USB o los ajustes avanzados del sistema." checked={permisos.opBypass} onChange={() => handleToggle('opBypass')} />
                             </ul>
                         </fieldset>
                         <button type="submit" className={`${estilosAdmin.button} ${estilosAdmin.primaryButton} self-start`}>

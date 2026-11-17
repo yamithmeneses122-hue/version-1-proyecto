@@ -5,7 +5,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { autenticarUsuario } from "../funcionalidades/funciones";
-
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 export default function InicioSesionComponente() {
   const router = useRouter();
   const navigate = (ruta) => router.push(ruta);
@@ -137,12 +137,11 @@ export default function InicioSesionComponente() {
                 }
                 aria-pressed={mostrarContrasena}
               >
-                <span
-                  aria-hidden="true"
-                  className="text-xl leading-none"
-                >
-                  {mostrarContrasena ? "🙈" : "👁️"}
-                </span>
+                {mostrarContrasena ? (
+                  <EyeSlashIcon aria-hidden="true" className="h-5 w-5" />
+                ) : (
+                  <EyeIcon aria-hidden="true" className="h-5 w-5" />
+                )}
               </button>
             </span>
           </fieldset>

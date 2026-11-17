@@ -1,7 +1,7 @@
 "use client";
 
 export const estilosAdmin = {
-    card: 'rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/30 p-6 shadow-[0_0_30px_rgba(34,211,238,0.12)] transition-colors theme-light:border-slate-300 theme-light:bg-none theme-light:bg-white theme-light:shadow-slate-200',
+    card: 'rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/30 p-6 shadow-[0_0_30px_rgba(34,211,238,0.12)] theme-light:border-slate-300 theme-light:bg-none theme-light:bg-white theme-light:shadow-slate-200',
     cardBlue: 'border-t-[3px] border-t-[#00ccff]',
     cardTeal: 'border-t-[3px] border-t-[#00f5e0]',
     cardHeader: 'mb-5 flex flex-col items-start gap-4 sm:flex-row sm:items-center',

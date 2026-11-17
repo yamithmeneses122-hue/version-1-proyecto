@@ -8,7 +8,6 @@ import {
   CameraIcon,
   CheckCircleIcon,
   Cog6ToothIcon,
-  CpuChipIcon,
   LockClosedIcon,
   MicrophoneIcon,
   MoonIcon,
@@ -16,7 +15,6 @@ import {
   UserCircleIcon,
 } from '@heroicons/react/24/outline';
 import BarraLateral from '../Componentes/BarraLateral';
-import SelectorOptimizacionIA from '../Componentes/SelectorOptimizacionIA';
 import { useTheme } from '@/componentes/tema/TemaProvider';
 
 export default function VistaConfiguracion() {
@@ -75,15 +73,20 @@ export default function VistaConfiguracion() {
             <header className="flex min-h-[260px] flex-col gap-5 rounded-3xl border border-cyan-500/20 bg-slate-900/70 p-6 shadow-[0_0_30px_rgba(34,211,238,0.12)] backdrop-blur md:min-h-[200px] md:flex-row md:items-center md:justify-between">
               <section>
                 <section>
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">Perfil del operador</p>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                    <UserCircleIcon className="h-3.5 w-3.5" />
+                    Perfil del operador
+                  </span>
                   <h1 className="mt-1 text-3xl font-black tracking-tight text-white md:text-5xl">Configuración</h1>
-                  <p className="mt-2 text-sm text-slate-300">Administra tu identidad, seguridad y experiencia de trabajo.</p>
+                  <p className="mt-2 text-sm text-slate-300 md:text-base">Administra tu identidad, seguridad y experiencia de trabajo.</p>
                 </section>
               </section>
-              <aside className="flex items-center gap-3 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3">
-                <CheckCircleIcon className="h-6 w-6 text-cyan-300" />
+              <aside className="flex min-h-[72px] w-full shrink-0 items-center gap-3 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 shadow-[0_0_20px_rgba(34,211,238,0.15)] md:w-64">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cyan-400/20 text-cyan-300">
+                  <CheckCircleIcon className="h-5 w-5" />
+                </span>
                 <section>
-                  <p className="text-xs uppercase tracking-[0.2em] text-cyan-300/80">Estado de cuenta</p>
+                  <p className="text-xs uppercase tracking-[0.2em] text-cyan-300/80 theme-light:text-cyan-800">Estado de cuenta</p>
                   <p className="font-semibold text-white">Perfil protegido</p>
                 </section>
               </aside>
@@ -96,7 +99,7 @@ export default function VistaConfiguracion() {
               </output>
             )}
 
-            <section className="grid gap-6 xl:grid-cols-[1.25fr_0.75fr]">
+            <section className="grid gap-6">
               <article className={sectionClass}>
                 <header className="flex items-center gap-3 border-b border-slate-800 pb-5">
                   <UserCircleIcon className="h-7 w-7 text-cyan-300" />
@@ -134,28 +137,10 @@ export default function VistaConfiguracion() {
                 </form>
               </article>
 
-              <aside className={sectionClass}>
-                <header className="flex items-center gap-3 border-b border-slate-800 pb-5">
-                  <ShieldCheckIcon className="h-7 w-7 text-cyan-300" />
-                  <section>
-                    <h2 className="text-xl font-bold text-white">Resumen de seguridad</h2>
-                    <p className="text-sm text-slate-400">Revisa el estado de tu cuenta.</p>
-                  </section>
-                </header>
-                <ul className="mt-6 space-y-3">
-                  {['Correo verificado', 'Sesión protegida', 'Última actividad: hoy'].map((item) => (
-                    <li key={item} className="flex items-center gap-3 rounded-xl border border-slate-800 bg-slate-950/50 p-3 text-sm text-slate-300">
-                      <CheckCircleIcon className="h-5 w-5 text-cyan-300" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-5 text-xs leading-relaxed text-slate-500">Nunca compartas tu contraseña ni autorices dispositivos que no reconozcas.</p>
-              </aside>
             </section>
 
-            <section className="grid gap-6 lg:grid-cols-2">
-              <article className={sectionClass}>
+            <section className="grid items-stretch gap-6 xl:grid-cols-2">
+              <article className={`${sectionClass} h-full`}>
                 <header className="flex items-center gap-3 border-b border-slate-800 pb-5">
                   <LockClosedIcon className="h-7 w-7 text-cyan-300" />
                   <section>
@@ -173,22 +158,24 @@ export default function VistaConfiguracion() {
                 </form>
               </article>
 
-              <article className={sectionClass}>
+              <aside className={`${sectionClass} h-full`}>
                 <header className="flex items-center gap-3 border-b border-slate-800 pb-5">
-                  <CpuChipIcon className="h-7 w-7 text-cyan-300" />
+                  <ShieldCheckIcon className="h-7 w-7 text-cyan-300" />
                   <section>
-                    <h2 className="text-xl font-bold text-white">Optimización de IA</h2>
-                    <p className="text-sm text-slate-400">Configura el balance entre precisión, velocidad y consumo.</p>
+                    <h2 className="text-xl font-bold text-white">Resumen de seguridad</h2>
+                    <p className="text-sm text-slate-400">Revisa el estado de tu cuenta.</p>
                   </section>
                 </header>
-                <section className="mt-6">
-                  <SelectorOptimizacionIA />
-                </section>
-                <aside className="mt-5 rounded-2xl border border-cyan-400/20 bg-cyan-500/5 p-4">
-                  <p className="text-sm font-semibold text-cyan-200">Recomendación inteligente</p>
-                  <p className="mt-1 text-xs leading-relaxed text-slate-400">Usa Equilibrado para sesiones normales. Cambia a Precisión cuando la iluminación o el movimiento sean complejos.</p>
-                </aside>
-              </article>
+                <ul className="mt-6 space-y-3">
+                  {['Correo verificado', 'Sesión protegida', 'Última actividad: hoy'].map((item) => (
+                    <li key={item} className="flex items-center gap-3 rounded-xl border border-slate-800 bg-slate-950/50 p-3 text-sm text-slate-300">
+                      <CheckCircleIcon className="h-5 w-5 text-cyan-300" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-5 text-xs leading-relaxed text-slate-500">Nunca compartas tu contraseña ni autorices dispositivos que no reconozcas.</p>
+              </aside>
             </section>
 
             <section className="grid gap-6 lg:grid-cols-2">

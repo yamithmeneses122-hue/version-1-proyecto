@@ -37,7 +37,7 @@ function GraficoTendencia({ data = [], stroke = '#00f7ff' }) {
   }, [data]);
 
   return (
-    <svg width="120" height="28" viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className="h-7 w-full" viewBox="0 0 120 28" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d={points} stroke={stroke} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
@@ -61,7 +61,7 @@ export default function VistaInicio() {
   const [logs, setLogs] = useState([
     '[09:00] Sistema iniciado',
     '[09:05] Cámara conectada',
-    '[09:12] Usuario ingresó: Edwin',
+    '[09:12] Usuario ingresó: operdor',
     '[09:30] Sesión Texto a Voz iniciada',
   ]);
 
@@ -139,25 +139,24 @@ export default function VistaInicio() {
               </span>
 
               <section>
-                <h1 className="text-3xl font-black tracking-tight text-white md:text-5xl">¡Hola, Edwin! <span className="animate-pulse">👋</span></h1>
+                <h1 className="text-3xl font-black tracking-tight text-white md:text-5xl">¡Hola, bienvenido a operador! <span className="animate-pulse">👋</span></h1>
                 <p className="mt-2 max-w-2xl text-sm text-slate-300 md:text-base">Panel de control interactivo — accesos rápidos, métricas y actividad en tiempo real.</p>
               </section>
             </section>
 
-            <section className="flex w-full items-center gap-3 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 shadow-[0_0_20px_rgba(34,211,238,0.15)] md:w-auto">
+            <section className="flex min-h-[72px] w-full shrink-0 items-center gap-3 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 shadow-[0_0_20px_rgba(34,211,238,0.15)] md:w-64">
               <section className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-400/20 text-cyan-300">
                 <BoltIcon className="h-5 w-5" />
               </section>
               <section>
-                <p className="text-xs uppercase tracking-[0.2em] text-cyan-300/80">Estado</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-cyan-300/80 theme-light:text-cyan-800">Estado</p>
                 <p className="font-semibold text-white">Operación online</p>
               </section>
             </section>
           </header>
 
-          {/* Top grid: metrics + activity */}
-          <section className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
-            <section className="rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/50 p-6 shadow-[0_0_30px_rgba(14,165,233,0.12)]">
+          <section className="min-w-0 space-y-6">
+            <section className="min-w-0 rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/50 p-6 shadow-[0_0_30px_rgba(14,165,233,0.12)]">
               <section className="mb-5 flex items-center justify-between">
                 <h2 className="text-xl font-bold text-white">Resumen en vivo</h2>
                 <section className="flex items-center gap-3">
@@ -196,11 +195,11 @@ export default function VistaInicio() {
 
               <section className="mt-6 flex flex-col gap-3">
                 <h3 className="text-sm font-semibold text-slate-300">Acciones rápidas</h3>
-                <section className="flex flex-wrap gap-3 pt-2">
+                <section className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-2 lg:grid-cols-3">
                   {quickActions.map((a) => {
                     const Icono = a.icon;
                     return (
-                      <button key={a.id} onClick={a.action} className="flex items-center gap-2 rounded-xl border border-slate-800 bg-gradient-to-r from-cyan-600/10 to-cyan-600/5 px-4 py-2 text-sm text-cyan-200 hover:scale-105 transition-transform shadow-md">
+                      <button key={a.id} onClick={a.action} className="flex min-w-0 w-full items-center gap-2 rounded-xl border border-slate-800 bg-gradient-to-r from-cyan-600/10 to-cyan-600/5 px-4 py-2 text-left text-sm text-cyan-200 shadow-md transition-colors hover:border-cyan-500/50">
                         <Icono className="h-4 w-4 text-cyan-300" />
                         <span>{a.label}</span>
                       </button>
@@ -210,16 +209,51 @@ export default function VistaInicio() {
               </section>
             </section>
 
+            {/* Modules area (big cards) */}
+            <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {modules.map((module) => {
+                const Icono = module.icon;
+                const accentStyle = {
+                  cyan: 'from-cyan-500/20 to-cyan-500/5 border-cyan-400/30 hover:border-cyan-400/60',
+                  sky: 'from-sky-500/20 to-sky-500/5 border-sky-400/30 hover:border-sky-400/60',
+                  blue: 'from-blue-500/20 to-blue-500/5 border-blue-400/30 hover:border-blue-400/60',
+                }[module.accent];
+
+                return (
+                  <button key={module.title} type="button" onClick={() => navigate(module.route)} className={`group flex h-full flex-col justify-between rounded-3xl border bg-gradient-to-br p-5 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_28px_rgba(34,211,238,0.18)] ${accentStyle}`}>
+                    <section className="space-y-4">
+                      <section className="flex items-center justify-between">
+                        <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-400/30 bg-slate-950/60 text-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.12)]">
+                          <Icono className="h-6 w-6" />
+                        </span>
+                        <span className="rounded-full border border-slate-700 bg-slate-950/40 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-300">{module.status}</span>
+                      </section>
+
+                      <section>
+                        <h3 className="text-xl font-bold text-white group-hover:text-cyan-300">{module.title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-slate-300">{module.description}</p>
+                      </section>
+                    </section>
+
+                    <section className="mt-6 flex items-center justify-between border-t border-slate-700/80 pt-4">
+                      <span className="text-sm font-medium text-cyan-300">Abrir módulo</span>
+                      <span className="rounded-full border border-cyan-400/30 bg-cyan-500/10 p-2 text-cyan-300 transition-transform group-hover:translate-x-1"><ArrowRightIcon className="h-4 w-4" /></span>
+                    </section>
+                  </button>
+                );
+              })}
+            </section>
+
             {/* Activity / Logs + Widgets */}
-            <aside className="rounded-3xl border border-cyan-500/20 bg-slate-900/70 p-6 shadow-[0_0_20px_rgba(34,211,238,0.08)]">
+            <aside className="min-w-0 rounded-3xl border border-cyan-500/20 bg-slate-900/70 p-6 shadow-[0_0_20px_rgba(34,211,238,0.08)]">
               <h2 className="text-xl font-bold text-white">Actividad reciente</h2>
-              <section className="mt-4 max-h-56 space-y-2 overflow-auto rounded-md bg-black/10 p-3 font-mono text-sm text-slate-300">
+              <section className="mt-4 max-h-56 space-y-2 overflow-y-auto rounded-md bg-black/10 p-3 font-mono text-sm text-slate-300">
                 {logs.slice().reverse().map((l, i) => (
-                  <section key={i} className="whitespace-pre">{l}</section>
+                  <section key={i} className="whitespace-pre-wrap break-words">{l}</section>
                 ))}
               </section>
 
-              <section className="mt-6 grid gap-3">
+              <section className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
                 <section className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-950/40 p-3">
                   <section className="flex items-center gap-3">
                     <section className="rounded-full bg-cyan-500/10 p-2 text-cyan-300"><CameraIcon className="h-5 w-5" /></section>
@@ -256,48 +290,13 @@ export default function VistaInicio() {
 
               <section className="mt-6">
                 <h3 className="text-sm font-semibold text-slate-300">Consejos inteligentes</h3>
-                <ul className="mt-3 space-y-2">
+                <ul className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
                   {smartTips.map((t) => (
                     <li key={t} className="rounded-xl border border-slate-800 bg-slate-950/40 p-2 text-sm text-slate-300">• {t}</li>
                   ))}
                 </ul>
               </section>
             </aside>
-          </section>
-
-          {/* Modules area (big cards) */}
-          <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {modules.map((module) => {
-              const Icono = module.icon;
-              const accentStyle = {
-                cyan: 'from-cyan-500/20 to-cyan-500/5 border-cyan-400/30 hover:border-cyan-400/60',
-                sky: 'from-sky-500/20 to-sky-500/5 border-sky-400/30 hover:border-sky-400/60',
-                blue: 'from-blue-500/20 to-blue-500/5 border-blue-400/30 hover:border-blue-400/60',
-              }[module.accent];
-
-              return (
-                <button key={module.title} type="button" onClick={() => navigate(module.route)} className={`group flex h-full flex-col justify-between rounded-3xl border bg-gradient-to-br p-5 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_28px_rgba(34,211,238,0.18)] ${accentStyle}`}>
-                  <section className="space-y-4">
-                    <section className="flex items-center justify-between">
-                      <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-400/30 bg-slate-950/60 text-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.12)]">
-                        <Icono className="h-6 w-6" />
-                      </span>
-                      <span className="rounded-full border border-slate-700 bg-slate-950/40 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-300">{module.status}</span>
-                    </section>
-
-                    <section>
-                      <h3 className="text-xl font-bold text-white group-hover:text-cyan-300">{module.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-slate-300">{module.description}</p>
-                    </section>
-                  </section>
-
-                  <section className="mt-6 flex items-center justify-between border-t border-slate-700/80 pt-4">
-                    <span className="text-sm font-medium text-cyan-300">Abrir módulo</span>
-                    <span className="rounded-full border border-cyan-400/30 bg-cyan-500/10 p-2 text-cyan-300 transition-transform group-hover:translate-x-1"><ArrowRightIcon className="h-4 w-4" /></span>
-                  </section>
-                </button>
-              );
-            })}
           </section>
         </section>
       </main>

@@ -123,12 +123,12 @@ export default function VistaDeteccionCamara() {
               </section>
             </section>
 
-            <section className="flex w-full items-center gap-3 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 shadow-[0_0_20px_rgba(34,211,238,0.15)] md:w-auto">
+            <section className="flex min-h-[72px] w-full shrink-0 items-center gap-3 rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 shadow-[0_0_20px_rgba(34,211,238,0.15)] md:w-64">
               <section className={`flex h-10 w-10 items-center justify-center rounded-full text-cyan-300 ${conectado ? 'animate-pulse bg-cyan-400/30' : 'bg-cyan-400/20'}`}>
                 <CameraIcon className="h-5 w-5" />
               </section>
               <section>
-                <p className="text-xs uppercase tracking-[0.2em] text-cyan-300/80">Sensor</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-cyan-300/80 theme-light:text-cyan-800">Sensor</p>
                 <p className="font-semibold text-white">{conectado ? 'Conectado' : 'Desconectado'}</p>
               </section>
             </section>
