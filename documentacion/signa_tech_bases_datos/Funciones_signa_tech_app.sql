@@ -145,3 +145,39 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+-- ============================================================
+-- FUNCION 5: CONTAR SOLICITUDES DE SOPORTE ABIERTAS
+-- ============================================================
+DROP FUNCTION IF EXISTS FN_ContarSolicitudesSoporteAbiertas;
+DELIMITER $$
+CREATE FUNCTION FN_ContarSolicitudesSoporteAbiertas()
+RETURNS INT
+NOT DETERMINISTIC
+READS SQL DATA
+BEGIN
+    DECLARE v_Total INT DEFAULT 0;
+    SELECT COUNT(*) INTO v_Total
+    FROM TblSolicitudSoporte
+    WHERE SsoEstado IN ('ABIERTA','ASIGNADA','EN_PROCESO');
+    RETURN v_Total;
+END$$
+DELIMITER ;
+
+-- ============================================================
+-- FUNCION 6: OBTENER LA VERSION ACTUAL DE UNA SEÑA
+-- ============================================================
+DROP FUNCTION IF EXISTS FN_ObtenerVersionActualSena;
+DELIMITER $$
+CREATE FUNCTION FN_ObtenerVersionActualSena(p_SenIdSena INT UNSIGNED)
+RETURNS INT UNSIGNED
+NOT DETERMINISTIC
+READS SQL DATA
+BEGIN
+    DECLARE v_Version INT UNSIGNED DEFAULT NULL;
+    SELECT MAX(VerNumero) INTO v_Version
+    FROM TblVersionSena
+    WHERE SenIdSena = p_SenIdSena;
+    RETURN v_Version;
+END$$
+DELIMITER ;
