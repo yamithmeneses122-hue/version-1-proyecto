@@ -572,3 +572,120 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+-- ============================================================
+-- PROCEDIMIENTO 10: CREAR SOLICITUD DE CAMBIO DE SEÑA
+-- ============================================================
+DROP PROCEDURE IF EXISTS SP_CrearSolicitudCambioSena;
+DELIMITER $$
+CREATE PROCEDURE SP_CrearSolicitudCambioSena(
+    IN p_Tipo VARCHAR(30),
+    IN p_Descripcion TEXT,
+    IN p_SenIdSena INT UNSIGNED,
+    IN p_UsuIdUsuario INT UNSIGNED
+)
+BEGIN
+    IF p_Tipo NOT IN ('CORRECCION','ACTUALIZACION','RETIRO') OR p_Descripcion IS NULL OR CHAR_LENGTH(TRIM(p_Descripcion))=0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Tipo o descripcion de solicitud no validos';
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM TblDiccionarioSena WHERE SenIdSena=p_SenIdSena) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='La seña indicada no existe';
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM TblUsuario WHERE UsuIdUsuario=p_UsuIdUsuario AND UsuEstado='ACTIVO') THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='El usuario solicitante no existe o esta inactivo';
+    END IF;
+    INSERT INTO TblSolicitudCambioSena(ScsTipoSolicitud,ScsDescripcion,SenIdSena,UsuIdUsuario)
+    VALUES(p_Tipo,p_Descripcion,p_SenIdSena,p_UsuIdUsuario);
+    INSERT INTO TblHistorialOperativo(HopAccion,HopDescripcion,HopEntidad,HopIdRegistro,UsuIdUsuario)
+    VALUES('SOLICITUD_CAMBIO_SENA','Se creó una solicitud de cambio.','TblSolicitudCambioSena',LAST_INSERT_ID(),p_UsuIdUsuario);
+END$$
+DELIMITER ;
+
+-- ============================================================
+-- PROCEDIMIENTO 11: REGISTRAR VERSION DE SEÑA
+-- ============================================================
+DROP PROCEDURE IF EXISTS SP_RegistrarVersionSena;
+DELIMITER $$
+CREATE PROCEDURE SP_RegistrarVersionSena(
+    IN p_SenIdSena INT UNSIGNED,
+    IN p_UsuIdUsuario INT UNSIGNED,
+    IN p_NombreVersion VARCHAR(100),
+    IN p_Descripcion TEXT,
+    IN p_ScsIdSolicitud INT UNSIGNED
+)
+BEGIN
+    DECLARE v_Numero INT UNSIGNED DEFAULT 1;
+    IF NOT EXISTS (SELECT 1 FROM TblDiccionarioSena WHERE SenIdSena=p_SenIdSena) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='La seña no existe';
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM TblUsuario WHERE UsuIdUsuario=p_UsuIdUsuario AND UsuEstado='ACTIVO') THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='El usuario no existe o esta inactivo';
+    END IF;
+    SELECT COALESCE(MAX(VerNumero),0)+1 INTO v_Numero FROM TblVersionSena WHERE SenIdSena=p_SenIdSena;
+    INSERT INTO TblVersionSena(VerNumero,VerNombre,VerDescripcion,SenIdSena,UsuIdUsuario,ScsIdSolicitud)
+    VALUES(v_Numero,p_NombreVersion,p_Descripcion,p_SenIdSena,p_UsuIdUsuario,p_ScsIdSolicitud);
+    INSERT INTO TblHistorialOperativo(HopAccion,HopDescripcion,HopEntidad,HopIdRegistro,UsuIdUsuario)
+    VALUES('VERSION_SENA','Se registró una nueva versión.','TblVersionSena',LAST_INSERT_ID(),p_UsuIdUsuario);
+END$$
+DELIMITER ;
+
+-- ============================================================
+-- PROCEDIMIENTO 12: CREAR SOLICITUD DE SOPORTE
+-- ============================================================
+DROP PROCEDURE IF EXISTS SP_CrearSolicitudSoporte;
+DELIMITER $$
+CREATE PROCEDURE SP_CrearSolicitudSoporte(
+    IN p_Asunto VARCHAR(160),
+    IN p_Descripcion TEXT,
+    IN p_Categoria VARCHAR(50),
+    IN p_Prioridad VARCHAR(15),
+    IN p_UsuIdSolicitante INT UNSIGNED
+)
+BEGIN
+    DECLARE v_IdSolicitud INT UNSIGNED;
+    IF p_Prioridad NOT IN ('BAJA','MEDIA','ALTA','CRITICA') THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Prioridad no valida';
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM TblUsuario WHERE UsuIdUsuario=p_UsuIdSolicitante AND UsuEstado='ACTIVO') THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='El solicitante no existe o esta inactivo';
+    END IF;
+    INSERT INTO TblSolicitudSoporte(SsoAsunto,SsoDescripcion,SsoCategoria,SsoPrioridad,UsuIdSolicitante)
+    VALUES(p_Asunto,p_Descripcion,p_Categoria,p_Prioridad,p_UsuIdSolicitante);
+    SET v_IdSolicitud=LAST_INSERT_ID();
+    INSERT INTO TblHistorialSolicitud(HsoEstadoAnterior,HsoEstadoNuevo,HsoComentario,SsoIdSolicitud,UsuIdUsuario)
+    VALUES(NULL,'ABIERTA','Solicitud creada.',v_IdSolicitud,p_UsuIdSolicitante);
+END$$
+DELIMITER ;
+
+-- ============================================================
+-- PROCEDIMIENTO 13: ACTUALIZAR ESTADO DE SOLICITUD DE SOPORTE
+-- ============================================================
+DROP PROCEDURE IF EXISTS SP_ActualizarEstadoSolicitudSoporte;
+DELIMITER $$
+CREATE PROCEDURE SP_ActualizarEstadoSolicitudSoporte(
+    IN p_SsoIdSolicitud INT UNSIGNED,
+    IN p_NuevoEstado VARCHAR(20),
+    IN p_UsuIdResponsable INT UNSIGNED,
+    IN p_Comentario TEXT
+)
+BEGIN
+    DECLARE v_EstadoAnterior VARCHAR(20);
+    IF p_NuevoEstado NOT IN ('ABIERTA','ASIGNADA','EN_PROCESO','RESUELTA','CERRADA') THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Estado de soporte no valido';
+    END IF;
+    SELECT SsoEstado INTO v_EstadoAnterior FROM TblSolicitudSoporte WHERE SsoIdSolicitud=p_SsoIdSolicitud FOR UPDATE;
+    IF v_EstadoAnterior IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='La solicitud de soporte no existe';
+    END IF;
+    IF NOT EXISTS (SELECT 1 FROM TblUsuario WHERE UsuIdUsuario=p_UsuIdResponsable AND UsuEstado='ACTIVO') THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='El responsable no existe o esta inactivo';
+    END IF;
+    UPDATE TblSolicitudSoporte
+    SET SsoEstado=p_NuevoEstado,
+        UsuIdResponsable=p_UsuIdResponsable,
+        SsoFechaCierre=IF(p_NuevoEstado IN ('RESUELTA','CERRADA'),CURRENT_TIMESTAMP,NULL)
+    WHERE SsoIdSolicitud=p_SsoIdSolicitud;
+    INSERT INTO TblHistorialSolicitud(HsoEstadoAnterior,HsoEstadoNuevo,HsoComentario,SsoIdSolicitud,UsuIdUsuario)
+    VALUES(v_EstadoAnterior,p_NuevoEstado,p_Comentario,p_SsoIdSolicitud,p_UsuIdResponsable);
+END$$
+DELIMITER ;
