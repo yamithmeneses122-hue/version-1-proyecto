@@ -701,3 +701,116 @@ CREATE TABLE TblReporteFalla (
 ) ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci;
+
+ 
+-- ============================================================
+-- EXTENSION DEL MER VIGENTE: EPICAS 06, 07 Y 08
+-- Entidades incorporadas desde el diagrama:
+-- SOLICITUD_CAMBIO_SENA, RECURSO_MULTIMEDIA, VERSION_SENA,
+-- HISTORIAL_OPERATIVO, SOLICITUD_SOPORTE, HISTORIAL_SOLICITUD
+-- ============================================================
+
+CREATE TABLE TblSolicitudCambioSena (
+    ScsIdSolicitud INT UNSIGNED AUTO_INCREMENT,
+    ScsTipoSolicitud VARCHAR(30) NOT NULL,
+    ScsDescripcion TEXT NOT NULL,
+    ScsEstado VARCHAR(20) NOT NULL DEFAULT 'PENDIENTE',
+    ScsFechaSolicitud DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    ScsFechaDecision DATETIME NULL,
+    SenIdSena INT UNSIGNED NOT NULL,
+    UsuIdUsuario INT UNSIGNED NOT NULL,
+    UsuIdRevisor INT UNSIGNED NULL,
+    PRIMARY KEY (ScsIdSolicitud),
+    CONSTRAINT CK_TblSolicitudCambioSena_Tipo CHECK (ScsTipoSolicitud IN ('CORRECCION','ACTUALIZACION','RETIRO')),
+    CONSTRAINT CK_TblSolicitudCambioSena_Estado CHECK (ScsEstado IN ('PENDIENTE','EN_REVISION','APROBADA','RECHAZADA','CANCELADA')),
+    CONSTRAINT FK_TblSolicitudCambioSena_Sena FOREIGN KEY (SenIdSena) REFERENCES TblDiccionarioSena(SenIdSena) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT FK_TblSolicitudCambioSena_Solicitante FOREIGN KEY (UsuIdUsuario) REFERENCES TblUsuario(UsuIdUsuario) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT FK_TblSolicitudCambioSena_Revisor FOREIGN KEY (UsuIdRevisor) REFERENCES TblUsuario(UsuIdUsuario) ON DELETE SET NULL ON UPDATE CASCADE,
+    INDEX IDX_TblSolicitudCambioSena_Estado (ScsEstado),
+    INDEX IDX_TblSolicitudCambioSena_Sena (SenIdSena)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE TblRecursoMultimedia (
+    RecIdRecurso INT UNSIGNED AUTO_INCREMENT,
+    RecTipo VARCHAR(30) NOT NULL,
+    RecRuta VARCHAR(500) NOT NULL,
+    RecFormato VARCHAR(20) NULL,
+    RecDescripcion VARCHAR(255) NULL,
+    RecFechaRegistro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    RecEstado VARCHAR(15) NOT NULL DEFAULT 'ACTIVO',
+    SenIdSena INT UNSIGNED NOT NULL,
+    UsuIdUsuario INT UNSIGNED NOT NULL,
+    PRIMARY KEY (RecIdRecurso),
+    CONSTRAINT CK_TblRecursoMultimedia_Tipo CHECK (RecTipo IN ('IMAGEN','VIDEO','AUDIO','ANIMACION')),
+    CONSTRAINT CK_TblRecursoMultimedia_Estado CHECK (RecEstado IN ('ACTIVO','INACTIVO')),
+    CONSTRAINT FK_TblRecursoMultimedia_Sena FOREIGN KEY (SenIdSena) REFERENCES TblDiccionarioSena(SenIdSena) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_TblRecursoMultimedia_Usuario FOREIGN KEY (UsuIdUsuario) REFERENCES TblUsuario(UsuIdUsuario) ON DELETE RESTRICT ON UPDATE CASCADE,
+    INDEX IDX_TblRecursoMultimedia_Sena (SenIdSena)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE TblVersionSena (
+    VerIdVersion INT UNSIGNED AUTO_INCREMENT,
+    VerNumero INT UNSIGNED NOT NULL,
+    VerNombre VARCHAR(100) NOT NULL,
+    VerDescripcion TEXT NULL,
+    VerContenidoAnterior JSON NULL,
+    VerContenidoNuevo JSON NULL,
+    VerFechaVersion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    SenIdSena INT UNSIGNED NOT NULL,
+    UsuIdUsuario INT UNSIGNED NOT NULL,
+    ScsIdSolicitud INT UNSIGNED NULL,
+    PRIMARY KEY (VerIdVersion),
+    CONSTRAINT UQ_TblVersionSena_Numero UNIQUE (SenIdSena, VerNumero),
+    CONSTRAINT FK_TblVersionSena_Sena FOREIGN KEY (SenIdSena) REFERENCES TblDiccionarioSena(SenIdSena) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT FK_TblVersionSena_Usuario FOREIGN KEY (UsuIdUsuario) REFERENCES TblUsuario(UsuIdUsuario) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT FK_TblVersionSena_Solicitud FOREIGN KEY (ScsIdSolicitud) REFERENCES TblSolicitudCambioSena(ScsIdSolicitud) ON DELETE SET NULL ON UPDATE CASCADE,
+    INDEX IDX_TblVersionSena_Fecha (VerFechaVersion)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE TblHistorialOperativo (
+    HopIdHistorial INT UNSIGNED AUTO_INCREMENT,
+    HopAccion VARCHAR(100) NOT NULL,
+    HopDescripcion TEXT NULL,
+    HopEntidad VARCHAR(80) NOT NULL,
+    HopIdRegistro BIGINT UNSIGNED NULL,
+    HopFecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UsuIdUsuario INT UNSIGNED NOT NULL,
+    PRIMARY KEY (HopIdHistorial),
+    CONSTRAINT FK_TblHistorialOperativo_Usuario FOREIGN KEY (UsuIdUsuario) REFERENCES TblUsuario(UsuIdUsuario) ON DELETE RESTRICT ON UPDATE CASCADE,
+    INDEX IDX_TblHistorialOperativo_UsuarioFecha (UsuIdUsuario, HopFecha),
+    INDEX IDX_TblHistorialOperativo_EntidadRegistro (HopEntidad, HopIdRegistro)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE TblSolicitudSoporte (
+    SsoIdSolicitud INT UNSIGNED AUTO_INCREMENT,
+    SsoAsunto VARCHAR(160) NOT NULL,
+    SsoDescripcion TEXT NOT NULL,
+    SsoCategoria VARCHAR(50) NOT NULL,
+    SsoPrioridad VARCHAR(15) NOT NULL DEFAULT 'MEDIA',
+    SsoEstado VARCHAR(20) NOT NULL DEFAULT 'ABIERTA',
+    SsoFechaCreacion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    SsoFechaCierre DATETIME NULL,
+    UsuIdSolicitante INT UNSIGNED NOT NULL,
+    UsuIdResponsable INT UNSIGNED NULL,
+    PRIMARY KEY (SsoIdSolicitud),
+    CONSTRAINT CK_TblSolicitudSoporte_Prioridad CHECK (SsoPrioridad IN ('BAJA','MEDIA','ALTA','CRITICA')),
+    CONSTRAINT CK_TblSolicitudSoporte_Estado CHECK (SsoEstado IN ('ABIERTA','ASIGNADA','EN_PROCESO','RESUELTA','CERRADA')),
+    CONSTRAINT FK_TblSolicitudSoporte_Solicitante FOREIGN KEY (UsuIdSolicitante) REFERENCES TblUsuario(UsuIdUsuario) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT FK_TblSolicitudSoporte_Responsable FOREIGN KEY (UsuIdResponsable) REFERENCES TblUsuario(UsuIdUsuario) ON DELETE SET NULL ON UPDATE CASCADE,
+    INDEX IDX_TblSolicitudSoporte_EstadoPrioridad (SsoEstado, SsoPrioridad),
+    INDEX IDX_TblSolicitudSoporte_Solicitante (UsuIdSolicitante)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE TblHistorialSolicitud (
+    HsoIdHistorial INT UNSIGNED AUTO_INCREMENT,
+    HsoEstadoAnterior VARCHAR(20) NULL,
+    HsoEstadoNuevo VARCHAR(20) NOT NULL,
+    HsoComentario TEXT NULL,
+    HsoFecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    SsoIdSolicitud INT UNSIGNED NOT NULL,
+    UsuIdUsuario INT UNSIGNED NOT NULL,
+    PRIMARY KEY (HsoIdHistorial),
+    CONSTRAINT FK_TblHistorialSolicitud_Solicitud FOREIGN KEY (SsoIdSolicitud) REFERENCES TblSolicitudSoporte(SsoIdSolicitud) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_TblHistorialSolicitud_Usuario FOREIGN KEY (UsuIdUsuario) REFERENCES TblUsuario(UsuIdUsuario) ON DELETE RESTRICT ON UPDATE CASCADE,
+    INDEX IDX_TblHistorialSolicitud_SolicitudFecha (SsoIdSolicitud, HsoFecha)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
