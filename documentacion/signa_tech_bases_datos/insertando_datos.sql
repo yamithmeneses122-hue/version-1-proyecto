@@ -592,3 +592,50 @@ UNION ALL
 SELECT 'TblRelDatasetModelo', COUNT(*) FROM TblRelDatasetModelo
 UNION ALL
 SELECT 'TblReporteFalla', COUNT(*) FROM TblReporteFalla;
+
+-- ============================================================
+-- DATOS DE PRUEBA: ENTIDADES ADICIONALES DEL MER
+-- Requiere que existan los usuarios y señas de los bloques previos.
+-- ============================================================
+
+INSERT INTO TblSolicitudCambioSena
+(ScsTipoSolicitud, ScsDescripcion, ScsEstado, SenIdSena, UsuIdUsuario, UsuIdRevisor)
+VALUES
+('CORRECCION','Ajustar la descripción y los parámetros de ejecución de la seña.', 'PENDIENTE', 1, 3, NULL),
+('ACTUALIZACION','Actualizar el recurso audiovisual asociado a la seña.', 'EN_REVISION', 2, 3, 2),
+('CORRECCION','Revisar la variante regional registrada.', 'APROBADA', 3, 4, 2);
+
+INSERT INTO TblRecursoMultimedia
+(RecTipo, RecRuta, RecFormato, RecDescripcion, SenIdSena, UsuIdUsuario)
+VALUES
+('VIDEO','/recursos/senas/hola.mp4','mp4','Demostración de la seña HOLA',1,2),
+('VIDEO','/recursos/senas/adios.mp4','mp4','Demostración de la seña ADIOS',2,2),
+('IMAGEN','/recursos/senas/gracias.png','png','Referencia visual de GRACIAS',3,2);
+
+INSERT INTO TblVersionSena
+(VerNumero, VerNombre, VerDescripcion, VerContenidoAnterior, VerContenidoNuevo, SenIdSena, UsuIdUsuario, ScsIdSolicitud)
+VALUES
+(1,'Versión inicial','Registro inicial de la seña',NULL,JSON_OBJECT('nombre','HOLA','estado','APROBADA'),1,2,NULL),
+(1,'Versión inicial','Registro inicial de la seña',NULL,JSON_OBJECT('nombre','ADIOS','estado','APROBADA'),2,2,2),
+(1,'Versión inicial','Registro inicial de la seña',NULL,JSON_OBJECT('nombre','GRACIAS','estado','APROBADA'),3,2,3);
+
+INSERT INTO TblHistorialOperativo
+(HopAccion, HopDescripcion, HopEntidad, HopIdRegistro, UsuIdUsuario)
+VALUES
+('VALIDACION_SENA','Se validó una seña del diccionario.','TblDiccionarioSena',1,2),
+('ACTUALIZACION_RECURSO','Se registró un recurso multimedia.','TblRecursoMultimedia',1,2),
+('CREACION_VERSION','Se creó la versión inicial de una seña.','TblVersionSena',1,2);
+
+INSERT INTO TblSolicitudSoporte
+(SsoAsunto, SsoDescripcion, SsoCategoria, SsoPrioridad, SsoEstado, UsuIdSolicitante, UsuIdResponsable)
+VALUES
+('Problema con la cámara','La cámara no se activa desde el módulo de interpretación.','TECNICO','ALTA','ABIERTA',3,NULL),
+('Consulta de acceso','El usuario necesita asistencia para recuperar el acceso.','CUENTA','MEDIA','ASIGNADA',4,1),
+('Error en traducción','La traducción generada no corresponde con la seña realizada.','TRADUCCION','ALTA','EN_PROCESO',3,2);
+
+INSERT INTO TblHistorialSolicitud
+(HsoEstadoAnterior, HsoEstadoNuevo, HsoComentario, SsoIdSolicitud, UsuIdUsuario)
+VALUES
+(NULL,'ABIERTA','Solicitud de soporte creada.',1,3),
+(NULL,'ASIGNADA','Solicitud asignada al equipo responsable.',2,1),
+(NULL,'EN_PROCESO','Se inició el análisis del problema.',3,2);
